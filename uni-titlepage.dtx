@@ -1,0 +1,3187 @@
+% \iffalse meta-comment
+% ============================================================================
+% uni-titlepage.dtx
+% Copyright (c) Markus Kohm, 2009-2021
+%
+% This file is part of the LaTeX package `uni-titlepage'
+%
+% This work may be distributed and/or modified under the conditions of
+% the LaTeX Project Public License, version 1.3c of the license.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX 
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+%
+% The Current Maintainer and author of this work is Markus Kohm.
+%
+% This work consists of the file `uni-titlepage.dtx'.
+%
+% ==========================================================================
+% \fi^^A meta-comment
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \iffalse meta-comment
+% ==========================================================================
+%<*dtx|ins>
+\expandafter\ifx\csname ProvidesFile\endcsname\relax
+  \def\ProvidesFile#1[#2]{\message{#1: #2}}%
+\fi
+%</dtx|ins>
+%<*dtx|ins|doc|driver>
+\ProvidesFile{%
+  title%
+%<*!driver>
+  page%
+%</!driver>
+%<DHBW>  -DHBW%
+%<KOMAScript>  -KOMAScript%
+%<Markus&1>  -Markus-1%
+%<Markus&2>  -Markus-2%
+%<Spacer>  -Spacer%
+%<TU-DD>  -TU-DD%
+%<TU-HH>  -TU-HH%
+%<KIT>  -KIT%
+%<JT-Aufsaetze>  -JT-Aufsaetze%
+%<JT-Geschichte>  -JT-Geschichte%
+%<JT-Typography>  -JT-Typography%
+%<WWUM>  -WWUM%
+%<*dtx>
+  .dtx%
+%</dtx>
+%<ins>  .ins%
+%<doc&!manual>  .ltx%
+%<doc&manual>  .drv%
+%<driver> .def%
+%</dtx|ins|doc|driver>
+%<package>\ProvidesPackage{uni-titlepage%
+%<*dtx|ins|doc|driver|package|README>
+%<README># `uni-titlepage`
+%<README>Copyright (c) Markus Kohm <komascript at gmx.info>  
+%<*!README>
+}[%
+%</!README>
+%<README>
+%<README>Release:
+2021/07/29 v0.6
+%<README>
+KOMA presents the title page project
+%<*!README>
+]
+%</!README>
+%</dtx|ins|doc|driver|package|README>
+% \fi^^A meta-comment
+%
+% \changes{v0.5f}{2021/07/29}{usage of \texttt{l3build}}
+% \changes{v0.6}{2021/07/29}{package renamed from \Package{titlepage} into
+%   \Package{uni-titlepage}}
+%
+% \tableofcontents
+%
+% \section{Loading the Package}
+% \label{sec:Loading-the-Package}
+%
+% You may load this package like all the other package, simply using:
+% \begin{verbatim}
+% \usepackage{uni-titlepage}
+% \end{verbatim}\vskip-\baselineskip
+%
+% This package declares several options for title page manipulation. We will
+% declare all those options in the following. Most of the options are package
+% options as well, but some are style options only. You may use every package
+% option already as optional argument of \cs{usepackage} and even of
+% \cs{documentclass}. But in most cases it would be better to use them as
+% optional argument of \cs{TitlePageStyle} or \cs{maketitle}. We show this way
+% below.
+%
+%
+% \section{The Title Page Styles and their Options}
+% \label{sec:The-Title-Page-Style-and-their-Options}
+%
+% \DescribeMacro{TitlePageStyle}
+% Several title page styles are supported. You may select a title page style
+% using:
+% \begin{quote}
+%   \cs{TitlePageStyle}^^A
+%   \texttt{[}\meta{option}\texttt{=}\meta{value},\dots\texttt{]}^^A
+%   \marg{style}.
+% \end{quote}
+% The available styles are shown at the following sub-sections. Options may be
+% every package option and every style option. 
+%
+% \DescribeMacro{maketitle}
+% After loading a style you may generate title pages using:
+% \begin{quote}
+%   \cs{maketitle}^^A
+%   \texttt{[}\meta{option}\texttt{=}\meta{value},\dots\texttt{]}^^A
+%   .
+% \end{quote}
+% Again, you may use every package option and every style option as optional
+% argument.
+%
+% \DescribeMacro{TitleOption}
+% \DescribeMacro{TitleOptions}
+% Another way to set an option is to use either
+% \begin{quote}
+%   \cs{TitleOption}\marg{option}\marg{value}
+% \end{quote}
+% or
+% \begin{quote}
+%   \cs{TitleOptions}^^A
+%   \texttt{\{}\meta{option}\texttt{=}\meta{value},\dots\texttt{\}}.
+% \end{quote}
+% You can set every package option an every option of already loaded title
+% page styles.
+%
+% For every option, that expects a string argument exists a corresponding
+% command with the same name. So you may set, e.g., the title either using
+% \cs{TitleOptions}\linebreak[2]\texttt{\{title=\{This is the Title\}\}} or
+% \cs{TitleOption}\linebreak[2]\texttt{\{title\}\linebreak[2]\{This is the
+% Title\}} or \cs{maketitle}\linebreak[2]\texttt{[title=\{This is the
+% Title\}]} or \cs{TitlePageStyle}\linebreak[2]\texttt{[title=\{This is the
+% Title\}]\{\dots\}} or \cs{title}\linebreak[2]\texttt{\{This is the
+% Title\}}. The most robust way is to use the command \cs{title} instead of
+% the option at one of the other commands!  If you use the option you may need
+% to add \cs{protect} in front of commands inside the option value!
+%
+% \begin{xltabular}{\linewidth}{>{\ttfamily}l>{\ttfamily\raggedright}p{.25\linewidth}>{\RaggedRight}X}
+% \toprule
+% \normalfont\emph{String Option}
+% & \normalfont\emph{Styles} 
+% & \normalfont\emph{Common Meaning} \\
+% \midrule
+% \endhead
+% \midrule
+% \multicolumn{3}{r}{\dots}
+% \endfoot
+% \bottomrule
+% \endlastfoot
+% advisor    & TU-DD              & if your personal advisor differs from the
+%                                   advising professor, this is the name of
+%                                   the advisor
+% \\
+% author     & \normalfont\emph{every style}
+%                                 & the authors, with some styles (currently
+%                                   not with \texttt{DHBW}) you may seperate
+%                                   multiple authors by \cs{and}
+% \tabularnewline
+% chair      & TU-DD, KIT, WWUM   & the chair of the faculty of the university
+%                                   where you've made or presented your work
+% \tabularnewline
+% company    & DHBW               & some works are made not only at a
+%                                   university but in cooperation with a
+%                                   company; at Duale Hochschule
+%                                   Baden-W\"urttemberg this is the default
+%                                   case
+% \\
+% course     & DHBW               & the shortcut for your discipline or course
+% \\
+% date       & DHBW, KIT, KOMAScript, Markus-1, Markus-2, Spacer, TU-HH,
+%              TU-DD, JT-Typography, WWUM
+%                                 & the documents main date, this may by,
+%                                   e.\,g., the release date, the semester of a
+%                                   thesis or any other most valid date
+% \\
+% dedication & KOMAScript, Markus-1, Markus-2, Spacer
+%                                 & sometimes it is nice to dedicate the work
+%                                   to someone, e.g., your wife, your
+%                                   children, your grandmother or your first
+%                                   love
+% \\
+% academicgrade
+%            & DHBW, TU-HH, WUMM  & the academic grade or degree you
+%                                   reach with the work
+% \\
+% discipline & DHBW, TU-DD, WUMM  & the discipline in which you've made your
+%                                   work or reach your academic grade
+% \\
+% duration   & DHBW               & the processing time for your work
+% \\
+% faculty    & TU-DD, KIT, WUMM   & the faculty of the university where you've
+%                                   made or presented your work
+% \\
+% homepage   & KIT                & the www-address of the homepage
+% \\
+% mainlogo   & DHBW, KIT          & a logo at the main title (currently used
+%                                   for the DHBW or the KIT logo at the
+%                                   default of \texttt{titlehead})
+% \\
+% matriculationnumber
+%            & DHBW, TU-DD        & if you were a student while you've made
+%                                   the work, this is you number
+% \\
+% oralexaminationdate
+%            & TU-HH, WUMM        & sometimes the date of the oral examination
+%                                   is not the main date but has to be shown
+%                                   too
+% \\
+% place      & DHBW, TU-HH, JT-Geschichte, JT-Typography, WUMM
+%                                 & the place, in general the city, where
+%                                   you've made the work or where the Duale
+%                                   Hochschule or the publisher resides
+% \\
+% professor  & TU-DD, WUMM        & the name of the professor who advised you
+%                                   during your work
+% \\
+% publisher  & KOMAScript, Markus-1, Markus-2, Spacer, JT-Aufsaetze,
+%              JT-Geschichte, JT-Typography
+%                                 & most written works have a publisher
+% \\
+% referee    & DHBW, TU-HH        & every academic work will be referred;
+%                                   with some styles (currently
+%                                   \texttt{TU-HH}, \texttt{WWUM}) multiple
+%                                   referees may be seperated with \cs{and}
+% \\
+% sience     & WWUM               & kind of sience,
+%                                   e.\,g., ``Naturwissenschaften''
+% \\
+% student    & \normalfont\emph{see \texttt{author}}
+%                                 & same like \texttt{author}
+% \\
+% subject    & \normalfont\emph{every style}
+%                                 & the kind of work, there are special
+%                                   predefined subjects; if you use one of
+%                                   \texttt{bachelor}, \texttt{academicgrade},
+%                                   \texttt{diploma}, \texttt{master},
+%                                   \texttt{project}, \texttt{seminar}, or
+%                                   \texttt{studentresearch}
+%                                   a language dependend replacement will
+%                                   be done; to avoid this, you may set the
+%                                   value in parentesis
+% \\
+% subtitle   & KOMAScript, Markus-1, Markus-2, Spacer, TU-HH           
+%                                 & the sub-title of the document
+% \\
+% title      & \normalfont\emph{every style} 
+%                                 & the main title of the document
+% \\
+% titlehead  & DHBW, KOMAScript, Markus-2, Spacer, KIT
+%                                 & page head over the main title of the
+%                                   document
+% \\
+% university & DHBW, TU-DD, TU-HH, KIT, WWUM
+%                                 & the university where you've made or
+%                                   presented your work
+% \\
+% \end{xltabular}
+%
+% Let's have a look at the already defined title page styles. You should find
+% an example \LaTeX{} file for each of them at the documentation folder. If
+% not, ask you distributor or administrator for those! But you may find the
+% code of all examples in \File{docstrip} syntax even at
+% \autoref{sec:The-Examples-and-the-Manual} starting at
+% \autopageref{sec:The-Examples-and-the-Manual}. At the shown examples most
+% variable contents was made red.
+%
+%
+% \clearpage
+% \subsection{Style \File{DHBW}}
+% \label{sec:Style-DHBW}
+%
+% Josef Schmidbauer asked me for a title page usable for bachelor thesis at
+% the ``Duale Hochschulen Baden-W\"urttemberg''. This is a only one title page
+% style.
+% \begin{flushleft}
+% \parbox[b][.707\linewidth][t]{.475\linewidth}{\footnotesize The
+% page (in example \File{titlepage-DHBW.ltx}) is:
+%   \begin{enumerate}
+%   \item main title page with \texttt{titlehead}, \texttt{mainlogo}, 
+%     \texttt{title}, \texttt{subject}, \texttt{academicgrade}, \texttt{discipline},
+%     \texttt{place}, \texttt{author}, \texttt{duration},
+%     \texttt{matriculationnumber}, \texttt{course}, \texttt{company},
+%     \texttt{referee}, \texttt{university}, and \texttt{date}.
+%   \end{enumerate}
+% }\hspace{0.025\linewidth}\nobreak
+% \frame{\includegraphics[page=1,width=.475\linewidth]{titlepage-DHBW}}
+% \end{flushleft}
+% Note: The upper right corner is the logo placeholder. If you'd download the
+% logo from the DHBW homepage \url{http://www.dhbw.de} and save it with the
+% name \verb|DHBW_d_MOS_195x95_rgb_300.jpg| it would be used automaticly. The
+% logo file is also available from
+% \url{https://de.wikipedia.org/wiki/Datei:DHBW_d_MOS_195x95_rgb_300.jpg}. This
+% original logo has a large white border, so it would be much smaller than the
+% red box at the example. The example file also contains comments for an
+% optional company logo at the upper left corner.
+%
+% \clearpage
+% \subsection{Style \File{KOMAScript}}
+% \label{sec:Style-KOMAScript}
+%
+% This is a style similar to the title pages of \KOMAScript{} classes.
+% \begin{flushleft}
+% \noindent\parbox[b][.707\linewidth][t]{.475\linewidth}{\footnotesize The
+% pages (in twoside example \File{titlepage-KOMAScript.ltx}) are:
+%   \begin{enumerate}
+%   \item defined by \texttt{extratitle}, which is not a package option but a
+%     style option. You may set it using \cs{TitleOption} or \cs{TitleOptions}
+%     after loading the style or with the optional argument of \cs{maketitle}
+%     or \cs{TitlePageStyle}.
+%   \item empty and only in twoside mode with \texttt{extratitle} used.
+%   \item main title page with \texttt{titlehead}, \texttt{subject},
+%     \texttt{title}, \texttt{subtitle}, \texttt{author}, \texttt{date},
+%     \texttt{plublisher}. You may use \cs{thanks} at any of these.
+%   \end{enumerate}
+% }\hspace{.025\linewidth}\nobreak
+% \frame{\includegraphics[page=1,width=.5\linewidth]{titlepage-KOMAScript}}^^A
+% \\
+% \frame{\includegraphics[page=2,width=.5\linewidth]{titlepage-KOMAScript}}^^A
+% \frame{\includegraphics[page=3,width=.5\linewidth]{titlepage-KOMAScript}}^^A
+% \\
+% \frame{\includegraphics[page=4,width=.5\linewidth]{titlepage-KOMAScript}}^^A
+% \frame{\includegraphics[page=5,width=.5\linewidth]{titlepage-KOMAScript}}^^A
+% \\
+% \frame{\includegraphics[page=6,width=.5\linewidth]{titlepage-KOMAScript}}^^A
+% \parbox[b][.707\linewidth][t]{.475\linewidth}{\footnotesize
+%   \begin{enumerate}\setcounter{enumi}{3}
+%   \item only in twoside mode defined by \texttt{uppertitleback} and
+%     \texttt{lowertitleback}, which are not package options but style
+%     options. You may set them using \cs{TitleOption} or \cs{TitleOptions}
+%     after loading the style or with the optional argument of \cs{maketitle}
+%     or \cs{TitlePageStyle}.
+%   \item optional post title with \texttt{dedication}.
+%   \item empty and only in twoside mode with \texttt{dedication} used.
+%   \end{enumerate}
+% }%
+% \end{flushleft}
+%
+%
+% \clearpage
+% \subsection{Style \File{Markus-1}}
+% \label{sec:Style-Markus-1}
+%
+% This is a style similar to the one of the title of the \KOMAScript{} book.
+% \begin{flushleft}
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize  The
+% pages (in twoside example \File{titlepage-Markus-1.ltx}) are:
+%   \begin{enumerate}
+%   \item defined by \texttt{publisher}; may be omitted by
+%     \texttt{publisher=\{\}}.
+%   \item only in twoside mode with \texttt{publisher} defined by
+%     \texttt{author}.
+%   \item main title page with \texttt{subject},
+%     \texttt{title}, \texttt{subtitle}, and \texttt{date}.
+%   \end{enumerate}
+% }\hspace{.025\textwidth}\nobreak
+% \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-Markus-1}}
+%
+% \frame{\includegraphics[page=2,width=.5\textwidth]{titlepage-Markus-1}}^^A
+% \frame{\includegraphics[page=3,width=.5\textwidth]{titlepage-Markus-1}}
+%
+% \frame{\includegraphics[page=4,width=.5\textwidth]{titlepage-Markus-1}}^^A
+% \frame{\includegraphics[page=5,width=.5\textwidth]{titlepage-Markus-1}}
+%
+% \frame{\includegraphics[page=6,width=.5\textwidth]{titlepage-Markus-1}}^^A
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize
+%   \begin{enumerate}\setcounter{enumi}{3}
+%   \item only in twoside mode defined by \texttt{uppertitleback} and
+%     \texttt{lowertitleback}, which are not package options but style
+%     options. You may set them using \cs{TitleOption} or \cs{TitleOptions}
+%     after loading the style or with the optional argument of \cs{maketitle}
+%     or \cs{TitlePageStyle}.
+%   \item optional post title with \texttt{dedication}.
+%   \item empty and only in twoside mode with \texttt{dedication} used.
+%   \end{enumerate}
+% }
+% \end{flushleft}
+%
+%
+% \clearpage
+% \subsection{Style \File{Markus-2}}
+% \label{sec:Style-Markus-2}
+%
+% This style is not a real live style, but similar styles are often used:
+% \begin{flushleft}
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
+% pages (in twoside example \File{titlepage-Markus-2.ltx}) are:
+%   \begin{enumerate}
+%   \item defined by \texttt{extratitle}.
+%   \item empty and only in twoside mode with \texttt{extratitle} used.
+%   \item main title page with \texttt{titlehead} placed at the page head (if
+%     this is to high, it might be put outside the page; if it is to deep, it
+%     might overwrite parte of the title), \texttt{rulewidth} and
+%     \texttt{rulesep} for the vertical rule (these aren't package options but
+%     style options), \texttt{subject}, \texttt{title}, \texttt{subtitle},
+%     \texttt{author}, \texttt{date}, and \texttt{plublisher}.
+%   \end{enumerate}
+% }\hspace{.025\textwidth}\nobreak
+% \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-Markus-2}}
+%
+% \frame{\includegraphics[page=2,width=.5\textwidth]{titlepage-Markus-2}}^^A
+% \frame{\includegraphics[page=3,width=.5\textwidth]{titlepage-Markus-2}}
+%
+% \frame{\includegraphics[page=4,width=.5\textwidth]{titlepage-Markus-2}}^^A
+% \frame{\includegraphics[page=5,width=.5\textwidth]{titlepage-Markus-2}}
+%
+% \frame{\includegraphics[page=6,width=.5\textwidth]{titlepage-Markus-2}}^^A
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize
+%   \begin{enumerate}\setcounter{enumi}{3}
+%   \item only in twoside mode defined by \texttt{uppertitleback} and
+%     \texttt{lowertitleback}, which are not package options but style
+%     options. You may set them using \cs{TitleOption} or \cs{TitleOptions}
+%     after loading the style or with the optional argument of \cs{maketitle}
+%     or \cs{TitlePageStyle}.
+%   \item optional post title with \texttt{dedication}.
+%   \item empty and only in twoside mode with \texttt{dedication} used.
+%   \end{enumerate}
+% }
+% \end{flushleft}
+%
+%
+% \clearpage
+% \subsection{Style \File{Spacer}}
+% \label{sec:Style-Spacer}
+%
+% This style is a variant of style \File{Markus-2} from
+% \autoref{sec:Style-Markus-2}. It was asked by \texttt{spacer2012} at the
+% original \texttt{titlepage} project on
+% \url{https://komascript.de/titlepage}. In difference to \File{Markus-2} the
+% title head will not be placed at the page head but at the body.
+% \begin{flushleft}
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
+% pages (in twoside example \File{titlepage-Spacer.ltx}) are:
+%   \begin{enumerate}
+%   \item defined by \texttt{extratitle}.
+%   \item empty and only in twoside mode with \texttt{extratitle} used.
+%   \item main title page with \texttt{titlehead} placed at the page head,
+%     \texttt{rulewidth} and \texttt{rulesep} for the vertical rule (these
+%     aren't package options but style options), \texttt{subject},
+%     \texttt{title}, \texttt{subtitle}, \texttt{author}, \texttt{date}, and
+%     \texttt{plublisher}.
+%   \end{enumerate}
+% }\hspace{.025\textwidth}\nobreak
+% \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-Spacer}}
+%
+% \frame{\includegraphics[page=2,width=.5\textwidth]{titlepage-Spacer}}^^A
+% \frame{\includegraphics[page=3,width=.5\textwidth]{titlepage-Spacer}}
+%
+% \frame{\includegraphics[page=4,width=.5\textwidth]{titlepage-Spacer}}^^A
+% \frame{\includegraphics[page=5,width=.5\textwidth]{titlepage-Spacer}}
+%
+% \frame{\includegraphics[page=6,width=.5\textwidth]{titlepage-Spacer}}^^A
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize
+%   \begin{enumerate}\setcounter{enumi}{3}
+%   \item only in twoside mode defined by \texttt{uppertitleback} and
+%     \texttt{lowertitleback}, which are not package options but style
+%     options. You may set them using \cs{TitleOption} or \cs{TitleOptions}
+%     after loading the style or with the optional argument of \cs{maketitle}
+%     or \cs{TitlePageStyle}.
+%   \item optional post title with \texttt{dedication}.
+%   \item empty and only in twoside mode with \texttt{dedication} used.
+%   \end{enumerate}
+% }
+% \end{flushleft}
+%
+%
+% \clearpage
+% \subsection{Style \File{TU-DD}}
+% \label{sec:Style-TU-DD}
+%
+% This style is used at the ``Technische Universit\"at Dresden''. I was asked
+% fot this several years ago. Only one title page is defined!
+%
+% \noindent\parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
+% page (in example \File{titlepage-TU-DD.ltx}) is:
+%   \begin{enumerate}
+%   \item main title page with \texttt{university}, \texttt{faculty},
+%     \texttt{chair}, \texttt{professor}, \texttt{title}, \texttt{subject},
+%     \texttt{author}, \texttt{discipline}, \texttt{matriculationnumber},
+%     \texttt{advisor}, \texttt{place}, and \texttt{date}.
+%   \end{enumerate}
+% }\hspace{.025\textwidth}%
+% \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-TU-DD}}
+%
+% But there is another variant. If option \texttt{blackborder} was set to
+% true, an black border is put around the page:
+% \begin{flushleft}
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
+%   page (in example \File{titlepage-TU-DD.ltx} with option
+%   \texttt{blackborder}) is:
+%   \begin{enumerate}
+%   \item main title page with \texttt{university}, \texttt{faculty},
+%     \texttt{chair}, \texttt{professor}, \texttt{title}, \texttt{subject},
+%     \texttt{author}, \texttt{discipline}, \texttt{matriculationnumber},
+%     \texttt{advisor}, \texttt{place}, and \texttt{date}.
+%   \end{enumerate}
+% }\hspace{.025\textwidth}\nobreak
+% \frame{\includegraphics[page=3,width=.5\textwidth]{titlepage-TU-DD}}
+% \end{flushleft}
+%
+%
+% \clearpage
+% \subsection{Style \File{TU-HH}}
+% \label{sec:Style-TU-HH}
+%
+% This style is used at the ``Technische Universit\"at Hamburg-Harburg''. I
+% was asked for this several years ago. Only two title pages are defined!
+% \begin{flushleft}
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
+%   pages (in twoside example \File{titlepage-TU-HH.ltx}) are:
+%   \begin{enumerate}
+%   \item main title page with \texttt{title}, \texttt{subtitle},
+%     \texttt{university}, \texttt{academicgrade}, \texttt{subject}, \texttt{author},
+%     \texttt{place}, and \texttt{date}. Some additional text depending on the
+%     selected language will be used also.
+%   \end{enumerate}
+% }\hspace{.025\textwidth}\nobreak
+% \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-TU-HH}}
+%
+% \frame{\includegraphics[page=2,width=.5\textwidth]{titlepage-TU-HH}}^^A
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize
+%   \begin{enumerate}\setcounter{enumi}{1}
+%   \item only in twoside mode with \texttt{referee} and
+%     \texttt{oralexaminationdate}.
+%   \end{enumerate}
+% }
+% \end{flushleft}
+% The output of style \File{TU-HH} differs, if you use option
+% \texttt{final}, which is a style option, not a package option. You may set
+% it using \cs{TitleOption} or \cs{TitleOptions} after loading the style or
+% with the optional argument of \cs{maketitle}  or \cs{TitlePageStyle}.
+%
+%
+% \clearpage
+% \subsection{Style \File{KIT}}
+% \label{sec:Style-KIT}
+%
+% This style is used at the ``KIT -- University of the State of
+% Baden-W\"urttemberg and National Research Center of the Helmholtz
+% Association''. I've made this because of the ugly \LaTeX{} class and
+% template made by the KIT itself. Only one title page is defined!
+% \begin{flushleft}
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
+%   page (in example \File{titlepage-KIT.ltx}) is:
+%   \begin{enumerate}
+%   \item main title page with \texttt{titlehead}, \texttt{mainlogo},
+%     \texttt{title}, \texttt{subject}, \texttt{author},
+%     \texttt{referee}. \texttt{advisor}, \texttt{university},
+%     \texttt{duration}, and \texttt{homepage}.  Some 
+%     additional text depending on the selected language will be used also.
+%   \end{enumerate}
+%   If \texttt{titlehead} is empty or unused left aligned \texttt{mainlogo}
+%   will be used. If \texttt{mainlogo} is empty or unused, and if you have a
+%   logo file \File{KITLogo\_RGB.pdf}, this will be used. As an alternative
+%   also \File{2560px-Logo\_KIT.svg.png}, \File{2000px-Logo\_KIT.svg.png},
+%   \File{1280px-Logo\_KIT.svg.png}, \File{1024px-Logo\_KIT.svg.png},
+%   \File{1000px-Logo\_KIT.svg.png}, \File{800px-Logo\_KIT.svg.png},
+%   \File{640px-Logo\_KIT.svg.png}, or \File{500px-Logo\_KIT.svg.png} from
+%   \url{https://de.wikipedia.org/wiki/Datei:Logo\_KIT.svg} would be
+%   auto-detected. Several other elements will be set to defaults too, if they
+%   are empty. So you don't need to set all the elements, that has been set at
+%   the example file.
+% }\hspace{.025\textwidth}\nobreak
+% \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-KIT}}
+% \end{flushleft}
+%
+% \clearpage
+% \subsection{Style \File{JT-Aufsaetze}}
+% \label{sec:Style-JT-Aufsaetze}
+%
+% The style is based on the front cover of ``Jan Tschichold: Ausgewählte
+% Aufsätze über Fragen der Gestalt des Buches und der Typüographie, Birkhäuser
+% Verlag Basel, 1975, ISBN: 3-7643-1946-1''. I've made this, because the book
+% is a major book of classic typography. It seems to be old fashioned and indeed
+% it is. Note, that the front cover of a book an the main title of a book are
+% not the same! Nevertheless, here I've made a main title from a front
+% cover. Currently only one title page is defined, but you may also use
+% \texttt{extratitle}, \texttt{uppertitleback}, and \texttt{lowertitleback}.
+% \begin{flushleft}
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
+%   page (in example \File{titlepage-JT-Aufsaetze.ltx}) is:
+%   \begin{enumerate}
+%   \item main title page with \texttt{author}, \texttt{title},
+%     \texttt{publisher}, \texttt{rulewidth} and \texttt{rulesep} for width
+%     of the horizontal rules and the distance between them (these aren't
+%     package options but style options).
+%   \end{enumerate}
+% }\hspace{.025\textwidth}\nobreak
+% \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-JT-Aufsaetze}}
+% \end{flushleft}
+%
+% \clearpage
+% \subsection{Style \File{JT-Geschichte}}
+% \label{sec:Style-JT-Geschichte}
+%
+% The style is based on ``Jan Tschichold: Geschichte der
+% Schrift in Bildern; Holbein-Verlag, 1947''. This is another major book of
+% classic typography. I seems to be old fashioned and indeed
+% it is. Currently only one title page is defined, but you may also use
+% \texttt{extratitle}, \texttt{uppertitleback}, and \texttt{lowertitleback}.
+% \begin{flushleft}
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
+%   page (in example \File{titlepage-JT-Geschichte.ltx}) is:
+%   \begin{enumerate}
+%   \item main title page with \texttt{author}, \texttt{title},
+%     \texttt{publisher}, \texttt{place}, \texttt{rulewidth} and
+%     \texttt{rulesep} for width of the horizontal rules and the distance
+%     between them (these aren't package options but style options).
+%   \end{enumerate}
+%   Note, that the default for \texttt{titlepagefont} prints everything but the
+%   \texttt{title} with ad-hoc letterspacing in upper-case letters if
+%   \cs{lsstyle} is available and without letterspacing but in small capitals
+%   otherwise. Changing the default of \texttt{titlepagefont} will also change
+%   this automatism.
+% }\hspace{.025\textwidth}\nobreak
+% \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-JT-Geschichte}}
+% \end{flushleft}
+%
+% \clearpage
+% \subsection{Style \File{JT-Typography}}
+% \label{sec:Style-JT-Typography}
+%
+% The style is based on ``Jan Tschichold: The New Typography; University of
+% California Press, Berkley and Los Angeles, California 1995''. This is the
+% English translation of another major book of
+% classic typography. Some things like missing letterspacing at the upper-case
+% title seems to be wrong. Currently only one title page is defined, but you
+% may also use \texttt{extratitle}, \texttt{uppertitleback}, and
+% \texttt{lowertitleback}.
+% \begin{flushleft}
+% \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
+%   page (in example \File{titlepage-JT-Geschichte.ltx}) is:
+%   \begin{enumerate}
+%   \item main title page with \texttt{author}, \texttt{title},
+%     \texttt{subtitle}, \texttt{place}, \texttt{date}, \texttt{publisher}.
+%   \end{enumerate}
+% }\hspace{.025\textwidth}\nobreak
+% \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-JT-Typography}}
+% \end{flushleft}
+%
+% \clearpage
+% \subsection{Style \File{WWUM}}
+% \label{sec:Style-WWUM}
+%
+% Tobias S\"udkamp asked me for that title for the
+% Westf\"alischen Wilhelms-Universit\"at M\"unster. The
+% \texttt{professor} is more likely the \texttt{chairman}. Female
+% referees should be prefixed by \textsf{[f]}. You can omit the examination
+% date defining an empty \cs{examinationdatename}.
+% \begin{flushleft}
+%   \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-WWUM}}\nobreak
+%   \hspace{.025\textwidth}\nobreak
+%   \parbox[b][.7\textwidth][t]{.475\textwidth}{\footnotesize
+%     The pages (in example \File{tilepage-WWUM.ltx}) are:
+%     \begin{enumerate}
+%     \item cover page with \texttt{author}, \texttt{title}, \cs{the}\cs{year}
+%     \item the backside of the cover page is empty if it exists
+%     \item main title page with \texttt{chair}, \texttt{title},
+%       \texttt{subject}, \texttt{academicgrade}, \texttt{sience}, \texttt{discipline},
+%       \texttt{faculty}
+%     \item main title back side with \texttt{professor}, \texttt{referee},
+%       \texttt{oralexaminationdate} (normaly empty)
+%     \end{enumerate}
+%   }\\
+%   \frame{\includegraphics[page=3,width=.5\textwidth]{titlepage-WWUM}}%^^A
+%   \frame{\includegraphics[page=4,width=.5\textwidth]{titlepage-WWUM}}%^^A
+% \end{flushleft}
+
+%
+% \clearpage
+%
+% \section{Additonal Commands}
+% \label{sec:Additional-Commands}
+%
+% \DescribeMacro{\NowButAfterBeginDocument}
+% Command
+% \begin{quote}
+%   \cs{NowButAfterBeginDocument}\marg{code}
+% \end{quote}
+%  is something like \cs{AtBeginDocument}, but if you call it somewhere after
+% \cs{begin\{document\}} argument \meta{code} will be used immediately.  This
+% command is used inside some of the title page styles, because you may load
+% them either at the preamle or even after \cs{begin\{document\}}, but some
+% code should not be executed before \cs{begin\{document\}}.
+%
+% \DescribeEnv{titlepage}
+% In oposite to the \texttt{titlepage} environment of the standard classes,
+% \begin{quote}
+%   \cs{begin\{titlepage\}}\oarg{options}\\
+%   \dots\\
+%   \cs{end\{titlepage\}}
+% \end{quote}
+% knows some options.  These are \texttt{pagestyle=}\meta{style} and
+% \texttt{pagenumber=}\meta{number}.  The first one changes the page style of
+% the generated title page to the given \meta{style}.  If the option is not
+% set, the default \texttt{empty} will be used.  The second one sets the
+% logical page number of the generated title page to the given \meta{number}
+% and sets the counter \texttt{pagenumber} to this value.  If the option is
+% not used, the value of counter \texttt{pagenumber} will be increased by one
+% and the result is used for the logical page number.
+%
+% \DescribeEnv{fullsizetitle}
+% Using
+% \begin{quote}
+%   \cs{begin\{fullsizetitle\}}\oarg{options}\\
+%   \dots\\
+%   \cs{end\{fullsizetitle\}}
+% \end{quote}
+% is almost the same like above. But \texttt{fullsizetitle} removes the
+% margins from the generated title page. Nevertheless if binding correction
+% (aka binding offset) of package \File{typearea} or \File{geometry} could be
+% recognized, it will not be removed. Some of the title page styles use this
+% environment instead of \texttt{titlepage} inside \cs{maketitle}. With this
+% the margins of the title page do not depend on the type area of the
+% document.
+% 
+% \DescribeMacro{\usetitleelement}
+% Command
+% \begin{quote}
+%   \cs{usetitleelement}\marg{element}
+% \end{quote}
+% gives the content of the corresponding title \meta{element}. Each main
+% \meta{element} defined by the package may be used. Those are currently:
+% \texttt{advisor}, \texttt{author}, \texttt{chair}, \texttt{company},
+% \texttt{course}, \texttt{date}, \texttt{dedication}, \texttt{academicgrade},
+% \texttt{discipline}, \texttt{duration}, \texttt{faculty}, \texttt{homepage},
+% \texttt{mainlogo}, \texttt{matriculationnumber},
+% \texttt{oralexaminationdate}, \texttt{place}, \texttt{professor},
+% \texttt{publisher}, \texttt{referee}, \texttt{subject}, \texttt{subtitle},
+% \texttt{title}, \texttt{titlehead}, and \texttt{university}. Note:
+% \texttt{student} isn't a main \meta{element}, because it's only an alias for
+% \texttt{author}.
+%
+% \StopEventually{\PrintIndex\PrintChanges}
+%
+% \section{Implementation}
+% \label{sec:Implementation}
+% \changes{v0.1}{2009/01/01}{Start of project}
+% \changes{v0.2}{2011/06/03}{First version using \texttt{docstrip}}
+%
+% Note: To generate all files, developers and beta testers should simply call
+% \begin{verbatim}
+% l3build unpack
+% l3build doc
+% \end{verbatim}
+% The resulting documentation will be placed in the main folder. The unpacked
+% style file are in \texttt{build/unpacked}, You can use
+% \begin{verbatim}
+% l3build install
+% \end{verbatim}
+% to install them in \texttt{TEXMFHOME}. See the manual of \Package{l3build}
+% for more information.
+%
+% \subsection{The Installation Driver `\File{uni-titlepage.ins}'}
+% \label{sec:The-Installation-Driver-uni-titlepage.ins}
+% \iffalse meta-comment
+%<*dtx|ins>
+% \fi ^^A meta-comment
+% First of all we produce \File{uni-titlepage.ins}, the installation driver. It
+% starts very common with loading \File{docstrip}, preamble declaration and
+% start of generation.
+%    \begin{macrocode}
+\def\batchfile{uni-titlepage.dtx}
+\input docstrip.tex
+\ifToplevel{%
+  \Msg{********************************************************************}
+  \Msg{*}
+  \Msg{* Steps of uni-titlepage generation:}
+  \Msg{* ==============================}
+  \Msg{*}
+  \Msg{* - Generation of all needed files:}
+  \keepsilent
+  \askforoverwritefalse
+}
+
+\preamble
+Copyright (c) 2011-2021 by Markus Kohm <komascript(at)gmx.info>
+
+This file was generated from file(s) of uni-titlepage distribution.
+----------------------------------------------------------------------
+
+This work may be distributed and/or modified under the conditions of
+the LaTeX Project Public License, version 1.3c of the license.
+The latest version of this license is in
+  http://www.latex-project.org/lppl.txt
+and version 1.3c or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status "maintained".
+
+The Current Maintainer and author of this work is Markus Kohm.
+
+This file may only be distributed together with
+the file `uni-titlepage.dtx'.
+You may however distribute the file `uni-titlepage.dtx' without this file.
+
+\endpreamble
+
+\generate{%
+%    \end{macrocode}
+% But while the dtx file is the ins file itself, we will never generate this
+% file.
+% \begin{verbatim}
+%  \file{uni-titlepage.ins}{\from{uni-titlepage.dtx}{ins}}% not needed
+% \end{verbatim}\vskip-\baselineskip
+%    \begin{macrocode}
+  \file{uni-titlepage.sty}{\from{uni-titlepage.dtx}{package}}%
+  \file{title-DHBW.def}{\from{uni-titlepage.dtx}{driver,DHBW}}%
+  \file{title-KOMAScript.def}{\from{uni-titlepage.dtx}{driver,KOMAScript}}%
+  \file{title-Markus-1.def}{\from{uni-titlepage.dtx}{driver,Markus,1}}%
+  \file{title-Markus-2.def}{\from{uni-titlepage.dtx}{driver,Markus,2}}%
+  \file{title-Spacer.def}{\from{uni-titlepage.dtx}{driver,Spacer}}%
+  \file{title-TU-DD.def}{\from{uni-titlepage.dtx}{driver,TU-DD}}%
+  \file{title-TU-HH.def}{\from{uni-titlepage.dtx}{driver,TU-HH}}%
+  \file{title-KIT.def}{\from{uni-titlepage.dtx}{driver,KIT}}%
+  \file{title-JT-Aufsaetze.def}{\from{uni-titlepage.dtx}{driver,JT-Aufsaetze}}%
+  \file{title-JT-Geschichte.def}{\from{uni-titlepage.dtx}{driver,JT-Geschichte}}%
+  \file{title-JT-Typography.def}{\from{uni-titlepage.dtx}{driver,JT-Typography}}%
+  \file{title-WWUM.def}{\from{uni-titlepage.dtx}{driver,WWUM}}%
+  \file{uni-titlepage.drv}{\from{uni-titlepage.dtx}{doc,manual}}%
+  \file{titlepage-DHBW.ltx}{\from{uni-titlepage.dtx}{doc,example,DHBW}}%
+  \file{titlepage-KOMAScript.ltx}{\from{uni-titlepage.dtx}{doc,example,KOMAScript}}%
+  \file{titlepage-Markus-1.ltx}{\from{uni-titlepage.dtx}{doc,example,Markus,1}}%
+  \file{titlepage-Markus-2.ltx}{\from{uni-titlepage.dtx}{doc,example,Markus,2}}%
+  \file{titlepage-Spacer.ltx}{\from{uni-titlepage.dtx}{doc,example,Spacer}}%
+  \file{titlepage-TU-DD.ltx}{\from{uni-titlepage.dtx}{doc,example,TU-DD}}%
+  \file{titlepage-TU-HH.ltx}{\from{uni-titlepage.dtx}{doc,example,TU-HH}}%
+  \file{titlepage-KIT.ltx}{\from{uni-titlepage.dtx}{doc,example,KIT}}%
+  \file{titlepage-JT-Aufsaetze.ltx}{\from{uni-titlepage.dtx}{doc,example,JT-Aufsaetze}}%
+  \file{titlepage-JT-Geschichte.ltx}{\from{uni-titlepage.dtx}{doc,example,JT-Geschichte}}%
+  \file{titlepage-JT-Typography.ltx}{\from{uni-titlepage.dtx}{doc,example,JT-Typography}}%
+  \file{titlepage-WWUM.ltx}{\from{uni-titlepage.dtx}{doc,example,WWUM}}%
+  \nopreamble\nopostamble
+  \file{README.md}{\from{uni-titlepage.dtx}{README}}%
+}%
+
+\ifToplevel{%
+  \Msg{* \space\space done.}
+  \Msg{*}
+  \Msg{* You may install all the files now.}
+  \Msg{*}
+  \Msg{********************************************************************}
+}
+%    \end{macrocode}
+% At docstrip run we like to finish the file know:
+%    \begin{macrocode}
+\csname endinput\endcsname
+%    \end{macrocode}
+% \iffalse meta-comment
+%</dtx|ins>
+% \fi^^A meta-comment
+%
+% \subsection{The Package `\File{scrbase.sty}'}
+% \label{sec:The-Package-scrbase.sty}
+% \iffalse meta-comment
+%<*package>
+% \fi^^A meta-comment
+%
+% \begin{macro}{\TitleOptions}
+% \begin{macro}{\TitleOption}
+% We use the extended option handling of \KOMAScript, so we load package
+% \File{scrbase} and declare a family, a member and a something like
+% \verb|\KOMAoptions| and \verb|\KOMAoption| but for this package.
+%    \begin{macrocode}
+\RequirePackage{scrbase}[2014/12/03]
+\DefineFamily{title}
+\DefineFamilyMember{title}
+\newcommand*{\TitleOptions}{\FamilyOptions{title}}
+\newcommand*{\TitleOption}{\FamilyOption{title}}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{option}{pagenumber}
+%    \begin{macrocode}
+\newcounter{titlepage}\setcounter{titlepage}{\@ne}
+\DefineFamilyKey{title}{pagenumber}{%
+  \setcounter{titlepage}{#1}\FamilyKeyStateProcessed
+}
+%    \end{macrocode}
+% \end{option}
+%
+% \begin{macro}{\titlepagestyle}
+% \begin{option}{pagestyle}
+%    \begin{macrocode}
+\providecommand*{\titlepagestyle}{}
+\renewcommand*{\titlepagestyle}{empty}
+\DefineFamilyKey{title}{pagestyle}{%
+  \renewcommand*{\titlepagestyle}{#1}\FamilyKeyStateProcessed
+}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+%
+% \begin{macro}{\if@resonecol}
+%    \begin{macrocode}
+\ifcsname @restonecolfalse\endcsname
+  \expandafter\@gobble
+\else
+  \expandafter\@firstofone
+\fi
+{\newif\if@restonecol}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{titlepage}
+%    \begin{macrocode}
+\scr@ifundefinedorrelax{titlepage}{\def\titlepage{}}{}
+\scr@ifundefinedorrelax{endtitlepage}{\def\endtitlepage{}}{}
+\providecommand*{\maketitle}[1][]{}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{macro}{\inittitle}
+% \begin{macro}{\makepretitle}
+% \begin{macro}{\makepretitleback}
+% \begin{macro}{\makemaintitle}
+% \begin{macro}{\makemaintitleback}
+% \begin{macro}{\makeposttitle}
+% \begin{macro}{\makeposttitleback}
+% \begin{macro}{\exittitle}
+% \begin{macro}{\tp@undefinedtitle}
+% Set of commands, that define a title style:
+%    \begin{macrocode}
+\newcommand*{\tp@undefinedtitle}[1]{%
+  \PackageInfo{uni-titlepage}{leaving not defined #1-title page empty}%
+}
+\newcommand*{\inittitle}{}
+\newcommand*{\makepretitle}{\tp@undefinedtitle{pre}}
+\newcommand*{\makepretitleback}{\tp@undefinedtitle{back of pre}}
+\newcommand*{\makemaintitle}{\tp@undefinedtitle{main}}
+\newcommand*{\makemaintitleback}{\tp@undefinedtitle{back of main}}
+\newcommand*{\makeposttitle}{\tp@undefinedtitle{post}}
+\newcommand*{\makeposttitleback}{\tp@undefinedtitle{back of post}}
+\newcommand*{\exittitle}{}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\inittitlestyle}
+% Will be called before loading a title style:
+%    \begin{macrocode}
+\newcommand*{\inittitlestyle}{%
+  \renewenvironment{titlepage}[1][]{%
+    \TitleOptions{##1}%
+    \clearpage
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \ifx\titlepagestyle\@empty\else\thispagestyle{\titlepagestyle}\fi
+    \if@twoside% im einseitigen Satz ist mir alles egal
+      \ifodd\value{page}% aktuelle Seite ist ungerade
+%    \end{macrocode}
+% Current page number is odd \dots
+%    \begin{macrocode}
+        \ifodd\value{titlepage}%
+        \else
+%    \end{macrocode}
+% \dots\ wanted page number is even: put in empty page.
+%    \begin{macrocode}
+          \null\newpage
+        \fi
+      \else
+%    \end{macrocode}
+% Current page number is even \dots
+%    \begin{macrocode}
+        \ifodd\value{titlepage}%
+%    \end{macrocode}
+% \dots\ wanted page number is off: put in empty page.
+%    \begin{macrocode}
+          \null\newpage % Leerseite
+        \fi
+      \fi
+    \fi
+    \setcounter{page}{\value{titlepage}}%
+    \ifx\titlepagestyle\@empty\else\thispagestyle{\titlepagestyle}\fi
+  }{%
+    \if@restonecol\twocolumn \else \newpage\fi
+    \stepcounter{titlepage}%
+  }%
+
+  \renewcommand*{\maketitle}[1][]{%
+    \begingroup
+      \TitleOptions{##1}%
+      \inittitle
+      \makepretitle\if@twoside\makepretitleback\fi
+      \makemaintitle\if@twoside\makemaintitleback\fi
+      \makeposttitle\if@twoside\makeposttitleback\fi
+      \exittitle
+    \endgroup
+  }%
+
+  \renewcommand*{\inittitle}{}%
+  \renewcommand*{\makepretitle}{\tp@undefinedtitle{pre}}%
+  \renewcommand*{\makepretitleback}{\tp@undefinedtitle{back of pre}}%
+  \renewcommand*{\makemaintitle}{\tp@undefinedtitle{main}}%
+  \renewcommand*{\makemaintitleback}{\tp@undefinedtitle{back of main}}%
+  \renewcommand*{\makeposttitle}{\tp@undefinedtitle{post}}%
+  \renewcommand*{\makeposttitleback}{\tp@undefinedtitle{back of post}}%
+  \renewcommand*{\exittitle}{}%
+}
+\inittitlestyle
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\titlebox}
+% \begin{macro}{fullsizetitle}
+% New environment for full page titles (with respect to BCOR or
+% Gm@bindingoffset if defined)
+%    \begin{macrocode}
+\newsavebox\titlebox
+\newenvironment{fullsizetitle}[1][]{%
+  \TitleOptions{#1}%
+  \begin{lrbox}{\titlebox}
+    \hsize\paperwidth
+    \scr@ifundefinedorrelax{ta@bcor}{%
+      \scr@ifundefinedorrelax{Gm@bindingoffset}{}{%
+        \advanve\hsize-\Gm@bindingoffset}%
+    }{%
+      \advance\hsize-\ta@bcor
+      \scr@ifundefinedorrelax{Gm@bindingoffset}{}{%
+        \ifdim \Gm@bindingoffset=\ta@bcor\else
+          \PackageWarning{uni-titlepage}{Ignorring geometry's binding
+            correction,\MessageBreak
+            using typearea's binding correction.\MessageBreak
+            If you're using geometry and typearea,\MessageBreak
+            you should set both options to the same value,\MessageBreak
+            e.g. \string\KOMAoptions{BCOR=\the\ta@bcor}\MessageBreak
+            \space\space\space\space\space
+            \string\geometry{bindingoffset=\the\ta@bcor}\MessageBreak
+            to make uni-titlepage use this value%
+          }%
+        \fi
+      }%        
+    }%
+    \vsize\paperheight
+    \linewidth\hsize
+    \columnwidth\hsize
+    \textwidth\hsize
+    \textheight\vsize
+    \noindent\minipage{\hsize}
+}{%
+    \endminipage
+  \end{lrbox}
+  \begin{titlepage}%
+    \vspace*{-1in}\vskip-\topmargin\vskip-\headheight\vskip-\headsep
+    \vskip-\topskip
+    \raggedright
+    \leavevmode
+    \hskip-1in
+    \ifodd\c@page
+      \hskip-\oddsidemargin
+      \scr@ifundefinedorrelax{ta@bcor}{%
+        \scr@ifundefinedorrelax{Gm@bindingoffset}{}{%
+          \hskip\Gm@bindingoffset}%
+      }{\hskip\ta@bcor}%
+    \else
+      \hskip-\evensidemargin
+    \fi
+    \vbox to\z@{\hsize\z@
+      \vskip-\baselineskip
+      \makebox[0pt][l]{\usebox\titlebox}%
+      \vss
+    }%
+  \end{titlepage}
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\DefineSimpleTitleKey}
+% \begin{macro}{\DefineReplaceTitleKey}
+% \begin{macro}{\tp@replacewarning}
+% \begin{macro}{\tp@dokeys}
+% Define title page ``variables'':
+%    \begin{macrocode}
+\newcommand*{\tp@replacewarning}[2]{%
+  \PackageWarning{uni-titlepage}{%
+    Using `#2' instead of `#1',\MessageBreak
+    because `#1' not defined%
+  }%
+}
+\newcommand*{\tp@dokeys}{}
+\newcommand*{\DefineSimpleTitleKey}[2][.\@currname.\@currext]{%
+  \l@addto@macro\tp@dokeys{\do{#2}}%
+  \expandafter\newcommand\expandafter*\csname @#2\endcsname{}%
+  \expandafter\newcommand\expandafter*\csname #2\endcsname[1]{%
+    \expandafter\gdef\csname @#2\endcsname{##1}}%
+  \DefineFamilyKey[{#1}]{title}{#2}{%
+    \csname #2\endcsname{##1}%
+    \FamilyKeyStateProcessed
+  }%
+}
+\newcommand*{\DefineReplaceTitleKey}[3][.\@currname.\@currext]{%
+  \DefineFamilyKey[{#1}]{title}{#2}{%
+    \tp@replacewarning{#2}{#3}%
+    \FamilyOptions{title}{#3=##1}%
+  }%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\titlehead}
+% \begin{macro}{\@titlehead}
+% \begin{option}{titlehead}
+%    \begin{macrocode}
+\providecommand*{\@titlehead}{}
+\providecommand{\titlehead}[1]{\gdef\@titlehead{#1}}
+\DefineFamilyKey{title}{titlehead}{\titlehead{#1}\FamilyKeyStateProcessed}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\homepage}
+%   \changes{v0.3}{2012/07/05}{new command}
+% \begin{macro}{\@homepage}
+%   \changes{v0.3}{2012/07/05}{new internal}
+% \begin{option}{homepage}
+%   \changes{v0.3}{2012/07/05}{new option}
+%    \begin{macrocode}
+\providecommand*{\@homepage}{}
+\providecommand{\homepage}[1]{\gdef\@homepage{#1}}
+\DefineFamilyKey{title}{homepage}{\homepage{#1}\FamilyKeyStateProcessed}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\title}
+% \begin{macro}{\@title}
+% \begin{option}{title}
+%    \begin{macrocode}
+\let\@title\relax\let\title\relax\DefineSimpleTitleKey{title}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\author}
+% \begin{macro}{\@author}
+% \begin{option}{author}
+%    \begin{macrocode}
+\let\@author\relax\let\author\relax\DefineSimpleTitleKey{author}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\date}
+% \begin{macro}{\@date}
+% \begin{option}{date}
+%    \begin{macrocode}
+\let\@date\relax\let\date\relax\DefineSimpleTitleKey{date}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\duration}
+% \begin{macro}{\@duration}
+% \begin{option}{duration}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{duration}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\course}
+% \begin{macro}{\@course}
+% \begin{option}{course}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{course}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\company}
+% \begin{macro}{\@company}
+% \begin{option}{company}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{company}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\subtitle}
+% \begin{macro}{\@subtitle}
+% \begin{option}{subtitle}
+%    \begin{macrocode}
+\let\@subtitle\relax\let\subtitle\relax\DefineSimpleTitleKey{subtitle}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\university}
+% \begin{macro}{\@university}
+% \begin{option}{university}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{university}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\faculty}
+% \begin{macro}{\@faculty}
+% \begin{option}{faculty}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{faculty}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\chair}
+% \begin{macro}{\@chair}
+% \begin{option}{chair}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{chair}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\professor}
+% \begin{macro}{\@professor}
+% \begin{option}{professor}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{professor}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\subject}
+% \begin{macro}{\@subject}
+% \begin{option}{subject}
+% \changes{v0.4c}{2012/12/18}{typing error fixed (mrpiggi)}
+% \changes{v0.5e}{2019/11/20}{\cs{ifstr} in \textsf{scrbase} renamed to
+%   \cs{Ifstr}}
+%    \begin{macrocode}
+\providecommand*{\@subject}{}
+\providecommand*{\subject}[1]{\gdef\@subject{#1}}
+\l@addto@macro\tp@dokeys{\do{subject}}%
+\DefineFamilyKey{title}{subject}{%
+  \Ifstr{#1}{project}{\subject{\projectpapername}}{%
+    \Ifstr{#1}{seminar}{\subject{\seminarpapername}}{%
+      \Ifstr{#1}{studentresearch}{\subject{\studentresearchname}}{%
+        \Ifstr{#1}{diploma}{\subject{\diplomathesisname}}{%
+          \Ifstr{#1}{academicgrade}{\subject{\academicgradethesisname}}{%
+            \Ifstr{#1}{master}{\subject{\masterthesisname}}{%
+              \Ifstr{#1}{bachelor}{\subject{\bachelorthesisname}}{%
+                \subject{#1}%
+              }%
+            }%
+          }%
+        }%
+      }%
+    }%
+  }%
+  \FamilyKeyStateProcessed
+}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\Ifstr}
+% For compatibility with old versions of \textsf{scrbase} the macro is
+% provided based on \cs{ifstr} if it has not been defined by \textsf{scrbase}.
+%    \begin{macrocode}
+\providecommand*{\Ifstr}{\ifstr}
+%    \end{macrocode}
+% \end{macro}
+% \begin{option}{student}
+%    \begin{macrocode}
+\DefineReplaceTitleKey{student}{author}
+%    \end{macrocode}
+% \end{option}
+% \begin{macro}{\sience}
+%   \changes{v0.5}{2016/06/21}{new}
+% \begin{macro}{\@sience}
+%   \changes{v0.5}{2016/06/21}{new}
+% \begin{option}{sience}
+%   \changes{v0.5}{2016/06/21}{new}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{sience}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\discipline}
+% \begin{macro}{\@discipline}
+% \begin{option}{discipline}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{discipline}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\academicgrade}
+% \changes{v0.6}{2021/07/29}{renamed ``degree'' to ``academic grade'' to avoid
+%   name clash with the degree symbol}
+% \begin{macro}{\@academicgrade}
+% \changes{v0.6}{2021/07/29}{renamed ``degree'' to ``academic grade'' to avoid
+%   name clash with the degree symbol}
+% \begin{option}{academicgrade}
+% \changes{v0.6}{2021/07/29}{renamed ``degree'' to ``academic grade'' to avoid
+%   name clash with the degree symbol}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{academicgrade}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\matriculationnumber}
+% \begin{macro}{\@matriculationnumber}
+% \begin{option}{matriculationnumber}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{matriculationnumber}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\advisor}
+% \begin{macro}{\@advisor}
+% \begin{option}{advisor}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{advisor}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\referee}
+% \begin{macro}{\@referee}
+% \begin{option}{referee}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{referee}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\place}
+% \begin{macro}{\@place}
+% \begin{option}{place}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{place}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\publisher}
+% \begin{macro}{\@publisher}
+% \begin{option}{publisher}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{publisher}
+\renewcommand*{\@publisher}{\csname @publishers\endcsname}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\mainlogo}
+%   \changes{v0.4}{2012/07/24}{new}
+% \begin{macro}{\@mainlogo}
+%   \changes{v0.4}{2012/07/24}{new (internal)}
+% \begin{option}{mainlogo}
+%   \changes{v0.4}{2012/07/24}{new}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{mainlogo}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\oralexaminationdate}
+% \begin{macro}{\@oralexaminationdate}
+% \begin{option}{oralexaminationdate}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{oralexaminationdate}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\dedication}
+% \begin{macro}{\@dedication}
+% \begin{option}{dedication}
+%    \begin{macrocode}
+\providecommand*{\@dedication}{}
+\providecommand{\dedication}[1]{\gdef\@dedication{#1}}
+\DefineFamilyKey{title}{dedication}{\dedication{#1}\FamilyKeyStateProcessed}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\usetitleelement}
+%   \changes{v0.4}{2012/04/24}{new}
+% \begin{macro}{\@usetitleelement@error}
+%   \changes{v0.4}{2012/04/24}{new (internal)}
+% Users cannot simply use, e.g., \cs{@title}, \cs{@mainlogo} etc. So we need a
+% command to get them:
+%    \begin{macrocode}
+\newcommand*{\usetitleelement}[1]{%
+  \scr@ifundefinedorrelax{#1}{%
+    \@usetitleelement@error{#1}%
+  }{%
+    \scr@ifundefinedorrelax{@#1}{%
+      \@usetitleelement@error{#1}%
+    }{%
+      \@nameuse{@#1}%
+    }%
+  }%
+}
+\newcommand*{\@usetitleelement@error}[1]{%
+  \PackageError{uni-titlepage}{`#1' isn't a title element}{%
+    You should use \string\usetitleelement\space for title elements
+    only!\MessageBreak
+    If you'll continue, command will be ignored.}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% Some variables use their own configurable font:
+% \begin{option}{titlepagefont}
+% \begin{macro}{\@titlepagefont}
+%    \begin{macrocode}
+\scr@ifundefinedorrelax{newkomafont}{%
+  \newcommand*{\@titlepagefont}{}%
+}{%
+  \newkomafont{titlepage}{}%
+}
+\DefineFamilyKey{title}{titlepagefont}{%
+  \renewcommand*{\@titlepagefont}{#1}%
+  \FamilyKeyStateProcessed
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{option}
+%
+% \begin{option}{subjectfont}
+% \begin{macro}{\subject@font}
+%    \begin{macrocode}
+\providecommand*{\subject@font}{\bfseries}
+\DefineFamilyKey{title}{subjectfont}{%
+  \renewcommand*{\subject@font}{#1}%
+  \FamilyKeyStateProcessed
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{option}
+%
+% \begin{option}{titlefont}
+% \begin{macro}{\title@font}
+%    \begin{macrocode}
+\providecommand*{\titlefont}{\bfseries}
+\DefineFamilyKey{title}{titlefont}{%
+  \renewcommand*{\titlefont}{#1}%
+  \FamilyKeyStateProcessed
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{option}
+%
+% \begin{option}{subtitlefont}
+% \begin{macro}{\@subtitlefont}
+%    \begin{macrocode}
+\providecommand*{\@subtitlefont}{\bfseries}
+\DefineFamilyKey{title}{subtitlefont}{%
+  \renewcommand*{\@subtitlefont}{#1}%
+  \FamilyKeyStateProcessed
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{option}
+%
+% \begin{macro}{\TitlePageStyle}
+% Load a title page style from file
+%    \begin{macrocode}
+\newcommand*{\TitlePageStyle}[2][]{%
+  \IfFileExists{title-#2.def}{%
+    \begingroup
+      \edef\@tempa{\endgroup
+        \noexpand\inittitlestyle
+        \noexpand\makeatletter
+        \noexpand\input{title-#2.def}%
+        \noexpand\catcode`\noexpand\@=\the\catcode`\@
+      }%
+    \@tempa
+    \TitleOptions{#1}%
+  }{%
+    \PackageError{uni-titlepage}{No title definition for `#2' found}{%
+      You've tried to set title page style `#2', but no title page
+      style definition file\MessageBreak
+      `title-#2.def' may be found%
+    }%
+  }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\NowButAfterBeginDocument}
+% Nice shortcut:
+%    \begin{macrocode}
+\newcommand*{\NowButAfterBeginDocument}{%
+  \if@atdocument
+    \expandafter\@firstofone
+  \else
+    \expandafter\AtBeginDocument
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%    \begin{macrocode}
+\DeclareOption*{\expandafter\TitlePageStyle\expandafter{\CurrentOption}}
+\FamilyProcessOptions*\relax
+%    \end{macrocode}
+%
+% \begin{macro}{\chairmanname}
+% \changes{v0.5}{2016/06/21}{new}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\projectpapername}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\seminarpapername}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\studentreserchname}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\diplomathesisname}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\academicgradethesisname}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\masterthesisname}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\bachelorthesisname}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\presentedbyname}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\advisorname}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\thename}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\ofthename}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\fromname}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\fromplacename}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\malerefereename}
+% \changes{v0.5}{2016/06/21}{new}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\femalerefereename}
+% \changes{v0.5}{2016/06/21}{new}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\refereename}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\oralexaminationdatename}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\ordinal}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \begin{macro}{\maleordinal}
+% \changes{v0.5}{2016/06/21}{new}%^^A
+% \begin{macro}{\femaleordinal}
+% \changes{v0.5}{2016/06/21}{new}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% Language dependent terms:
+%    \begin{macrocode}
+\providecommand*{\chairmanname}{Chairman}
+\providecommand*{\projectpapername}{Project Paper}
+\providecommand*{\seminarpapername}{Seminar Paper}
+\providecommand*{\studentresearchname}{Student Research Project}
+\providecommand*{\diplomathesisname}{Diploma Thesis}
+\providecommand*{\academicgradethesisname}{Academicgrade Thesis}
+\providecommand*{\masterthesisname}{Master Thesis}
+\providecommand*{\bachelorthesisname}{Bachelor Thesis}
+\providecommand*{\presentedbyname}{presented by}
+\providecommand*{\advisorname}{Advisor}
+\providecommand*{\thename}{}
+\providecommand*{\ofthename}{of the}
+\providecommand*{\fromname}{from}
+\providecommand*{\fromplacename}{from}
+\providecommand*{\refereename}{Referee}
+\providecommand*{\femalerefereename}{\refereename}
+\providecommand*{\malerefereename}{\refereename}
+\providecommand*{\oralexaminationdatename}{Date of Oral Examination}
+\providecommand*{\atthename}{at}
+\providecommand*{\durationname}{Processing Time}
+\providecommand*{\matriculationnumbername}{Matriculationnumber}
+\providecommand*{\coursename}{Course}
+\providecommand*{\companyname}{Training Company}
+\providecommand*{\examinationname}{Examination}
+\providecommand*{\examinationdatename}{Date of Examination}
+\newcommand*{\ordinal}{\englishordinal}
+\newcommand*{\femaleordinal}{\ordinal}
+\newcommand*{\maleordinal}{\ordinal}
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\chairmanname}{Chairmain}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\projectpapername}{Project Paper}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\seminarpapername}{Seminar Paper}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\studentresearchname}{Student
+  Research Project}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\diplomathesisname}{Diploma Thesis}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\academicgradethesisname}{Academicgrade Thesis}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\masterthesisname}{Master Thesis}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\bachelorthesisname}{Bachelor
+  Thesis}% 
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\ordinal}{\englishordinal}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\presentedbyname}{presented by}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\advisorname}{Advisor}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\thename}{}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\ofthename}{of the}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\fromname}{from}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\fromplacename}{from}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\refereename}{Referee}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\oralexaminationdatename}{Date of
+  Oral Examination}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\durationname}{Processing Time}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\matriculationnumbername}{Matriculationnumber}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\coursename}{Course}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\companyname}{Training Company}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\examinationname}{Examination}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\examinationdatename}{Date of
+  Examination}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\chairmanname}{Dekan/Dekanin}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\projectpapername}{Projektarbeit}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\seminarpapername}{Seminararbeit}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\studentresearchname}{Studienarbeit}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\diplomathesisname}{Diplomarbeit}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\academicgradethesisname}{Dissertation}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\masterthesisname}{Master-Arbeit}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\bachelorthesisname}{Bachelor-Arbeit}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\ordinal}{\germanordinal}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\femaleordinal}{\germanfemaleordinal}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\maleordinal}{\germanmaleordinal}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\presentedbyname}{eingereicht von}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\advisorname}{Betreuer}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\thename}{den}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\ofthename}{der}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\fromname}{von}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\fromplacename}{aus}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\refereename}{Gutachter}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\femalerefereename}{Gutachterin}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\oralexaminationdatename}{Datum der m\"undlichen
+  Pr\"ufung}% 
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\durationname}{Bearbeitungszeitraum}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\matriculationnumbername}{Matrikelnummer}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\coursename}{Kurs}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\companyname}{Ausbildungsfirma}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\examinationname}{Pr\"ufung}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\examinationdatename}{Tag der Pr\"ufung}%
+%    \end{macrocode}
+% \begin{macro}{\englishordinal}
+%    \begin{macrocode}
+\newcommand*{\englishordinal}[1]{%
+  \ifcsname engordnumber\endcsname
+    \engordnumber{#1}%
+  \else
+    \ifnum #1<\@ne
+      \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
+        This package does only define english ordinals from 1}%
+    \else
+      \ifcase #1\or 1st\or 2nd\or 3rd\or 4th\or 5th\or 6th\or 7th\or 8th\or
+        9th\or 10th\else
+        \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
+          This package does only define english ordinals from 1 to
+          10.\MessageBreak
+          You may load package `engord' to improve support of english
+          ordinals}%
+      \fi
+    \fi
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\germanordinal}
+% \begin{macro}{\germanmaleordinal}
+% \begin{macro}{\germanfemaleordinal}
+%    \begin{macrocode}
+\newcommand*{\germanordinal}[1]{%
+  \ifnum #1<\@ne
+    \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
+      This package does only define german ordinals from 1}%
+  \else
+    #1.%
+  \fi
+}
+\newcommand*{\germanmaleordinal}[1]{%
+  \ifcase #1
+    \PackageError{uni-titlepage}{Male ordinal of `#1' not defined}{%
+      This package does only define german male ordinals from 1}%
+  \or Erster\or Zweiter\or Dritter\or Vierter\or F\"unfter\or Sechster%
+  \or Siebter\or Achter\or Neunter\or Zehnter\else
+    \PackageError{uni-titlepage}{Male ordinal of `#1' not defined}{%
+      This package does only define german male ordinals up to 10}%
+  \fi
+}
+\newcommand*{\germanfemaleordinal}[1]{%
+  \ifcase #1
+    \PackageError{uni-titlepage}{Female ordinal of `#1' not defined}{%
+      This package does only define german female ordinals from 1}%
+  \or Erste\or Zweite\or Dritte\or Vierte\or F\"unfte\or Sechste%
+  \or Siebte\or Achte\or Neunte\or Zehnte\else
+    \PackageError{uni-titlepage}{Female ordinal of `#1' not defined}{%
+      This package does only define german female ordinals up to 10}%
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% 
+% \iffalse meta-comment
+%</package>
+% \fi^^A meta-comment
+%
+% \subsection{The \texttt{titlepage} Drivers}
+% \label{sec:The-titlepage-Drivers}
+%
+% \changes{v0.2}{2011/06/07}{new style \texttt{DHBW}}
+% \changes{v0.2}{2011/06/07}{new style \texttt{Spacer}}
+% \changes{v0.3}{2012/07/05}{new style \texttt{KIT}}
+% \changes{v0.4}{2012/07/24}{new style \texttt{JT-Aufsaetze}}
+% \changes{v0.4}{2012/07/24}{new style \texttt{JT-Geschichte}}
+% \changes{v0.4}{2012/07/24}{new style \texttt{JT-Typography}}
+% \iffalse meta-comment
+%<*driver>
+% \fi^^A meta-comment
+%    \begin{macrocode}
+\begingroup
+  \def\PackageNotLoadedError#1{%
+    \GenericError{%
+      (#1)\@spaces\@spaces\@spaces\@spaces
+    }{%
+      File `#1' Error: package `uni-titlepage' hasn't been loaded%
+    }{%
+      This definition file was made to be loaded by package
+      `uni-titlepage'.\MessageBreak
+      You may not use it without package `uni-titlepage'!\MessageBreak
+      See the documentation of package `uni-titlepage' for explanation.%
+    }%
+  }%
+  \ifx\csname uni-titlepage.sty@vers\endcsname\relax
+    \PackageNotLoadedError{%
+%<DHBW>      title-DHBW.def%
+%<KOMAScript>      title-KOMAScript.def%
+%<TU-DD>      title-TU-DD.def%
+%<TU-HH>      title-TU-HH.def%
+%<Markus&1>      title-Markus-1.def%
+%<Markus&2>      title-Markus-2.def%
+%<Spacer>      title-Spacer.def%
+%<KIT>      title-KIT.def%
+%<JT-Aufsaetze>      title-JT-Aufsaetze.def%
+%<JT-Geschichte>      title-JT-Geschichte.def%
+%<JT-Typography>      title-JT-Typography.def%
+%<WWUM>      title-WWUM.def%
+    }%
+  \fi
+\endgroup
+%    \end{macrocode}
+%
+% Each style corresponds with an own member. Nevertheless most styles will not
+% have options in their own, because string options should be global to make
+% change of style very easy.
+%    \begin{macrocode}
+\DefineFamilyMember[%
+%<DHBW>  DHBW%
+%<KOMAScript>  KOMAScript%
+%<TU-DD>  TU-DD%
+%<TU-HH>  TU-HH%
+%<Markus&1>  Markus-1%
+%<Markus&2>  Markus-2%
+%<Spacer>  Spacer%
+%<KIT>  KIT%
+%<JT-Aufsaetze>  JT-Aufsaetze%
+%<JT-Geschichte>  JT-Geschichte%
+%<JT-Typography>  JT-Typography%
+%<WWUM>  WWUM%
+]{title}
+%    \end{macrocode}
+%
+% Nevertheless some style has their own switches:
+% \begin{option}{blackborder}
+%   \emph{Trauerrand} at style \File{TU-DD}:
+%    \begin{macrocode}
+%<TU-DD>\FamilyBoolKey[TU-DD]{title}{blackborder}{blackborder}
+%    \end{macrocode}
+% \end{option}
+% \begin{option}{final}
+%   Style \File{TU-HH} distinguishes between drafts and final thesis.
+%    \begin{macrocode}
+%<TU-HH>\FamilyBoolKey[TU-HH]{title}{final}{final}
+%    \end{macrocode}
+% \end{option}
+% \begin{option}{rulewidth}
+% \begin{macro}{\title@rulewidth}
+% \begin{option}{rulesep}
+% \begin{macro}{\title@rulesep}
+%   Some styles have some variable rules at the title:
+%    \begin{macrocode}
+%<*Spacer|JT-Aufsaetze|JT-Geschichte|Markus&2>
+\providecommand*{\title@rulewidth}{%
+%<Spacer|Markus&2>  0pt%
+%<JT-Aufsaetze|JT-Geschichte>  .25\textwidth
+}
+\providecommand*{\title@rulesep}{%
+%<Spacer|Markus&2>  \ifdim \title@rulewidth>\z@ 10pt\else \z@\fi
+%<JT-Aufsaetze|JT-Geschichte>  1.5pt%
+}
+\DefineFamilyKey[%
+%<Markus&2>  Markus-2%
+%<JT-Aufsaetze>  JT-Aufsaetze%
+%<JT-Geschichte>  JT-Geschichte%
+%<Spacer>  Spacer%
+]{title}{rulewidth}{%
+  \gdef\title@rulewidth{\dimexpr #1\relax}%
+  \FamilyKeyStateProcessed
+}
+\DefineFamilyKey[%
+%<Markus&2>  Markus-2%
+%<JT-Aufsaetze>  JT-Aufsaetze%
+%<JT-Geschichte>  JT-Geschichte%
+%<Spacer>  Spacer%
+]{title}{rulesep}{%
+  \gdef\title@rulesep{\dimexpr #1\relax}%
+  \FamilyKeyStateProcessed
+}
+%</Spacer|JT-Aufsaetze|JT-Geschichte|Markus&2>
+%    \end{macrocode}
+% \end{macro}
+% \end{option}
+% \end{macro}
+% \end{option}
+%
+% An some has their own terms:
+% \begin{macro}{\presentationinformationWWUM}
+%   \changes{v0.5}{2016/06/21}{new style WWUM}
+% \begin{macro}{\presentationinformationTUHH}
+%   \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
+%     more}^^A
+%   \changes{v0.5}{2016/06/21}{provide sevaral English and German
+%     languages}^^A
+% \begin{macro}{\presentationinformationDHBW}
+% \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
+%   more}^^A
+% \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}^^A
+% \changes{0.5e}{2019/11/20}{\cs{if} replaced by \cs{ifx}}
+% \begin{macro}{\presentationinformationKIT}
+% \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
+%   more}^^A
+% \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}^^A
+%    \begin{macrocode}
+%<*DHBW>
+\providecommand*{\presentationinformationDHBW}{%
+  for the \examinationname{} of\\[.5\baselineskip]
+  \@academicgrade\\[0pt plus 1fill]
+  of  \@discipline\\[.5\baselineskip]
+  at the \@university{} \@place\\
+}
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\presentationinformationDHBW}{%
+  for the \examinationname\\[.5\baselineskip]
+  \@academicgrade\\[0pt plus 1fill]
+  of degree course \@discipline\\[.5\baselineskip]
+  at the \@university\ifx\@place\@empty\else\space\@place\fi
+}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\presentationinformationDHBW}{%
+  f\"ur die \examinationname{} zum\\[.5\baselineskip]
+  \@academicgrade\\[0pt plus 1fill]
+  des Studienganges \@discipline\\[.5\baselineskip]
+  an der \@university{}\ifx\@place\@empty\else\space\@place\fi
+}%
+%</DHBW>
+%<*TU-HH>
+\providecommand*{\presentationinformationTUHH}{%
+  \iffinal Of the \else The \fi Graduation Committee of the\\
+  \@university\\[.5ex]
+  to the Acquisition of the Academic Degree\\[.5ex]
+  \@academicgrade\\[.5ex]
+  \iffinal approved \else submitted \fi\@subject}
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\presentationinformationTUHH}{%
+  \iffinal Of the \else The \fi Graduation Committee of the\\
+  \@university\\[.5ex]
+  to the Acquisition of the Academic Degree\\[.5ex]
+  \@academicgrade\\[.5ex]
+  \iffinal approved \else submitted \fi\@subject}
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\presentationinformationTUHH}{%
+  \iffinal Vom \else Dem \fi Promotionsausschuss der\\
+  \@university\\[.5ex]
+  zur Erlangung des akademischen Grades\\[.5ex]
+  \@academicgrade\\[.5ex]
+  \iffinal genehmigte \else vorgelegte \fi\@subject}%
+%</TU-HH>
+%<*KIT>
+\providecommand*{\presentationinformationKIT}{%
+  At the \@faculty\\
+  \strut\ignorespaces\@chair\\
+}
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\presentationinformationKIT}{%
+  At the \@faculty\\
+  \strut\ignorespaces\@chair\\
+}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\presentationinformationKIT}{%
+  An der \@faculty\\
+  \strut\ignorespaces\@chair\\
+}%
+%</KIT>
+%<*WWUM>
+\providecommand*{\presentationinformationWWUM}{%
+  \@subject\\
+  to the Aquisition of the Academic Degree\\
+  \@academicgrade\\
+  of the \@sience{} of \@discipline\\
+  of the \@faculty{} faculty\\
+  of the \@university
+}
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\presentationinformationWWUM}{%
+  \@subject\\
+  to the Aquisition of the Academic Degree\\
+  \@academicgrade\\
+  of the \@sience{} of \@discipline\\
+  of the \@faculty{} faculty\\
+  of the \@university
+}
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\presentationinformationWWUM}{%
+  \@subject\\
+  zur Erlangung des \@academicgrade\\
+  der \@sience{} im Fachbereich \@discipline\\
+  der \@faculty{} Fakult\"at\\
+  der \@university
+}
+%</WWUM>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\KITlongname}
+%   \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
+%     more}^^A
+%   \changes{v0.5}{2016/06/21}{provide sevaral English and German
+%     languages}^^A
+% \begin{macro}{\fromname}
+%   \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
+%     more}^^A
+%   \changes{v0.5}{2016/06/21}{provide sevaral English and German
+%     languages}^^A
+% \begin{macro}{\refereename}
+%   \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
+%     more}^^A
+%   \changes{v0.5}{2016/06/21}{provide sevaral English and German
+%     languages}^^A
+% \begin{macro}{\KITurl}
+%    \begin{macrocode}
+%<*KIT>
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\KITlongname}{%
+  University of the State of Baden-W\"urttemberg and National Research Center
+  of the Helmholtz Association%
+}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\KITlongname}{%
+  Universit\"at des Landes Baden-W\"urttemberg und nationales
+  Forschungszentrum in der Helmholtz-Gemeinschaft
+}%
+\scr@ifundefinedorrelax{captionsamerican}{}{%
+  \renewcaptionname{american}{\fromname}{of}%
+  \renewcaptionname{american}{\refereename}{Reviewer}%
+}%
+\scr@ifundefinedorrelax{captionsaustralian}{}{%
+  \renewcaptionname{australian}{\fromname}{of}%
+  \renewcaptionname{australian}{\refereename}{Reviewer}%
+}%
+\scr@ifundefinedorrelax{captionsbritish}{}{%
+  \renewcaptionname{british}{\fromname}{of}%
+  \renewcaptionname{british}{\refereename}{Reviewer}%
+}%
+\scr@ifundefinedorrelax{captionscanadian}{}{%
+  \renewcaptionname{canadian}{\fromname}{of}%
+  \renewcaptionname{canadian}{\refereename}{Reviewer}%
+}%
+\scr@ifundefinedorrelax{captionsenglish}{}{%
+  \renewcaptionname{english}{\fromname}{of}%
+  \renewcaptionname{english}{\refereename}{Reviewer}%
+}%
+\scr@ifundefinedorrelax{captionsnewzealand}{}{%
+  \renewcaptionname{newzealand}{\fromname}{of}%
+  \renewcaptionname{newzealand}{\refereename}{Reviewer}%
+}%
+\scr@ifundefinedorrelax{captionsUKenglish}{}{%
+  \renewcaptionname{UKenglish}{\fromname}{of}%
+  \renewcaptionname{UKenglish}{\refereename}{Reviewer}%
+}%
+\scr@ifundefinedorrelax{captionsUSenglish}{}{%
+  \renewcaptionname{USenglish}{\fromname}{of}%
+  \renewcaptionname{USenglish}{\refereename}{Reviewer}%
+}%
+\newcommand*{\KITurl}{www.kit.edu}
+%</KIT>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\presentedbyname}
+% \changes{v0.5}{2016/06/21}{changed value for `WWUM'}%^^A
+% \changes{v0.5a}{2016/06/22}{fixed \texttt{swissgerman} instead of
+%   \texttt{swiss}}%^^A
+% \changes{v0.5b}{2018/08/31}{changes have to be delayed}%^^A
+%    \begin{macrocode}
+%<*WWUM>
+\NowButAfterBeginDocument
+{%  
+  \providecaptionname{german,ngerman,austrian,naustrian,
+    swissgerman,nswissgerman}{\presentedbyname}{vorgelegt von}%
+  \scr@ifundefinedorrelax{captionsgerman}{}{%
+    \renewcaptionname{german}{\presentedbyname}{vorgelegt von}%
+  }%
+  \scr@ifundefinedorrelax{captionsngerman}{}{%
+    \renewcaptionname{ngerman}{\presentedbyname}{vorgelegt von}%
+  }%
+  \scr@ifundefinedorrelax{captionsaustrian}{}{%
+    \renewcaptionname{austrian}{\presentedbyname}{vorgelegt von}%
+  }%
+  \scr@ifundefinedorrelax{captionsnaustrian}{}{%
+    \renewcaptionname{naustrian}{\presentedbyname}{vorgelegt von}%
+  }%
+  \scr@ifundefinedorrelax{captionsswissgerman}{}{%
+    \renewcaptionname{swissgerman}{\presentedbyname}{vorgelegt von}%
+  }%
+  \scr@ifundefinedorrelax{captionsnswissgerman}{}{%
+    \renewcaptionname{nswissgerman}{\presentedbyname}{vorgelegt von}%
+  }%
+}
+%</WWUM>
+%    \end{macrocode}
+% \end{macro}
+%
+% While style initialization, something may change:
+%    \begin{macrocode}
+\renewcommand*{\inittitle}{%
+%    \end{macrocode}
+% style \File{KOMAScript} redefines some footnote macros:
+%    \begin{macrocode}
+%<*KOMAScript>
+  \let\footnotesize\small
+  \let\footnoterule\relax
+  \let\footnote\thanks
+  \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
+  \let\@oldmakefnmark\@makefnmark
+  \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
+%</KOMAScript>
+%    \end{macrocode}
+% styles \File{DHBW}, \File{TU-DD}, \File{TU-HH}, and \File{KIT} sets some
+% variable if not already done
+%    \begin{macrocode}
+%<*DHBW|TU-DD|TU-HH|KIT|WWUM>
+  \ifx\@university\@empty
+    \university{%
+%<DHBW>      Dualen Hochschule%
+%<TU-DD>      Technische\nobreakspace Universit\"at\nobreakspace Dresden%
+%<TU-HH>      Technische\nobreakspace Universit\"at\nobreakspace
+%<TU-HH>      Hamburg-Harburg%
+%<KIT>      KIT -- \KITlongname
+%<WWUM>      Westf\"alischen Wilhelms-Universit\"at M\"unster%
+    }%
+  \fi
+  \ifx\@place\@empty
+    \place{%
+%<DHBW>      Baden-W\"urttemberg%
+%<TU-DD>      Dresden%
+%<TU-HH>      Hamburg%
+%<KIT>      Karlsruhe%
+%<*WWUM>
+      \PackageWarning{uni-titlepage}{Birth place missing.\MessageBreak
+        Style `WWUM' needs the birth place of\MessageBreak
+        the student}%
+%</WWUM>
+    }
+  \fi
+%<*DHBW>
+  \ifx\@mainlogo\@empty
+    \IfFileExists{DHBW_d_MOS_195x95_rgb_300.jpg}{%
+      \scr@ifundefinedorrelax{includegraphics}{%
+        \if@atdocument\else\RequirePackage{graphicx}\fi
+      }{}%
+      \scr@ifundefinedorrelax{includegraphics}{}{%
+        \mainlogo{%
+          \includegraphics[width=57mm,height=27mm]%
+                          {DHBW_d_MOS_195x95_rgb_300.jpg}%
+        }%
+      }%
+    }{}%
+  \fi
+  \ifx\@titlehead\@empty
+    \titlehead{\hspace*{\fill}\@mainlogo}%
+  \fi
+  \ifx\@titlepagefont\@empty
+    \renewcommand*{\@titlepagefont}{\normalfont\sffamily}%
+  \fi
+%</DHBW>
+%<*KIT>
+  \ifx\@homepage\@empty
+    \homepage{\KITurl}%
+  \fi
+  \ifx\@mainlogo\@empty
+%    \end{macrocode}
+% \changes{v0.5f}{2021/07/29}{autodetect several logo picture files}
+% Try to detect one of the suitable PNGs of the KIT logo from
+% \url{https://de.wikipedia.org/wiki/Datei:Logo_KIT.svg}.
+%    \begin{macrocode}
+    \def\KIT@logo{KITLogo_RGB.pdf}\IfFileExists{\KIT@logo}{}{%
+      \def\KIT@logo{2560px-Logo_KIT.svg.png}\IfFileExists{\KIT@logo}{}{%
+        \def\KIT@logo{2000px-Logo_KIT.svg.png}\IfFileExists{\KIT@logo}{}{%
+          \def\KIT@logo{1280px-Logo_KIT.svg.png}\IfFileExists{\KIT@logo}{}{%
+            \def\KIT@logo{1024px-Logo_KIT.svg.png}\IfFileExists{\KIT@logo}{}{%
+              \def\KIT@logo{1000px-Logo_KIT.svg.png}\IfFileExists{KIT@logo}{}{%
+                \def\KIT@logo{800px-Logo_KIT.svg.png}\IfFileExists{\KIT@logo}{}{%
+                  \def\KIT@logo{640px-Logo_KIT.svg.png}\IfFileExists{\KIT@logo}{}{%
+                    \def\KIT@logo{500px-Logo_KIT.svg.png}%
+                  }}}}}}}}%
+    \IfFileExists{\KIT@logo}{%
+      \scr@ifundefinedorrelax{includegraphics}{%
+        \if@atdocument\else\RequirePackage{graphicx}\fi
+      }{}%
+      \scr@ifundefinedorrelax{includegraphics}{}{%
+        \mainlogo{%
+          \includegraphics[width=40mm,height=18.5mm]{\KIT@logo}%
+        }%
+      }%
+    }{}%
+  \fi
+  \ifx\@titlehead\@empty
+    \titlehead{\@mainlogo\hspace*{\fill}}%
+  \fi
+  \ifx\@titlepagefont\@empty
+    \renewcommand*{\@titlepagefont}{\usefont{T1}{phv}{m}{n}}%
+  \fi
+%</KIT>
+%<*WWUM>
+  \ifx\@titlepagefont\@empty
+    \renewcommand*{\@titlepagefont}{\normalfont\large}%
+  \fi
+%</WWUM>
+%</DHBW|TU-DD|TU-HH|KIT|WWUM>
+%    \end{macrocode}
+% style \File{Markus-2} uses it's own pagestyle at the first title page
+%    \begin{macrocode}
+%<*Markus&2>
+  \def\ps@maintitle{%
+    \ps@empty
+    \def\@oddhead{%
+      \parbox[b][\headheight][b]{\hsize}{\@titlepagefont{%
+          \csname @titlehead\endcsname}}%
+    }%
+    \let\@evenhead\@oddhead
+  }%
+%</Markus&2>
+%    \end{macrocode}
+% styles \File{JT-Aufsaetze} and \File{JT-Geschichte} set some font defaults:
+%    \begin{macrocode}
+%<*JT-Aufsaetze|JT-Geschichte>
+  \ifx\@titlepagefont\@empty
+%<JT-Aufsaetze>  \renewcommand*{\@titlepagefont}{\normalfont\Huge\itshape}%
+%<*JT-Geschichte>
+    \scr@ifundefinedorrelax{lsstyle}{%
+      \renewcommand*{\@titlepagefont}{\normalfont\let\@tpf@extra\scshape}%
+    }{%
+      \renewcommand*{\@titlepagefont}{%
+        \normalfont\def\@tpf@extra{\lsstyle\MakeUppercase}%
+      }%
+    }
+%</JT-Geschichte>
+  \fi
+  \ifx\titlefont\@empty
+    \renewcommand*{\titlefont}{\normalfont}%
+  \fi
+%</JT-Aufsaetze|JT-Geschichte>
+%<*JT-Typography>
+  \ifx\@titlepagefont\@empty
+    \renewcommand*{\@titlepagefont}{\normalfont\sffamily\bfseries}%
+  \fi
+%</JT-Typography>
+%    \end{macrocode}
+%    \begin{macrocode}
+}
+%    \end{macrocode}
+%
+% \begin{macro}{\publishers}
+%    \KOMAScript{} defines this macro. But we use \verb|\publisher| instead.
+%    \begin{macrocode}
+%<KOMAScript>\providecommand*{\publishers}{\publisher}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\makemaintitle}
+%   \changes{v0.2a}{2012/03/20}{\texttt{Markus-2}: \cs{leavevmode} added
+%     before \cs{subject@font} to avoid line break after \cs{subject@font}
+%     using package \textsf{color} or \textsf{xcolor}}
+% This differs from style to style:
+%    \begin{macrocode}
+\renewcommand*{\makemaintitle}{%
+  \begin{%
+%<DHBW|TU-DD|TU-HH|KIT>    fullsizetitle}
+%<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM>
+    titlepage}
+%</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM>
+    \setlength{\parskip}{\z@}%
+    \setlength{\parindent}{\z@}%
+    \setlength{\parfillskip}{\z@\@plus 1fil}%
+    \linespread{1}\selectfont
+    \@titlepagefont
+%<*DHBW>
+    \vspace*{12mm}%
+    \centering
+    \begin{minipage}[t][\dimexpr\vsize-36mm\relax]{\dimexpr\hsize-40mm\relax}%
+      \@titlehead\par
+      \centering
+      \Large
+      \vfill
+      {\titlefont{\Large\@title}}\par
+      \vfill
+      {\subject@font{\Large\@subject\par}}%
+      \vfill
+      \presentationinformationDHBW\par
+      \vfill
+      \fromname\\[.5\baselineskip]
+      \@author\par
+      \vfill
+      \@date\par
+      \vfill
+      \begin{tabular}{*2{p{.5\dimexpr\linewidth-3\tabcolsep\relax}}@{}}
+        \durationname                            & \@duration \\[.5ex]
+        \matriculationnumbername, \coursename    & \@matriculationnumber,
+                                                   \@course\\[.5ex]
+        \companyname                             & \@company \\[.5ex]
+        \advisorname{} \ofthename{} \companyname & \@advisor \\[.5ex]
+        \refereename{} \ofthename{} \@university & \@referee
+      \end{tabular}
+    \end{minipage}
+%</DHBW>
+%<*KOMAScript>
+    \ifx\@titlehead\@empty \else
+      \begin{minipage}[t]{\textwidth}%
+        \@titlehead
+      \end{minipage}\par
+    \fi
+    \null\vfill
+    \begingroup
+      \centering
+      \ifx\@subject\@empty \else
+        {\subject@font{\@subject \par}}%
+        \vskip 3em
+      \fi
+      {\titlefont{\huge \@title\par}}%
+      \vskip 1em
+      {\ifx\@subtitle\@empty\else\@subtitlefont{\@subtitle}\par\fi}%
+      \vskip 2em
+      {\Large \lineskip 0.75em
+        \begin{tabular}[t]{c}
+          \@author
+        \end{tabular}\par
+      }%
+      \vskip 1.5em
+      {\Large \@date \par}%
+      \vskip \z@ \@plus3fill
+      {\Large \@publisher \par}%
+      \vskip 3em
+    \endgroup
+    \@thanks
+    \vfill\null\vskip-\baselineskip
+%</KOMAScript>
+%<*TU-DD>
+    \rule{0pt}{5mm}\par
+    \ifblackborder
+      \leavevmode\hskip 1cm
+      \setlength{\fboxrule}{1pt}%
+      \expandafter\fbox
+    \else
+      \expandafter\mbox
+    \fi
+    {%
+       \begin{minipage}[t][\dimexpr\textheight-2.5cm\relax][t]{%
+           \dimexpr\linewidth\ifblackborder-3cm\fi\relax}
+        \sffamily
+        \centering
+        \vskip 3cm
+        {\fontsize{28pt}{34pt}\selectfont
+          \strut\ignorespaces\@university\unskip\strut\\}
+        {\fontsize{24pt}{28pt}\selectfont
+          \strut\ignorespaces\@faculty\unskip\strut\\}
+        {\fontsize{20pt}{24pt}\selectfont
+          \strut\ignorespaces\@chair\unskip\strut\\
+          \strut\ignorespaces\@professor\unskip\strut\\
+          \vfill
+          {\bfseries\strut\ignorespaces\@title\unskip\strut\\}
+          \strut\ignorespaces\@subject\unskip\strut\\
+          \vfill
+          \raggedright
+          \hspace*{.25\linewidth}%
+          \strut\ignorespaces\presentedbyname\unskip\strut\\
+          \hspace*{.25\linewidth}\quad
+          \begin{tabular}{@{}l@{}}
+            \strut\ignorespaces\@author\unskip\strut\\
+            \strut\ignorespaces\@discipline\unskip\strut\\
+            \strut\ignorespaces\@matriculationnumber\unskip\strut\\
+          \end{tabular}\\
+          \vskip\baselineskip
+          \hspace*{.25\linewidth}%
+          \strut\ignorespaces\advisorname\unskip:\strut\\
+          \hspace*{.25\linewidth}\quad
+          \begin{tabular}{@{}l@{}}
+            \strut\ignorespaces\@advisor\unskip\strut\\
+          \end{tabular}
+          \vskip2\baselineskip
+          \hspace*{.25\linewidth}%
+          \strut\ignorespaces\@place,\nobreakspace\thename\nobreakspace\@date
+          \par}
+        \vspace*{5mm}
+      \end{minipage}
+    }%
+%</TU-DD>
+%<*TU-HH>
+    \sffamily
+    \centering
+    \vspace{5cm}
+    {\LARGE\bfseries\strut\ignorespaces\@title\\}
+    {\Large\strut\ignorespaces\@subtitle\\}
+    \vspace{2.5cm}
+    {\Large\presentationinformationTUHH\\}
+    \vspace{2.5cm}
+    {\Large\strut\ignorespaces\fromname\\
+      \strut\ignorespaces\@author\\}
+    \vspace{2.5cm}
+    {\Large\strut\ignorespaces\fromplacename\\
+      \strut\ignorespaces\@place\\}
+    \vspace{2.5cm}
+    {\Large\@date}
+%</TU-HH>
+%<*WWUM>
+    \centering
+    \@chair\\
+    \vspace{2cm}
+    \@title\\
+    \vfill
+    \presentationinformationWWUM\\
+    \vfill
+    \presentedbyname\\
+    \@author\\
+    \ifx\@place\@empty\else\fromplacename{} \@place\\\fi
+    --\,\the\year\,--
+%</WWUM>
+%<*Markus&1>
+    \raggedright
+    {\subject@font{%
+        \large\strut\ignorespaces\@subject\par\vskip 2\baselineskip}}%
+    {\titlefont{\LARGE\strut\ignorespaces\@title\par}}%
+    {\@subtitlefont{%
+        \large\vskip.5\baselineskip\strut\ignorespaces\@subtitle\par}}%
+    \vfill
+    {\csname @datefont\endcsname{\large\strut\ignorespaces\@date\par}}%
+%</Markus&1>
+%<*Spacer|Markus&2>
+    \raggedright
+%<Markus&2>    \thispagestyle{maintitle}%
+    \raisebox{0pt}[\ht\strutbox][\dimexpr\textheight-\ht\strutbox\relax]{%
+      \rule[\dimexpr-.667\headsep-\textheight\relax]
+           {\title@rulewidth}
+           {\dimexpr\textheight+2\headsep\relax}\kern\title@rulesep}%
+    \parbox[t][\textheight][t]
+           {\dimexpr \textwidth-\title@rulewidth-\title@rulesep\relax}{%
+      \raggedright
+%<*Spacer>
+      \ifx\@titlehead\@empty\else
+%    \end{macrocode}
+%   \changes{v0.4a}{2012/09/05}{fix influence of height of titlehead to
+%     vertical alignment of rule}
+%    \begin{macrocode}
+        \raisebox{\dimexpr\ht\strutbox-\totalheight\relax}{%
+          \parbox[t]{\linewidth}{\@titlehead}%
+        }\par
+        \vskip 2\baselineskip
+      \fi
+%</Spacer>
+      {\leavevmode\subject@font{%
+          \large\strut\ignorespaces\@subject\par\vskip 2\baselineskip}}%
+      {\def\and{\\}\csname @authorfont\endcsname{\large\@author}\par
+        \vskip .5\baselineskip}%
+      {\titlefont{\LARGE\strut\ignorespaces\@title\par}}%
+      {\@subtitlefont{%
+          \large\vskip.5\baselineskip\strut\ignorespaces\@subtitle\par}}%
+      \vfill
+      {\csname @publisherfont\endcsname{\large\@publisher\par}}%
+      {\csname @datefont\endcsname{\large\strut\ignorespaces\@date\par}}%
+    }%
+%</Spacer|Markus&2>
+%<*KIT>
+    \setlength{\unitlength}{1mm}%
+    \begin{picture}(0,0)
+      \put(15,-12){%
+        \line(1,0){\dimexpr\paperwidth-37mm\relax\@gobble}%
+      }%
+      \put(\dimexpr\paperwidth-22mm\@gobble,-19){\oval(14,14)[rt]}%
+      \put(\dimexpr\paperwidth-15mm\@gobble,-19){%
+        \line(0,-1){\dimexpr\paperheight-37mm\relax\@gobble}%
+      }%
+      \put(22,-\dimexpr\paperheight-18mm\relax\@gobble){%
+        \line(1,0){\dimexpr\paperwidth-37mm\relax\@gobble}%
+      }%
+      \put(22,-\dimexpr\paperheight-25mm\relax\@gobble){\oval(14,14)[lb]}%
+      \put(15,-\dimexpr\paperheight-25mm\relax\@gobble){%
+        \line(0,1){\dimexpr\paperheight-37mm\relax\@gobble}%
+      }%
+    \end{picture}\par
+    \vskip\dimexpr -\baselineskip+25mm\relax
+    \hspace*{27mm}%
+    \begin{minipage}[t][\dimexpr\paperheight-68mm\relax][t]
+      {\dimexpr\paperwidth-54mm\relax}
+      \raggedright\@titlehead\par
+      \centering
+      \vskip 25mm
+      {\@titlepagefont\@title\par}%
+      \vskip 20mm
+      {\Large\@subject\\\fromname\par}
+      \vskip 1cm
+      {\huge\@author\par}
+      \vskip 1cm
+      {\Large\presentationinformationKIT\par}
+      \vskip 2cm
+      {\Large
+        \let\@tempa\refereename
+        \def\@tempb{1}%
+        \def\and{%
+          \\
+          \xdef\@tempb{\the\numexpr\@tempb+1\relax}%
+          \expandafter\ordinal\expandafter{\@tempb}~\@tempa: &
+        }%
+        \begin{tabular}{@{}lr@{}}
+          \refereename: & \@referee \\
+          \global\let\@tempa\advisorname\xdef\@tempb{1}%
+          \advisorname: & \@advisor \\
+        \end{tabular}\par
+      }
+      \vfill
+      {\large \durationname: \@duration\par}
+    \end{minipage}
+    \vskip 35mm
+    \hspace*{27mm}\makebox[\dimexpr\paperwidth-56mm\relax]{%
+      \tiny\@university\hfill\large\textbf{\@homepage}%
+    }%
+%</KIT>
+%<*JT-Aufsaetze>
+    \centering
+    \@author\\
+    \begin{picture}(\title@rulewidth\@gobble,
+      \dimexpr .3ex+1pt+\title@rulesep\relax\@gobble)
+      \put(0,\dimexpr .15ex+.5pt+\title@rulesep\relax\@gobble){%
+        \linethickness{.3ex}\line(1,0){\title@rulewidth\@gobble}%
+      }%
+      \put(0,0){%
+        \linethickness{1pt}\line(1,0){\title@rulewidth\@gobble}%
+      }%
+    \end{picture}\\[\baselineskip]
+    {\titlefont{\@title\par}}%
+    \vfill
+    \@publisher
+%</JT-Aufsaetze>
+%<*JT-Geschichte>
+    \centering
+    \large{\@tpf@extra{\@author\unskip\strut}}\\[\dp\strutbox]
+    {\titlefont{\Huge\@title\par}}
+    \vfill
+    \begin{picture}(\title@rulewidth\@gobble,
+      \dimexpr 4pt+1pt+\title@rulesep\relax\@gobble)
+      \put(0,\dimexpr 2pt+.5pt+\title@rulesep\relax\@gobble){%
+        \linethickness{1pt}\line(1,0){\title@rulewidth\@gobble}%
+      }%
+      \put(0,0){%
+        \linethickness{4pt}\line(1,0){\title@rulewidth\@gobble}%
+      }%
+    \end{picture}\\[\dp\strutbox]
+    \@tpf@extra{\@publisher}%
+    \ifx\@place\@empty\else
+      \unskip\@tpf@extra{\strut}\\[\dp\strutbox]\@tpf@extra{\@place}%
+    \fi
+%</JT-Geschichte>
+%<*JT-Typography>
+  \raggedright
+  {\Large\MakeUppercase{\@author}\\[\baselineskip]}
+  {\titlefont{\Huge\MakeUppercase{\@title}\unskip\strut\\}}
+  {\@subtitlefont{\normalsize\MakeUppercase{\@subtitle}\\}}
+  \vfill
+  {\normalsize\MakeUppercase{\@place}\ifx\@place\@empty\else\enskip\fi
+    {\LARGE\MakeUppercase{\@date}}
+    \ifx\@publisher\@empty\else\unskip\strut\\[1.5\baselineskip]
+      \MakeUppercase{\@publisher}%
+    \fi}
+%</JT-Typography>
+  \end{%
+%<DHBW|TU-DD|TU-HH|KIT>    fullsizetitle}
+%<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM>
+    titlepage}
+%</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM>
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% Some of the styles need additional string options for the back of the main
+% title. These are more structural than logical, so we do not define those
+% globally!
+% \begin{option}{uppertitleback}
+% \begin{macro}{\uppertitleback}
+% \begin{macro}{\@uppertitlebacke}
+% \begin{option}{lowertitleback}
+% \begin{macro}{\lowertitleback}
+% \begin{macro}{\@lowertitleback}
+%    \begin{macrocode}
+%<*KOMAScript|Markus|Spacer>
+\providecommand*{\@uppertitleback}{}
+\providecommand{\uppertitleback}[1]{\gdef\@uppertitleback{#1}}
+\DefineFamilyKey[%
+%<KOMAScript>  KOMAScript%
+%<Markus&1>  Markus-1%
+%<Markus&2>  Markus-2%
+%<Spacer>  Spacer%
+%<JT-Aufsaetze>  JT-Aufsaetze%
+%<JT-Geschichte>  JT-Geschichte%
+%<JT-Geschichte>  JT-Typography%
+]{title}{uppertitleback}{\uppertitleback{#1}\FamilyKeyStateProcessed}
+\providecommand*{\@lowertitleback}{}
+\providecommand{\lowertitleback}[1]{\gdef\@lowertitleback{#1}}
+\DefineFamilyKey[%
+%<KOMAScript>  KOMAScript%
+%<Markus&1>  Markus-1%
+%<Markus&2>  Markus-2%
+%<Spacer>  Spacer%
+%<JT-Aufsaetze>  JT-Aufsaetze%
+%<JT-Geschichte>  JT-Geschichte%
+%<JT-Geschichte>  JT-Typography%
+]{title}{lowertitleback}{\lowertitleback{#1}\FamilyKeyStateProcessed}
+%</KOMAScript|Markus|Spacer>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{option}
+% \end{macro}
+% \end{macro}
+% \end{option}
+%
+% \begin{macro}{\makemaintitleback}
+% \changes{v0.5e}{2019/11/20}{\cs{ifstr} in \textsf{scrbase} renamed to
+%   \cs{Ifstr}}
+% Only some of the styles define this:
+%    \begin{macrocode}
+%<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+\renewcommand*{\makemaintitleback}{%
+  \begin{titlepage}
+    \begin{minipage}[t]{\textwidth}
+      \@titlepagefont{\@uppertitleback}%
+    \end{minipage}\par
+    \vfill
+    \begin{minipage}[b]{\textwidth}
+      \@titlepagefont{\@lowertitleback}%
+    \end{minipage}
+  \end{titlepage}
+}
+%</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+%<*TU-HH>
+\renewcommand*{\makemaintitleback}{%
+  \begin{titlepage}
+    \vspace*{\fill}
+    \iffinal
+      \@tempcnta\z@
+      \def\and{%
+        \par\advance\@tempcnta by\@ne
+        \@hangfrom{%
+          \expandafter\ordinal\expandafter{\the\@tempcnta}~\refereename:\enskip
+        }%
+      }\and\@referee
+    \fi
+    \vskip 1cm
+    \iffinal
+      \@hangfrom{\oralexaminationdatename:\enskip}{\@oralexaminationdate}%
+    \fi
+  \end{titlepage}
+}
+%</TU-HH>
+%<*WWUM>
+\renewcommand*{\makemaintitleback}{%
+  \begin{titlepage}
+    \vspace*{\fill}
+    \noindent
+    \@tempcnta\z@
+    \def\arraystretch{2}%
+    \newcommand*{\test@malefemale}[1][m]{%
+      \global\advance\@tempcnta by\@ne
+      \Ifstr{##1}{f}{\def\fe@male{female}}{\def\fe@male{male}}%
+      \csname \fe@male ordinal\endcsname{\@tempcnta}\space
+      \csname \fe@male refereename\endcsname: &
+      \def\and{\\\test@malefemale}%
+    }%
+    \begin{tabular}{@{}ll@{}}
+      \chairmanname: & \@professor \\
+      \expandafter\test@malefemale
+      \@referee \\
+      \oralexaminationdatename: & \@oralexaminationdate
+      \ifx\examinationdatename\@empty\else
+        \\\examinationdatename:     &
+      \fi
+      \\
+    \end{tabular}
+  \end{titlepage}
+}
+%</WWUM>
+%    \end{macrocode}
+% \end{macro}
+%
+% Some of the styles need additional string options for the pre title. These
+% are more structural than logical, so we do not define those globally!
+% \begin{option}{extratitle}
+% \begin{macro}{\extratitle}
+% \begin{macro}{\@extratitle}
+%    \begin{macrocode}
+%<*KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+\providecommand*{\@extratitle}{}
+\providecommand{\extratitle}[1]{\gdef\@extratitle{#1}}
+\DefineFamilyKey[%
+%<KOMAScript>  KOMAScript%
+%<Markus&2>  Markus-2%
+%<Spacer>  Spacer%
+%<JT-Aufsaetze>  JT-Aufsaetze%
+%<JT-Geschichte>  JT-Geschichte%
+%<JT-Typography>  JT-Typography%
+]{title}{extratitle}{\extratitle{#1}\FamilyKeyStateProcessed}
+%</KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{option}
+%
+% \begin{macro}{\makepretitle}
+%   \changes{v0.2a}{2012/03/20}{\texttt{Markus-1}: Usage of
+%     \cs{@titlepagefont} fixed}
+%   \changes{v0.4b}{2012/09/18}{\texttt{Markus-1}: publisher page may be
+%     omitted}
+% \begin{macro}{\makepretitleback}
+% Only some styles have pre titles:
+%    \begin{macrocode}
+%<*KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+\renewcommand*{\makepretitle}{%
+  \ifx\@extratitle\@empty\else
+    \begin{titlepage}
+      \noindent\@extratitle
+    \end{titlepage}
+  \fi
+}%
+%</KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+%<*Markus&1>
+\renewcommand*{\makepretitle}{%
+  \ifx\@publisher\@empty\else
+    \begin{titlepage}
+      \raggedleft
+      {\@titlepagefont{%
+          \large\strut\ignorespaces\@publisher\par}}%
+    \end{titlepage}
+  \fi
+}
+%</Markus&1>
+%<*WWUM>
+\renewcommand*{\makepretitle}{%
+  \begin{fullsizetitle}
+    \@titlepagefont
+    \vspace*{.33\vsize}%
+
+    \centering
+    \@author\\[1ex]
+    \@title\\[1ex]
+    \the\year
+  \end{fullsizetitle}
+}
+%</WWUM>
+%    \end{macrocode}
+% \end{macro}
+%    \begin{macrocode}
+%<*KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+\renewcommand*{\makepretitleback}{%
+  \ifx\@extratitle\@empty\else\begin{titlepage}\null\end{titlepage}\fi
+}
+%</KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+%<*Markus&1>
+\renewcommand*{\makepretitleback}{%
+  \ifx\@author\@empty\else
+    \ifx\@publisher\@empty\begin{titlepage}\end{titlepage}\fi
+    \begin{titlepage}
+      \raggedleft
+      {\@titlepagefont{%
+          \large\null\vskip 2\baselineskip
+          \LARGE\strut{\def\and{\hspace{1em}\linebreak[3]}%
+            \csname @authorfont\endcsname{\large\ignorespaces\@author}\par}}}%
+    \end{titlepage}
+  \fi
+}
+%</Markus&1>
+%<*WWUM>
+\renewcommand*{\makepretitleback}{%
+  \if@twoside\begin{titlepage}\null\end{titlepage}\fi
+}
+%</WWUM>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\makeposttitle}
+% \begin{macro}{\makeposttitleback}
+% And only some styles provides one more title page with dedication.
+%    \begin{macrocode}
+%<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+\renewcommand*{\makeposttitle}{%
+  \ifx\@dedication\@empty\else
+    \begin{titlepage}
+      \null\vfill
+      {\centering\csname @dedicationfont\endcsname{\@dedication \par}}%
+      \vskip \z@ \@plus 3fill
+    \end{titlepage}
+  \fi
+}
+\renewcommand*{\makeposttitleback}{%
+  \ifx\@dedication\@empty\else\begin{titlepage}\null\end{titlepage}\fi
+}
+%</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \iffalse meta-comment
+%</driver>
+% \fi^^A meta-comment
+%
+% \subsection{The Examples and the Manual}
+% \label{sec:The-Examples-and-the-Manual}
+% \iffalse meta-comment
+%<*doc|README>
+%<*example>
+% \fi^^A meta-comment
+%    \begin{macrocode}
+\documentclass[a4paper,pagesize]{scrbook}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+%<JT-Geschichte>\usepackage{microtype}
+%<TU-HH|TU-DD>\usepackage{mathpazo}
+%<TU-HH|TU-DD>\usepackage[scaled]{helvet}
+%<DHBW|Spacer|KIT>\usepackage[demo]{graphicx}% remove option demo if you have the logo
+\usepackage{xcolor}
+%<JT-Geschichte|JT-Typography>\colorlet{RED}{red}% because of \MakeUppercase{\textcolor{red}{…}}
+\usepackage{uni-titlepage}
+\begin{document}
+%<*DHBW>
+\TitlePageStyle{DHBW}
+\makeatletter\providecommand*{\@titlepagefont}{\normalfont\sffamily}\makeatother
+\setkomafont{subject}{\sffamily\bfseries}
+\maketitle[%
+  titlefont=\sffamily,
+  mainlogo=\textcolor{red}{{%
+    % You may add a company logo here!
+    % NOTE: The original logo has a large white border!
+    \includegraphics[width=57mm,height=27mm]%
+    {DHBW_d_MOS_195x95_rgb_300.jpg}%
+  }},
+  % You may additionally change titlehead. The original definition of
+  % titlehead is:
+  titlehead={\hspace*{\fill}\usetitleelement{mainlogo}},
+  title=\textcolor{red}{Bachelorarbeitsthema},
+  subject=\textcolor{red}{BACHELORARBEIT},
+  academicgrade=\textcolor{red}{Bachelor of Engineering},
+  discipline=\textcolor{red}{Studiengang},
+  place={Baden-Württemberg \textcolor{red}{Stadt}},
+  student=\textcolor{red}{Vorname Nachname},
+  duration=\textcolor{red}{12 Wochen},
+  matriculationnumber=\textcolor{red}{Matrikelnummer},
+  course=\textcolor{red}{Kurskürzel},
+  company=\textcolor{red}{Firmenname, Stadt},
+  advisor=\textcolor{red}{Titel Vorname Nachname},
+  referee=\textcolor{red}{Titel Vorname Nachname},
+  date=\textcolor{red}{Abgabedatum}
+]
+%</DHBW>
+%<*TU-DD>
+\TitlePageStyle{TU-DD}
+\maketitle[%
+  title=\textcolor{red}{Titel im Stil \texttt{TU-DD}},
+  university=\textcolor{red}{%
+    Technische\nobreakspace Universit\"at\nobreakspace Dresden},%
+  faculty=\textcolor{red}{Fakultät Wirtschafswissenschaften},
+  chair=\textcolor{red}{SAP-Stiftungslehrstuhl für\\
+    Entrepreneurship und Innovation},
+  professor=\textcolor{red}{Prof.\,Dr.\,Michael Schefcyk},
+%  subject=diploma, % one of: project, seminar, studentresearch,
+%                   % diploma, academicgrade, master, bachelor, or ...
+  subject=\textcolor{red}{Seminararbeit\\(bzw. Diplomarbeit)},% ... direct value
+  student=\textcolor{red}{Vorname und Name},
+  discipline=\textcolor{red}{Studienrichtung},
+  matriculationnumber=\textcolor{red}{Matrikel-Nr.},
+  advisor=\textcolor{red}{(mit akadem. Grad, Vor- und Zuname)},
+  date=\textcolor{red}{(Datum der Abgabe)}
+]
+
+\TitleOptions{pagenumber=1,blackborder}% same with `Trauerrand'
+\maketitle% everything else, like above
+%</TU-DD>
+%<*KOMAScript>
+\TitlePageStyle[pagenumber=1]{KOMAScript}
+\maketitle[
+  extratitle=\textcolor{red}{Das ist ein Schmutztitel im Stil \texttt{KOMAScript}},
+  titlehead=\textcolor{red}{Den Kopfbereich kann man auf diese Weise füllen.},
+  subject=\textcolor{red}{Eine Klassifizierung der Arbeit},
+  title=\textcolor{red}{Titel im Stil \texttt{KOMAScript}},
+  subtitle=\textcolor{red}{Untertitel},
+  publisher=\textcolor{red}{Einen Verlag kann man ebenfalls angeben},
+  uppertitleback=\textcolor{red}{Oberer Bereich der Rückseite des Haupttitels im Stil
+    \texttt{KOMAScript}.},
+  lowertitleback=\textcolor{red}{Unterer Bereich der Rückseite des Haupttitels im Stil
+    \texttt{KOMAScript}.},
+  dedication=\textcolor{red}{Eine Widmung im Stil \texttt{KOMAScript}}
+]
+%</KOMAScript>
+%<*TU-HH>
+\TitlePageStyle[pagenumber=1]{TU-HH}
+\maketitle[%
+  final,
+  title=\textcolor{red}{Titel im Stil \texttt{TU-HH}},
+  university=\textcolor{red}{Technischen Universität Hamburg-Harburg},
+  subject=degree,
+  academicgrade=\textcolor{red}{Doktor der Naturwissenschaften (Dr.\,rer.\,nat\,)},
+  place=\textcolor{red}{(Geburtsort)},
+  date=\textcolor{red}{(aktuelles Jahr)},
+  referee=\textcolor{red}{Name des ersten Gutachters\protect\and Name des zweiten
+    Gutachters},
+  oralexaminationdate=\textcolor{red}{29. Februar 2009}
+]
+%</TU-HH>
+%<*Markus|Spacer>
+% Maybe we should define one more option for this:
+\setkomafont{subject}{\normalfont\sffamily}% because of KOMA-Script class
+\setkomafont{title}{\normalfont\sffamily}% because of KOMA-Script class
+%<*1>
+\TitlePageStyle[pagenumber=1]{Markus-1}
+\maketitle[%
+  titlepagefont={\normalfont\sffamily},% to show is without KOMA-Script class
+  title=\textcolor{red}{Titel im Stil \texttt{Markus-1}},
+  subject=\textcolor{red}{Eine Klassifizierung der Arbeit},
+  subtitle=\textcolor{red}{Untertitel},
+  publisher=\textcolor{red}{Verlag},
+  uppertitleback=\textcolor{red}{Oberer Bereich der Rückseite des Haupttitels
+    im Stil \texttt{Markus-1}.},
+  lowertitleback=\textcolor{red}{Unterer Bereich der Rückseite des Haupttitels
+    im Stil \texttt{Markus-1}.},
+  dedication=\textcolor{red}{Eine Widmung im Stil \texttt{Markus-1}},
+  author=\textcolor{red}{Markus~Kohm\protect\and Sonst~Jemand}
+]
+%</1>
+%<*2|Spacer>
+%<2>\TitlePageStyle[pagenumber=1]{Markus-2}
+%<Spacer>\TitlePageStyle[pagenumber=1]{Spacer}
+\maketitle[%
+  rulewidth=2pt,
+  extratitle=\textcolor{red}{Das ist ein Schmutztitel im Stil \texttt{%
+%<2>      Markus-2}},
+%<Spacer>      Spacer}},
+%<*Spacer>  
+  titlehead=\textcolor{red}{\includegraphics{Logo}},
+%</Spacer>
+  title=\textcolor{red}{Titel im Stil \texttt{%
+%<2>      Markus-2}},
+%<Spacer>      Spacer}},
+  subject=\textcolor{red}{Eine Klassifizierung der Arbeit},
+  subtitle=\textcolor{red}{Untertitel},
+  publisher=\textcolor{red}{Verlag},
+  uppertitleback=\textcolor{red}{Oberer Bereich der Rückseite des Haupttitels
+    im Stil \texttt{%
+%<2>      Markus-2}.},
+%<Spacer>      Spacer}.},
+  lowertitleback=\textcolor{red}{Unterer Bereich der Rückseite des Haupttitels
+    im Stil \texttt{%
+%<2>      Markus-2}.},
+%<Spacer>      Spacer}.},
+  dedication=\textcolor{red}{Eine Widmung im Stil \texttt{%
+%<2>      Markus-2}},
+%<Spacer>      Spacer}},
+  author=\textcolor{red}{Markus~Kohm}
+]
+%</2|Spacer>
+%</Markus|Spacer>
+%<*KIT>
+\TitlePageStyle{KIT}
+\maketitle[%
+  mainlogo={\textcolor{red}{%
+      \includegraphics[width=40mm,height=18.5mm]{KITLogo_RGB}}},%
+  % You may additionally change titlehead. Original definition of titlehead
+  % is:
+  titlehead={\usetitleelement{mainlogo}\hspace*{\fill}},%
+  title=\textcolor{red}{Titel der Arbeit\\im Stil \texttt{KIT}},%
+  subject=\textcolor{red}{Klassifizierung der Arbeit},%
+  author=\textcolor{red}{Markus~Kohm},%
+  faculty=\textcolor{red}{Fakultät für Informatik},%
+  chair=\textcolor{red}{%
+    Institute for Program Structures\\and Data Organization (IPA)},%
+  advisor={\textcolor{red}{Titel Vorname Nachname}\and
+    \textcolor{red}{Titel Vorname Nachname}},%
+  referee={\textcolor{red}{Titel Vorname Nachname}\and
+    \textcolor{red}{Titel Vorname Nachname}},%
+  duration=\textcolor{red}{XX. Monat 20XX -- XX. Monat 20XX},%
+  university=\textcolor{red}{\KITlongname},%
+  homepage=\textcolor{red}{\KITurl}%
+]
+%</KIT>
+%<*JT-Aufsaetze>
+\TitlePageStyle{JT-Aufsaetze}
+\maketitle[%
+  % There are only three official elements:
+  author={\textcolor{red}{Markus Kohm}},%
+  title={\textcolor{red}{Titel der Arbeit angelehnt an Jan Tschicholds
+      ausgewählte Aufsätze über Fragen der Gestalt des Buches und der
+      Typographie}},
+  titlefont=\normalfont,% You may change the font of the main title
+  publisher={\textcolor{red}{Der Verlag}}
+  % Nevertheless, you may use extratitle, lowertitleback and uppertitleback.
+  % See Markus-2 for more information about those.
+]
+%</JT-Aufsaetze>
+%<*JT-Geschichte>
+\TitlePageStyle{JT-Geschichte}
+\maketitle[%
+  % There are only four official elements:
+  author={\textcolor{red}{Markus Kohm}},%
+  title={\textcolor{red}{Titel der Arbeit angelehnt an Jan Tschicholds
+      Geschichte der Schrift in Bildern}},
+  titlefont=\itshape,% You may change the font of the main title
+  publisher={\textcolor{red}{Der Verlag in seiner Langform}},
+  place={\textcolor{red}{Der Ort}}
+  % Nevertheless, you may use extratitle, lowertitleback and uppertitleback.
+  % See Markus-2 for more information about those.
+]
+%</JT-Geschichte>
+%<*JT-Typography>
+\TitlePageStyle{JT-Typography}
+\maketitle[%
+  % There are only four official elements:
+  author={\textcolor{red}{Markus Kohm}},%
+  title={\textcolor{red}{Titel der Arbeit}},
+  subtitle={\textcolor{red}{angelehnt an the new Typography}},
+  publisher={\textcolor{red}{Veröffentlicht für einen Verlag oder auch nicht}},
+  place={\textcolor{red}{Der Ort}},
+  date={\textcolor{red}{2012}}
+  % Nevertheless, you may use extratitle, lowertitleback and uppertitleback.
+  % See Markus-2 for more information about those.
+]
+%</JT-Typography>
+%<*WWUM>
+\TitlePageStyle{WWUM}
+\renewcaptionname{ngerman}{\examinationdatename}{Tag der Promotion}
+%\renewcaptionname{ngerman}{\examinationdatename}{}
+%\renewcaptionname{ngerman}{\chairmanname}{Dekan}
+%\renewcaptionname{ngerman}{\chairmanname}{Dekanin}
+\maketitle[%
+  title={\textcolor{red}{Titel der Arbeit}},
+  subject={\textcolor{red}{Inaugural-Dissertation}},
+  academicgrade={\textcolor{red}{Doktorgrades}},
+  discipline={\textcolor{red}{Physik}},
+  sience={\textcolor{red}{Naturwissenschaften}},
+  chair={\textcolor{red}{Experimentelle Physik}},
+  faculty={\textcolor{red}{Mathematisch-Naturwissenschaftlichen}},
+  author={\textcolor{red}{Mein Name}},
+  place={\textcolor{red}{Geburtsort}},
+  referee={\textcolor{red}{Peter Mustermann}\and
+    [f]\textcolor{red}{Petra Musterfrau}},
+  professor={\textcolor{red}{Klaus Naseschwarz}}
+]
+%</WWUM>
+\end{document}
+%    \end{macrocode}
+%
+% \iffalse meta-comment
+%</example>
+%<*manual|README>
+% \fi^^A meta-comment
+%
+%    \begin{macrocode}
+%<*!README>
+\documentclass{scrdoc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{xltabular}
+\usepackage{ragged2e}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hypdoc}
+\CodelineIndex
+\RecordChanges
+\EnableCrossrefs
+\GetFileInfo{uni-titlepage.drv}
+\begin{document}
+\title{More Titlepage Styles with Package \File{uni-titlepage}\footnote{This is file
+    version \fileversion{} of file \File{\filename}.}}
+\author{Markus Kohm\footnote{Markus Kohm \textless komascript\textcircled{\tiny
+      at}gmx.info\textgreater}}
+\date{\fileversion{}\footnote{\textbf{Note:} All version below 0.9 are ALPHA
+    versions. Everything may change. Everything may break. Everything may
+    happen.} \filedate}
+\maketitle
+\begin{abstract}
+%</!README>
+%<README>------------------------------------------------------------------------
+Creation of title pages is something most authors should not have to do. 
+But reality is not perfect, so a lot of authors have to do it.  In 2009
+%<!README>KOMA started the titlepage project at \url{https://komascript.de/titlepage}
+%<README>KOMA started the titlepage project at <https://komascript.de/titlepage>
+to collect real title pages and implement them with a well defined interface.
+%<!README>In 2021 the project has been moved to \url{https://github.com/komascript/uni-titlepage}
+%<README>In 2021 the project has been moved to <https://github.com/komascript/uni-titlepage>
+and renamed.
+
+Now, changing from one title page style to another would be very
+simple.  Nevertheless implementation of a new title page style may be still
+difficult.  But maybe the guys of the title page project would help you.  Just
+ask!
+%<*README>
+
+# Unpacking and Installation
+
+To unpack and install all files, you can download the source from github
+and then run:
+
+    l3build install
+
+Afterwards you can build the manual and the PDFs of the examples using:
+
+    l3build doc
+
+However, if your TeX distributor already distributes a ready for installation
+package, you do not need and should not create files and copy them yourself.
+Just use the package manager of your TeX distribution to install the package.
+%</README>
+%<*!README>
+\end{abstract}
+\DocInput{uni-titlepage.dtx}
+\end{document}
+%</!README>
+%    \end{macrocode}
+%
+% \subsection{Additional Note}
+% To generate the images used in the wiki, you could use ImageMagick:
+%
+% \begingroup\footnotesize
+% \begin{verbatim}
+% convert -flatten -density 72x72 titlepage-DHBW.pdf[0] titlepage-DHBW-1.png
+% convert -flatten -density 72x72 titlepage-KOMAScript.pdf[2] titlepage-KOMAScript-3.png
+% convert -flatten -density 72x72 titlepage-Markus-1.pdf[2] titlepage-Markus-1-3.png
+% convert -flatten -density 72x72 titlepage-Markus-2.pdf[2] titlepage-Markus-2-3.png
+% convert -flatten -density 72x72 titlepage-Spacer.pdf[2] titlepage-Spacer-3.png
+% convert -flatten -density 72x72 titlepage-TU-DD.pdf[0] titlepage-TU-DD-1.png
+% convert -flatten -density 72x72 titlepage-TU-HH.pdf[0] titlepage-TU-HH-1.png
+% convert -flatten -density 72x72 titlepage-KIT.pdf[0] titlepage-KIT-1.png
+% convert -flatten -density 72x72 titlepage-JT-Aufsaetze.pdf[0] titlepage-JT-Aufsaetze-1.png
+% convert -flatten -density 72x72 titlepage-JT-Geschichte.pdf[0] titlepage-JT-Geschichte-1.png
+% convert -flatten -density 72x72 titlepage-JT-Typography.pdf[0] titlepage-JT-Typography-1.png
+% convert -flatten -density 72x72 titlepage-WWUM.pdf[2] titlepage-WWUM-3.png
+% \end{verbatim}
+% \endgroup
+%
+% \iffalse meta-comment
+%</manual|README>
+%</doc|README>
+% \fi^^A meta-comment
+%
+% \Finale
+%
+\endinput
+
+%% Local Variables:
+%% TeX-master: t
+%% TeX-PDF-mode: t
+%% flyspell-mode: t
+%% End:
