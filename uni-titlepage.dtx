@@ -1275,7 +1275,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
     \Ifstr{#1}{seminar}{\subject{\seminarpapername}}{%
       \Ifstr{#1}{studentresearch}{\subject{\studentresearchname}}{%
         \Ifstr{#1}{diploma}{\subject{\diplomathesisname}}{%
-          \Ifstr{#1}{academicgrade}{\subject{\academicgradethesisname}}{%
+          \Ifstr{#1}{degree}{\subject{\degreethesisname}}{%
             \Ifstr{#1}{master}{\subject{\masterthesisname}}{%
               \Ifstr{#1}{bachelor}{\subject{\bachelorthesisname}}{%
                 \subject{#1}%
@@ -1554,7 +1554,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
 % \begin{macro}{\diplomathesisname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
-% \begin{macro}{\academicgradethesisname}
+% \begin{macro}{\degreethesisname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
 % \begin{macro}{\masterthesisname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
@@ -1596,7 +1596,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \providecommand*{\seminarpapername}{Seminar Paper}
 \providecommand*{\studentresearchname}{Student Research Project}
 \providecommand*{\diplomathesisname}{Diploma Thesis}
-\providecommand*{\academicgradethesisname}{Academicgrade Thesis}
+\providecommand*{\degreethesisname}{Degree Thesis}
 \providecommand*{\masterthesisname}{Master Thesis}
 \providecommand*{\bachelorthesisname}{Bachelor Thesis}
 \providecommand*{\presentedbyname}{presented by}
@@ -1631,7 +1631,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\diplomathesisname}{Diploma Thesis}%
 \providecaptionname{american,australian,british,canadian,%
-  english,newzealand,UKenglish,USenglish}{\academicgradethesisname}{Academicgrade Thesis}%
+  english,newzealand,UKenglish,USenglish}{\degreethesisname}{Degree Thesis}%
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\masterthesisname}{Master Thesis}%
 \providecaptionname{american,australian,british,canadian,%
@@ -1680,7 +1680,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\diplomathesisname}{Diplomarbeit}%
 \providecaptionname{german,ngerman,austrian,naustrian,%
-  swissgerman,nswissgerman}{\academicgradethesisname}{Dissertation}%
+  swissgerman,nswissgerman}{\degreethesisname}{Dissertation}%
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\masterthesisname}{Master-Arbeit}%
 \providecaptionname{german,ngerman,austrian,naustrian,%
@@ -2897,7 +2897,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
     Entrepreneurship und Innovation},
   professor=\textcolor{red}{Prof.\,Dr.\,Michael Schefcyk},
 %  subject=diploma, % one of: project, seminar, studentresearch,
-%                   % diploma, academicgrade, master, bachelor, or ...
+%                   % diploma, degree, master, bachelor, or ...
   subject=\textcolor{red}{Seminararbeit\\(bzw. Diplomarbeit)},% ... direct value
   student=\textcolor{red}{Vorname und Name},
   discipline=\textcolor{red}{Studienrichtung},
