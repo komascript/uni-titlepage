@@ -1,5 +1,6 @@
-## result of: l3build ctan
+## l3build generated files
 *-ctan.zip
+build/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
