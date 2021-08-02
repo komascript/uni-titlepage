@@ -14,7 +14,7 @@
     https://www.latex-project.org/lppl.txt
 ]]
 
-release_info = "2021/07/29 v0.6"
+release_info = "2021/08/02 v0.6"
 
 -- Bundle and modules
 
@@ -24,14 +24,14 @@ unpackfiles  = { "uni-titlepage.dtx" }
 
 installfiles = { "*.sty", "*.def" }
 
-typesetdemofiles = { "titlepage-*.ltx" }
+typesetdemofiles = { "titlepage-*.tex" }
 
 demofiles    = { "titlepage-*.pdf", typesetdemofiles.unpack }
 
 typesetfiles = { "uni-titlepage.drv" }
 
-docfiles     = { "KITLogo_RGB.pdf",
-                 typesetfiles.unpack, demofiles.unpack }
+docfiles     = { "KITLogo_RGB.pdf", "titlepage-*.tex", "titlepage-*.pdf",
+                 typesetfiles.unpack }
 
 -- Package
 
@@ -46,7 +46,7 @@ uploadconfig = {
   version     = release_info,
   author      = "Markus Kohm",
   licencse    = "lppl1.3c",
-  summary     = "extended uni-titlepages (with several demo configurations)",
+  summary     = "extended universal titlepages (with several demo configurations)",
   topic       = "uni-titlepage",
   ctanPath    = "/macros/latex/contrib/uni-titlepage",
   bugtracker  = "https://github.com/komascript/uni-titlepage/issues",

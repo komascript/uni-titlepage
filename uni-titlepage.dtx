@@ -66,20 +66,21 @@
   .dtx%
 %</dtx>
 %<ins>  .ins%
-%<doc&!manual>  .ltx%
+%<doc&!manual>  .tex%
 %<doc&manual>  .drv%
 %<driver> .def%
 %</dtx|ins|doc|driver>
 %<package>\ProvidesPackage{uni-titlepage%
 %<*dtx|ins|doc|driver|package|README>
 %<README># `uni-titlepage`
-%<README>Copyright (c) Markus Kohm <komascript at gmx.info>  
+%<README>
+%<README>Copyright (c) Markus Kohm <komascript at gmx.info>   
 %<*!README>
 }[%
 %</!README>
 %<README>
-%<README>Release:
-2021/07/29 v0.6
+%<README>Release: 2021/08/02 v0.6  
+%<!README>2021/08/02 v0.6
 %<README>
 KOMA presents the title page project
 %<*!README>
@@ -299,7 +300,7 @@ KOMA presents the title page project
 % style.
 % \begin{flushleft}
 % \parbox[b][.707\linewidth][t]{.475\linewidth}{\footnotesize The
-% page (in example \File{titlepage-DHBW.ltx}) is:
+% page (in example \File{titlepage-DHBW.tex}) is:
 %   \begin{enumerate}
 %   \item main title page with \texttt{titlehead}, \texttt{mainlogo}, 
 %     \texttt{title}, \texttt{subject}, \texttt{academicgrade}, \texttt{discipline},
@@ -326,7 +327,7 @@ KOMA presents the title page project
 % This is a style similar to the title pages of \KOMAScript{} classes.
 % \begin{flushleft}
 % \noindent\parbox[b][.707\linewidth][t]{.475\linewidth}{\footnotesize The
-% pages (in twoside example \File{titlepage-KOMAScript.ltx}) are:
+% pages (in twoside example \File{titlepage-KOMAScript.tex}) are:
 %   \begin{enumerate}
 %   \item defined by \texttt{extratitle}, which is not a package option but a
 %     style option. You may set it using \cs{TitleOption} or \cs{TitleOptions}
@@ -368,7 +369,7 @@ KOMA presents the title page project
 % This is a style similar to the one of the title of the \KOMAScript{} book.
 % \begin{flushleft}
 % \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize  The
-% pages (in twoside example \File{titlepage-Markus-1.ltx}) are:
+% pages (in twoside example \File{titlepage-Markus-1.tex}) are:
 %   \begin{enumerate}
 %   \item defined by \texttt{publisher}; may be omitted by
 %     \texttt{publisher=\{\}}.
@@ -408,7 +409,7 @@ KOMA presents the title page project
 % This style is not a real live style, but similar styles are often used:
 % \begin{flushleft}
 % \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
-% pages (in twoside example \File{titlepage-Markus-2.ltx}) are:
+% pages (in twoside example \File{titlepage-Markus-2.tex}) are:
 %   \begin{enumerate}
 %   \item defined by \texttt{extratitle}.
 %   \item empty and only in twoside mode with \texttt{extratitle} used.
@@ -454,7 +455,7 @@ KOMA presents the title page project
 % title head will not be placed at the page head but at the body.
 % \begin{flushleft}
 % \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
-% pages (in twoside example \File{titlepage-Spacer.ltx}) are:
+% pages (in twoside example \File{titlepage-Spacer.tex}) are:
 %   \begin{enumerate}
 %   \item defined by \texttt{extratitle}.
 %   \item empty and only in twoside mode with \texttt{extratitle} used.
@@ -496,7 +497,7 @@ KOMA presents the title page project
 % fot this several years ago. Only one title page is defined!
 %
 % \noindent\parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
-% page (in example \File{titlepage-TU-DD.ltx}) is:
+% page (in example \File{titlepage-TU-DD.tex}) is:
 %   \begin{enumerate}
 %   \item main title page with \texttt{university}, \texttt{faculty},
 %     \texttt{chair}, \texttt{professor}, \texttt{title}, \texttt{subject},
@@ -510,7 +511,7 @@ KOMA presents the title page project
 % true, an black border is put around the page:
 % \begin{flushleft}
 % \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
-%   page (in example \File{titlepage-TU-DD.ltx} with option
+%   page (in example \File{titlepage-TU-DD.tex} with option
 %   \texttt{blackborder}) is:
 %   \begin{enumerate}
 %   \item main title page with \texttt{university}, \texttt{faculty},
@@ -531,7 +532,7 @@ KOMA presents the title page project
 % was asked for this several years ago. Only two title pages are defined!
 % \begin{flushleft}
 % \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
-%   pages (in twoside example \File{titlepage-TU-HH.ltx}) are:
+%   pages (in twoside example \File{titlepage-TU-HH.tex}) are:
 %   \begin{enumerate}
 %   \item main title page with \texttt{title}, \texttt{subtitle},
 %     \texttt{university}, \texttt{academicgrade}, \texttt{subject}, \texttt{author},
@@ -565,7 +566,7 @@ KOMA presents the title page project
 % template made by the KIT itself. Only one title page is defined!
 % \begin{flushleft}
 % \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
-%   page (in example \File{titlepage-KIT.ltx}) is:
+%   page (in example \File{titlepage-KIT.tex}) is:
 %   \begin{enumerate}
 %   \item main title page with \texttt{titlehead}, \texttt{mainlogo},
 %     \texttt{title}, \texttt{subject}, \texttt{author},
@@ -602,7 +603,7 @@ KOMA presents the title page project
 % \texttt{extratitle}, \texttt{uppertitleback}, and \texttt{lowertitleback}.
 % \begin{flushleft}
 % \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
-%   page (in example \File{titlepage-JT-Aufsaetze.ltx}) is:
+%   page (in example \File{titlepage-JT-Aufsaetze.tex}) is:
 %   \begin{enumerate}
 %   \item main title page with \texttt{author}, \texttt{title},
 %     \texttt{publisher}, \texttt{rulewidth} and \texttt{rulesep} for width
@@ -624,7 +625,7 @@ KOMA presents the title page project
 % \texttt{extratitle}, \texttt{uppertitleback}, and \texttt{lowertitleback}.
 % \begin{flushleft}
 % \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
-%   page (in example \File{titlepage-JT-Geschichte.ltx}) is:
+%   page (in example \File{titlepage-JT-Geschichte.tex}) is:
 %   \begin{enumerate}
 %   \item main title page with \texttt{author}, \texttt{title},
 %     \texttt{publisher}, \texttt{place}, \texttt{rulewidth} and
@@ -653,7 +654,7 @@ KOMA presents the title page project
 % \texttt{lowertitleback}.
 % \begin{flushleft}
 % \parbox[b][.707\textwidth][t]{.475\textwidth}{\footnotesize The
-%   page (in example \File{titlepage-JT-Geschichte.ltx}) is:
+%   page (in example \File{titlepage-JT-Geschichte.tex}) is:
 %   \begin{enumerate}
 %   \item main title page with \texttt{author}, \texttt{title},
 %     \texttt{subtitle}, \texttt{place}, \texttt{date}, \texttt{publisher}.
@@ -675,7 +676,7 @@ KOMA presents the title page project
 %   \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-WWUM}}\nobreak
 %   \hspace{.025\textwidth}\nobreak
 %   \parbox[b][.7\textwidth][t]{.475\textwidth}{\footnotesize
-%     The pages (in example \File{tilepage-WWUM.ltx}) are:
+%     The pages (in example \File{tilepage-WWUM.tex}) are:
 %     \begin{enumerate}
 %     \item cover page with \texttt{author}, \texttt{title}, \cs{the}\cs{year}
 %     \item the backside of the cover page is empty if it exists
@@ -798,9 +799,10 @@ KOMA presents the title page project
 }
 
 \preamble
-Copyright (c) 2011-2021 by Markus Kohm <komascript(at)gmx.info>
+Copyright (c) 2009-2021 by Markus Kohm <komascript(at)gmx.info>
 
 This file was generated from file(s) of uni-titlepage distribution.
+
 ----------------------------------------------------------------------
 
 This work may be distributed and/or modified under the conditions of
@@ -842,18 +844,18 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \file{title-JT-Typography.def}{\from{uni-titlepage.dtx}{driver,JT-Typography}}%
   \file{title-WWUM.def}{\from{uni-titlepage.dtx}{driver,WWUM}}%
   \file{uni-titlepage.drv}{\from{uni-titlepage.dtx}{doc,manual}}%
-  \file{titlepage-DHBW.ltx}{\from{uni-titlepage.dtx}{doc,example,DHBW}}%
-  \file{titlepage-KOMAScript.ltx}{\from{uni-titlepage.dtx}{doc,example,KOMAScript}}%
-  \file{titlepage-Markus-1.ltx}{\from{uni-titlepage.dtx}{doc,example,Markus,1}}%
-  \file{titlepage-Markus-2.ltx}{\from{uni-titlepage.dtx}{doc,example,Markus,2}}%
-  \file{titlepage-Spacer.ltx}{\from{uni-titlepage.dtx}{doc,example,Spacer}}%
-  \file{titlepage-TU-DD.ltx}{\from{uni-titlepage.dtx}{doc,example,TU-DD}}%
-  \file{titlepage-TU-HH.ltx}{\from{uni-titlepage.dtx}{doc,example,TU-HH}}%
-  \file{titlepage-KIT.ltx}{\from{uni-titlepage.dtx}{doc,example,KIT}}%
-  \file{titlepage-JT-Aufsaetze.ltx}{\from{uni-titlepage.dtx}{doc,example,JT-Aufsaetze}}%
-  \file{titlepage-JT-Geschichte.ltx}{\from{uni-titlepage.dtx}{doc,example,JT-Geschichte}}%
-  \file{titlepage-JT-Typography.ltx}{\from{uni-titlepage.dtx}{doc,example,JT-Typography}}%
-  \file{titlepage-WWUM.ltx}{\from{uni-titlepage.dtx}{doc,example,WWUM}}%
+  \file{titlepage-DHBW.tex}{\from{uni-titlepage.dtx}{doc,example,DHBW}}%
+  \file{titlepage-KOMAScript.tex}{\from{uni-titlepage.dtx}{doc,example,KOMAScript}}%
+  \file{titlepage-Markus-1.tex}{\from{uni-titlepage.dtx}{doc,example,Markus,1}}%
+  \file{titlepage-Markus-2.tex}{\from{uni-titlepage.dtx}{doc,example,Markus,2}}%
+  \file{titlepage-Spacer.tex}{\from{uni-titlepage.dtx}{doc,example,Spacer}}%
+  \file{titlepage-TU-DD.tex}{\from{uni-titlepage.dtx}{doc,example,TU-DD}}%
+  \file{titlepage-TU-HH.tex}{\from{uni-titlepage.dtx}{doc,example,TU-HH}}%
+  \file{titlepage-KIT.tex}{\from{uni-titlepage.dtx}{doc,example,KIT}}%
+  \file{titlepage-JT-Aufsaetze.tex}{\from{uni-titlepage.dtx}{doc,example,JT-Aufsaetze}}%
+  \file{titlepage-JT-Geschichte.tex}{\from{uni-titlepage.dtx}{doc,example,JT-Geschichte}}%
+  \file{titlepage-JT-Typography.tex}{\from{uni-titlepage.dtx}{doc,example,JT-Typography}}%
+  \file{titlepage-WWUM.tex}{\from{uni-titlepage.dtx}{doc,example,WWUM}}%
   \nopreamble\nopostamble
   \file{README.md}{\from{uni-titlepage.dtx}{README}}%
 }%
@@ -3113,11 +3115,29 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \maketitle
 \begin{abstract}
 %</!README>
-%<README>------------------------------------------------------------------------
+%<*README>
+----------------------------------------------------------------------------
+
+This work may be distributed and/or modified under the conditions of
+the LaTeX Project Public License, version 1.3c of the license.
+The latest version of this license is in
+    http://www.latex-project.org/lppl.txt
+and version 1.3c or later is part of all distributions of LaTeX 
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status "maintained".
+
+The Current Maintainer and author of this work is Markus Kohm.
+
+----------------------------------------------------------------------------
+
+# ABSTRACT
+
+%</README>
 Creation of title pages is something most authors should not have to do. 
 But reality is not perfect, so a lot of authors have to do it.  In 2009
-%<!README>KOMA started the titlepage project at \url{https://komascript.de/titlepage}
-%<README>KOMA started the titlepage project at <https://komascript.de/titlepage>
+%<!README>KOMA started the title page project at \url{https://komascript.de/titlepage}
+%<README>KOMA started the title page project at <https://komascript.de/titlepage>
 to collect real title pages and implement them with a well defined interface.
 %<!README>In 2021 the project has been moved to \url{https://github.com/komascript/uni-titlepage}
 %<README>In 2021 the project has been moved to <https://github.com/komascript/uni-titlepage>
@@ -3129,7 +3149,7 @@ difficult.  But maybe the guys of the title page project would help you.  Just
 ask!
 %<*README>
 
-# Unpacking and Installation
+# Unpacking and Installation for Developers and Distributors
 
 To unpack and install all files, you can download the source from github
 and then run:
@@ -3140,9 +3160,43 @@ Afterwards you can build the manual and the PDFs of the examples using:
 
     l3build doc
 
-However, if your TeX distributor already distributes a ready for installation
-package, you do not need and should not create files and copy them yourself.
-Just use the package manager of your TeX distribution to install the package.
+Please note, all files `titlepage-*.tex` and `titlepage-*.pdf` as well as
+`uni-titlepage.pdf` are part of the documentation and should be placed in
+`doc/latex/uni-titlepage/` of the corresponding TDS tree.
+    
+# Unpacking and Installation for Users
+    
+Users can use the installation described at
+[Unpacking and Installation for Developers and Distributors]. However, if
+your TeX distributor already distributes a ready for installation package, you
+do not need and should not create files and copy them yourself. Just use the
+package manager of your TeX distribution to install the package.
+
+# How to Contribute
+
+If you have made a title definition that is not specific for a single project
+but could be of interest for other users, you can either
+
+* make your own `uni-titlepage-FOO` package with its own manual and [upload it
+to ctan](https://www.ctan.org/upload)
+* contribute in adding it to `uni-titlepage`.
+
+The first option has the advantage, that you are free. There won't be any code
+reviews by the `uni-titlepage` developers. You don't need to use the same
+coding style. There is not need to accept the license of `uni-titlepage`
+etc. But in this case you have to take care to keep it compatible with future
+releases of `uni-titlepage` and it will not be presented in the
+`uni-titlepage` manual.
+
+The second option has the advantage, that after accepting your code, the
+`uni-titlepage` developers will try to keep it working even if they change
+`uni-titlepage`. But there are several restrictions to your code, before it
+will be accepted. For example, you should always try to use general options,
+if possible. *Static text* (not handled by options) should be configurable via
+`\newcaptionname`, `\providecaptionname` and `\renewcaptionname` and should be
+available at least in English and German (but if we can, we help in
+translating them). The coding style and quality is also a criterion.
+
 %</README>
 %<*!README>
 \end{abstract}
@@ -3150,26 +3204,6 @@ Just use the package manager of your TeX distribution to install the package.
 \end{document}
 %</!README>
 %    \end{macrocode}
-%
-% \subsection{Additional Note}
-% To generate the images used in the wiki, you could use ImageMagick:
-%
-% \begingroup\footnotesize
-% \begin{verbatim}
-% convert -flatten -density 72x72 titlepage-DHBW.pdf[0] titlepage-DHBW-1.png
-% convert -flatten -density 72x72 titlepage-KOMAScript.pdf[2] titlepage-KOMAScript-3.png
-% convert -flatten -density 72x72 titlepage-Markus-1.pdf[2] titlepage-Markus-1-3.png
-% convert -flatten -density 72x72 titlepage-Markus-2.pdf[2] titlepage-Markus-2-3.png
-% convert -flatten -density 72x72 titlepage-Spacer.pdf[2] titlepage-Spacer-3.png
-% convert -flatten -density 72x72 titlepage-TU-DD.pdf[0] titlepage-TU-DD-1.png
-% convert -flatten -density 72x72 titlepage-TU-HH.pdf[0] titlepage-TU-HH-1.png
-% convert -flatten -density 72x72 titlepage-KIT.pdf[0] titlepage-KIT-1.png
-% convert -flatten -density 72x72 titlepage-JT-Aufsaetze.pdf[0] titlepage-JT-Aufsaetze-1.png
-% convert -flatten -density 72x72 titlepage-JT-Geschichte.pdf[0] titlepage-JT-Geschichte-1.png
-% convert -flatten -density 72x72 titlepage-JT-Typography.pdf[0] titlepage-JT-Typography-1.png
-% convert -flatten -density 72x72 titlepage-WWUM.pdf[2] titlepage-WWUM-3.png
-% \end{verbatim}
-% \endgroup
 %
 % \iffalse meta-comment
 %</manual|README>

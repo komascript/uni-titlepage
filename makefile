@@ -36,8 +36,9 @@ doc: $(SRC)
 	l3build doc
 
 dist: $(SRC)
-	l3build ctan
+	l3build unpack
 	cp build/unpacked/README.md .
+	l3build ctan
 	zip uni-titlepage-ctan.zip -d uni-titlepage/titlepage-*.pdf
 
 clean:
