@@ -2,7 +2,9 @@
 
 Copyright (c) Markus Kohm <komascript at gmx.info>
 
-Release: 2021/08/02 v0.6
+Release: 2021/08/16 v0.6
+
+License: LPPL 1.3c
 
 KOMA presents the title page project
 
@@ -46,9 +48,20 @@ Afterwards you can build the manual and the PDFs of the examples using:
 
     l3build doc
 
-Please note, all files `titlepage-*.tex` and `titlepage-*.pdf` as well as
+As an alternative you can use the CTAN source distribution. This already
+contains the user manual and the PDFs of the example files. So you only have
+to run
+
+    tex uni-titlepage.dtx
+
+to generate the package file `uni-titlepage.sty`, the title definition files
+`title-*.def` and the example titlepages `titlepage-*.tex`.
+
+Please note, the `title-*.def` files are run-time files. Together with
+`uni-titlepage.sty` they have to be placed in `tex/latex/uni-titlepage` inside
+a TDS tree. All files `titlepage-*.tex` and `titlepage-*.pdf` as well as
 `uni-titlepage.pdf` are part of the documentation and should be placed in
-`doc/latex/uni-titlepage/` of the corresponding TDS tree.
+`doc/latex/uni-titlepage/` of the TDS tree.
 
 # Unpacking and Installation for Users
 
@@ -64,7 +77,7 @@ If you have made a title definition that is not specific for a single project
 but could be of interest for other users, you can either
 
 * make your own `uni-titlepage-FOO` package with its own manual and [upload it
-to ctan](https://www.ctan.org/upload)
+to ctan](https://www.ctan.org/upload),
 * contribute in adding it to `uni-titlepage`.
 
 The first option has the advantage, that you are free. There won't be any code

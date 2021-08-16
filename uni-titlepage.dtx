@@ -46,10 +46,11 @@
 %</dtx|ins>
 %<*dtx|ins|doc|driver>
 \ProvidesFile{%
-  title%
-%<*!driver>
-  page%
-%</!driver>
+%<*dtx|manual>
+  uni-titlepage%
+%</dtx|manual>
+%<driver>  title%
+%<example>  titlepage%
 %<DHBW>  -DHBW%
 %<KOMAScript>  -KOMAScript%
 %<Markus&1>  -Markus-1%
@@ -79,8 +80,10 @@
 }[%
 %</!README>
 %<README>
-%<README>Release: 2021/08/02 v0.6  
-%<!README>2021/08/02 v0.6
+%<README>Release: 2021/08/16 v0.6
+%<README>
+%<README>License: LPPL 1.3c   
+%<!README>2021/08/16 v0.6
 %<README>
 KOMA presents the title page project
 %<*!README>
@@ -763,7 +766,8 @@ KOMA presents the title page project
 % \changes{v0.1}{2009/01/01}{Start of project}
 % \changes{v0.2}{2011/06/03}{First version using \texttt{docstrip}}
 %
-% Note: To generate all files, developers and beta testers should simply call
+% Note: To generate all files, developers and beta testers should simply use
+% the source from \url{https://github.com/komascript/uni-titlepage} and call
 % \begin{verbatim}
 % l3build unpack
 % l3build doc
@@ -775,6 +779,14 @@ KOMA presents the title page project
 % \end{verbatim}
 % to install them in \texttt{TEXMFHOME}. See the manual of \Package{l3build}
 % for more information.
+%
+% As an alternative you can use the source distribution from CTAN and run:
+% \begin{verbatim}
+% tex uni-titlepage.dtx
+% \end{verbatim}
+% The documentation is usually part of the source distribution at CTAN. Note,
+% that all the generated \texttt{tex} files are example files. Do not copy
+% them to the run-time files but the documentation folder!
 %
 % \subsection{The Installation Driver `\File{uni-titlepage.ins}'}
 % \label{sec:The-Installation-Driver-uni-titlepage.ins}
@@ -826,10 +838,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % But while the dtx file is the ins file itself, we will never generate this
 % file.
-% \begin{verbatim}
-%  \file{uni-titlepage.ins}{\from{uni-titlepage.dtx}{ins}}% not needed
-% \end{verbatim}\vskip-\baselineskip
 %    \begin{macrocode}
+%  \file{uni-titlepage.ins}{\from{uni-titlepage.dtx}{ins}}% not needed
+  \file{uni-titlepage.drv}{\from{uni-titlepage.dtx}{doc,manual}}%
   \file{uni-titlepage.sty}{\from{uni-titlepage.dtx}{package}}%
   \file{title-DHBW.def}{\from{uni-titlepage.dtx}{driver,DHBW}}%
   \file{title-KOMAScript.def}{\from{uni-titlepage.dtx}{driver,KOMAScript}}%
@@ -843,7 +854,6 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \file{title-JT-Geschichte.def}{\from{uni-titlepage.dtx}{driver,JT-Geschichte}}%
   \file{title-JT-Typography.def}{\from{uni-titlepage.dtx}{driver,JT-Typography}}%
   \file{title-WWUM.def}{\from{uni-titlepage.dtx}{driver,WWUM}}%
-  \file{uni-titlepage.drv}{\from{uni-titlepage.dtx}{doc,manual}}%
   \file{titlepage-DHBW.tex}{\from{uni-titlepage.dtx}{doc,example,DHBW}}%
   \file{titlepage-KOMAScript.tex}{\from{uni-titlepage.dtx}{doc,example,KOMAScript}}%
   \file{titlepage-Markus-1.tex}{\from{uni-titlepage.dtx}{doc,example,Markus,1}}%
@@ -3160,9 +3170,20 @@ Afterwards you can build the manual and the PDFs of the examples using:
 
     l3build doc
 
-Please note, all files `titlepage-*.tex` and `titlepage-*.pdf` as well as
+As an alternative you can use the CTAN source distribution. This already
+contains the user manual and the PDFs of the example files. So you only have
+to run
+
+    tex uni-titlepage.dtx
+
+to generate the package file `uni-titlepage.sty`, the title definition files
+`title-*.def` and the example titlepages `titlepage-*.tex`.
+    
+Please note, the `title-*.def` files are run-time files. Together with
+`uni-titlepage.sty` they have to be placed in `tex/latex/uni-titlepage` inside
+a TDS tree. All files `titlepage-*.tex` and `titlepage-*.pdf` as well as
 `uni-titlepage.pdf` are part of the documentation and should be placed in
-`doc/latex/uni-titlepage/` of the corresponding TDS tree.
+`doc/latex/uni-titlepage/` of the TDS tree.
     
 # Unpacking and Installation for Users
     
@@ -3178,7 +3199,7 @@ If you have made a title definition that is not specific for a single project
 but could be of interest for other users, you can either
 
 * make your own `uni-titlepage-FOO` package with its own manual and [upload it
-to ctan](https://www.ctan.org/upload)
+to ctan](https://www.ctan.org/upload),
 * contribute in adding it to `uni-titlepage`.
 
 The first option has the advantage, that you are free. There won't be any code

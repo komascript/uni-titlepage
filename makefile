@@ -31,15 +31,13 @@ all: unpack doc
 
 unpack: $(SRC)
 	l3build unpack
+	cp build/unpacked/README.md .
 
 doc: $(SRC)
 	l3build doc
 
-dist: $(SRC)
-	l3build unpack
-	cp build/unpacked/README.md .
+dist: unpack
 	l3build ctan
-	zip uni-titlepage-ctan.zip -d uni-titlepage/titlepage-*.pdf
 
 clean:
 	l3build clean

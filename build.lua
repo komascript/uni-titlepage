@@ -14,24 +14,23 @@
     https://www.latex-project.org/lppl.txt
 ]]
 
-release_info = "2021/08/02 v0.6"
+release_info = "2021/08/16 v0.6"
 
 -- Bundle and modules
 
-module       = "uni-titlepage"
+module           = "uni-titlepage"
 
-unpackfiles  = { "uni-titlepage.dtx" }
+sourcefiles      = { "uni-titlepage.dtx" }
 
-installfiles = { "*.sty", "*.def" }
+unpackfiles      = sourcefiles
+
+installfiles     = { "uni-titlepage.sty", "title-*.def" }
 
 typesetdemofiles = { "titlepage-*.tex" }
 
-demofiles    = { "titlepage-*.pdf", typesetdemofiles.unpack }
+typesetfiles     = { "uni-titlepage.drv" }
 
-typesetfiles = { "uni-titlepage.drv" }
-
-docfiles     = { "KITLogo_RGB.pdf", "titlepage-*.tex", "titlepage-*.pdf",
-                 typesetfiles.unpack }
+docfiles         = { "README.md" }
 
 -- Package
 
