@@ -63,6 +63,7 @@
 %<JT-Geschichte>  -JT-Geschichte%
 %<JT-Typography>  -JT-Typography%
 %<WWUM>  -WWUM%
+%<UKoLa>  -UKoLa%
 %<*dtx>
   .dtx%
 %</dtx>
@@ -80,10 +81,10 @@
 }[%
 %</!README>
 %<README>
-%<README>Release: 2021/08/16 v0.6
+%<README>Release: 2021/09/01 v0.7
 %<README>
 %<README>License: LPPL 1.3c   
-%<!README>2021/08/16 v0.6
+%<!README>2021/09/01 v0.7
 %<README>
 KOMA presents the title page project
 %<*!README>
@@ -176,88 +177,96 @@ KOMA presents the title page project
 % \endfoot
 % \bottomrule
 % \endlastfoot
-% advisor    & TU-DD              & if your personal advisor differs from the
+% advisor    & TU-DD, UKoLa       & if your personal advisor differs from the
 %                                   advising professor, this is the name of
 %                                   the advisor
 % \\
 % author     & \normalfont\emph{every style}
 %                                 & the authors, with some styles (currently
-%                                   not with \texttt{DHBW}) you may seperate
-%                                   multiple authors by \cs{and}
+%                                   not with \texttt{DHBW} or \texttt{UKoLa})
+%                                   you may seperate multiple authors by
+%                                   \cs{and}
 % \tabularnewline
-% chair      & TU-DD, KIT, WWUM   & the chair of the faculty of the university
-%                                   where you've made or presented your work
+% chair      & TU-DD, KIT, WWUM, UKoLa
+%                                 & the chair or institure of the faculty of
+%                                   the university where you've made or
+%                                   presented your work
 % \tabularnewline
 % company    & DHBW               & some works are made not only at a
 %                                   university but in cooperation with a
 %                                   company; at Duale Hochschule
 %                                   Baden-W\"urttemberg this is the default
 %                                   case
-% \\
+% \tabularnewline
 % course     & DHBW               & the shortcut for your discipline or course
-% \\
+% \tabularnewline
 % date       & DHBW, KIT, KOMAScript, Markus-1, Markus-2, Spacer, TU-HH,
 %              TU-DD, JT-Typography, WWUM
 %                                 & the documents main date, this may by,
 %                                   e.\,g., the release date, the semester of a
 %                                   thesis or any other most valid date
-% \\
+% \tabularnewline
 % dedication & KOMAScript, Markus-1, Markus-2, Spacer
 %                                 & sometimes it is nice to dedicate the work
 %                                   to someone, e.g., your wife, your
 %                                   children, your grandmother or your first
 %                                   love
-% \\
+% \tabularnewline
 % academicgrade
-%            & DHBW, TU-HH, WUMM  & the academic grade or degree you
+%            & DHBW, TU-HH, WUMM, UKoLa
+%                                 & the academic grade or degree you
 %                                   reach with the work
-% \\
+% \tabularnewline
 % discipline & DHBW, TU-DD, WUMM  & the discipline in which you've made your
 %                                   work or reach your academic grade
-% \\
+% \tabularnewline
 % duration   & DHBW               & the processing time for your work
-% \\
+% \tabularnewline
 % faculty    & TU-DD, KIT, WUMM   & the faculty of the university where you've
 %                                   made or presented your work
-% \\
+% \tabularnewline
 % homepage   & KIT                & the www-address of the homepage
-% \\
-% mainlogo   & DHBW, KIT          & a logo at the main title (currently used
+% \tabularnewline
+% mainlogo   & DHBW, KIT, UKoLa   & a logo at the main title (currently used
 %                                   for the DHBW or the KIT logo at the
-%                                   default of \texttt{titlehead})
-% \\
+%                                   default of \texttt{titlehead} and the
+%                                   main logo of style \texttt{UKoLa})
+% \tabularnewline
+% secondlogo & UKoLa              & a secondary logo
+% \tabularnewline
 % matriculationnumber
 %            & DHBW, TU-DD        & if you were a student while you've made
 %                                   the work, this is you number
-% \\
+% \tabularnewline
 % oralexaminationdate
 %            & TU-HH, WUMM        & sometimes the date of the oral examination
 %                                   is not the main date but has to be shown
 %                                   too
-% \\
-% place      & DHBW, TU-HH, JT-Geschichte, JT-Typography, WUMM
+% \tabularnewline
+% place      & DHBW, TU-HH, JT-Geschichte, JT-Typography, WUMM, UKoLa
 %                                 & the place, in general the city, where
 %                                   you've made the work or where the Duale
 %                                   Hochschule or the publisher resides
-% \\
+% \tabularnewline
 % professor  & TU-DD, WUMM        & the name of the professor who advised you
 %                                   during your work
-% \\
+% \tabularnewline
 % publisher  & KOMAScript, Markus-1, Markus-2, Spacer, JT-Aufsaetze,
 %              JT-Geschichte, JT-Typography
 %                                 & most written works have a publisher
-% \\
-% referee    & DHBW, TU-HH        & every academic work will be referred;
+% \tabularnewline
+% referee    & DHBW, TU-HH, UKoLa & every academic work will be referred;
 %                                   with some styles (currently
-%                                   \texttt{TU-HH}, \texttt{WWUM}) multiple
+%                                   \texttt{TU-HH}, \texttt{WWUM},
+%                                   \texttt{UKoLa}) multiple
 %                                   referees may be seperated with \cs{and}
-% \\
+% \tabularnewline
 % sience     & WWUM               & kind of sience,
 %                                   e.\,g., ``Naturwissenschaften''
-% \\
+% \tabularnewline
 % student    & \normalfont\emph{see \texttt{author}}
 %                                 & same like \texttt{author}
-% \\
+% \tabularnewline
 % subject    & \normalfont\emph{every style}
 %                                 & the kind of work, there are special
 %                                   predefined subjects; if you use one of
@@ -268,21 +277,21 @@ KOMA presents the title page project
 %                                   a language dependend replacement will
 %                                   be done; to avoid this, you may set the
 %                                   value in parentesis
-% \\
+% \tabularnewline
 % subtitle   & KOMAScript, Markus-1, Markus-2, Spacer, TU-HH           
 %                                 & the sub-title of the document
-% \\
+% \tabularnewline
 % title      & \normalfont\emph{every style} 
 %                                 & the main title of the document
-% \\
+% \tabularnewline
 % titlehead  & DHBW, KOMAScript, Markus-2, Spacer, KIT
 %                                 & page head over the main title of the
 %                                   document
-% \\
+% \tabularnewline
 % university & DHBW, TU-DD, TU-HH, KIT, WWUM
 %                                 & the university where you've made or
 %                                   presented your work
-% \\
+% \tabularnewline
 % \end{xltabular}
 %
 % Let's have a look at the already defined title page styles. You should find
@@ -693,7 +702,35 @@ KOMA presents the title page project
 %   \frame{\includegraphics[page=3,width=.5\textwidth]{titlepage-WWUM}}%^^A
 %   \frame{\includegraphics[page=4,width=.5\textwidth]{titlepage-WWUM}}%^^A
 % \end{flushleft}
-
+%
+% \clearpage
+% \subsection{Style \File{UKoLa}}
+% \label{sec:Style-UKoLa}
+% \changes{v0.7}{2021/08/18}{new style \texttt{UKoLa}}
+%
+% In 2007 several students asked me for the title of the Universität
+% Koblenz-Landau. At that time, I've made a package for the title they asked
+% for. The package has been published at
+% \url{https://komascript.de/unikoblenzlandau} only. In 2021, after I've
+% published \Package{uni-titlepage}, it was time to implement this title also
+% as a title style definition. Note, this is not an official style of the
+% University Koblenz-Landau. Several referees can be separated by
+% \cs{and}. Female referees should be prefixed by \textsf{[f]}.
+% \begin{flushleft}
+% \parbox[b][.707\linewidth][t]{.475\linewidth}{\footnotesize The
+% page (in example \File{titlepage-UKoLa.tex}) is:
+%   \begin{enumerate}
+%   \item main title page with \texttt{mainlogo}, \texttt{secondlogo},
+%     \texttt{title}, \texttt{subject}, \texttt{academicgrade},
+%     \texttt{chair}, \texttt{dicipline}, \texttt{place}, \texttt{author},
+%     \texttt{referee}, and \texttt{date}.
+%   \end{enumerate}
+% }\hspace{0.025\linewidth}\nobreak
+% \frame{\includegraphics[page=1,width=.475\linewidth]{titlepage-UKoLa}}
+% \end{flushleft}
+% Note: The upper left corner is the logo placeholder. If you'd download the
+% logo from \url{http://www.uni-koblenz-landau.de/logo.png} and save it with
+% the name \verb|uni-koblenz-landau.png|, it would be used automaticly. 
 %
 % \clearpage
 %
@@ -854,6 +891,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \file{title-JT-Geschichte.def}{\from{uni-titlepage.dtx}{driver,JT-Geschichte}}%
   \file{title-JT-Typography.def}{\from{uni-titlepage.dtx}{driver,JT-Typography}}%
   \file{title-WWUM.def}{\from{uni-titlepage.dtx}{driver,WWUM}}%
+  \file{title-UKoLa.def}{\from{uni-titlepage.dtx}{driver,UKoLa}}%
   \file{titlepage-DHBW.tex}{\from{uni-titlepage.dtx}{doc,example,DHBW}}%
   \file{titlepage-KOMAScript.tex}{\from{uni-titlepage.dtx}{doc,example,KOMAScript}}%
   \file{titlepage-Markus-1.tex}{\from{uni-titlepage.dtx}{doc,example,Markus,1}}%
@@ -866,6 +904,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \file{titlepage-JT-Geschichte.tex}{\from{uni-titlepage.dtx}{doc,example,JT-Geschichte}}%
   \file{titlepage-JT-Typography.tex}{\from{uni-titlepage.dtx}{doc,example,JT-Typography}}%
   \file{titlepage-WWUM.tex}{\from{uni-titlepage.dtx}{doc,example,WWUM}}%
+  \file{titlepage-UKoLa.tex}{\from{uni-titlepage.dtx}{doc,example,UKoLa}}%
   \nopreamble\nopostamble
   \file{README.md}{\from{uni-titlepage.dtx}{README}}%
 }%
@@ -1410,6 +1449,18 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \end{option}
 % \end{macro}
 % \end{macro}
+% \begin{macro}{\secondlogo}
+% \changes{v0.7}{2021/08/18}{new}
+% \begin{macro}{\@secondlogo}
+% \changes{v0.7}{2021/08/18}{new (internal)}
+% \begin{option}{secondlogo}
+% \changes{v0.7}{2021/08/18}{new}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{secondlogo}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{macro}
 % \begin{macro}{\oralexaminationdate}
 % \begin{macro}{\@oralexaminationdate}
 % \begin{option}{oralexaminationdate}
@@ -1556,51 +1607,57 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 %
 % \begin{macro}{\chairmanname}
-% \changes{v0.5}{2016/06/21}{new}%^^A
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5}{2016/06/21}{new}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\projectpapername}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\seminarpapername}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\studentreserchname}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\diplomathesisname}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\degreethesisname}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\masterthesisname}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\bachelorthesisname}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\presentedbyname}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\advisorname}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\thename}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\ofthename}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\fromname}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\fromplacename}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\malerefereename}
-% \changes{v0.5}{2016/06/21}{new}%^^A
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5}{2016/06/21}{new}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\femalerefereename}
-% \changes{v0.5}{2016/06/21}{new}%^^A
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5}{2016/06/21}{new}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
+% \begin{macro}{\ordinalmalerefereename}
+% \changes{v0.7}{2021/08/18}{new}
+% \begin{macro}{\ordinalfemalerefereename}
+% \changes{v0.7}{2021/08/18}{new}
 % \begin{macro}{\refereename}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\oralexaminationdatename}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\ordinal}
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
 % \begin{macro}{\maleordinal}
-% \changes{v0.5}{2016/06/21}{new}%^^A
+% \changes{v0.5}{2016/06/21}{new}
 % \begin{macro}{\femaleordinal}
-% \changes{v0.5}{2016/06/21}{new}%^^A
-% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}%^^A
+% \changes{v0.5}{2016/06/21}{new}
+% \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
+% \begin{macro}{\indatename}
+% \changes{v0.7}{2021/08/18}{new}
 % Language dependent terms:
 %    \begin{macrocode}
 \providecommand*{\chairmanname}{Chairman}
@@ -1620,6 +1677,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \providecommand*{\refereename}{Referee}
 \providecommand*{\femalerefereename}{\refereename}
 \providecommand*{\malerefereename}{\refereename}
+\providecommand*{\ordinalmalerefereename}{\englishordinalmalerefereename}
+\providecommand*{\ordinalfemalerefereename}{\englishordinalfemalerefereename}
 \providecommand*{\oralexaminationdatename}{Date of Oral Examination}
 \providecommand*{\atthename}{at}
 \providecommand*{\durationname}{Processing Time}
@@ -1631,6 +1690,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \newcommand*{\ordinal}{\englishordinal}
 \newcommand*{\femaleordinal}{\ordinal}
 \newcommand*{\maleordinal}{\ordinal}
+\providecommand*{\indatename}{in}
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\chairmanname}{Chairmain}%
 \providecaptionname{american,australian,british,canadian,%
@@ -1666,6 +1726,12 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\refereename}{Referee}%
 \providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\ordinalmalerefereename}{%
+  \englishordinalmalerefereename}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\ordinalfemalerefereename}{%
+  \englishordinalfemalerefereename}%
+\providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\oralexaminationdatename}{Date of
   Oral Examination}%
 \providecaptionname{american,australian,british,canadian,%
@@ -1681,6 +1747,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\examinationdatename}{Date of
   Examination}%
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\indatename}{in}%
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\chairmanname}{Dekan/Dekanin}%
 \providecaptionname{german,ngerman,austrian,naustrian,%
@@ -1718,6 +1786,12 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\refereename}{Gutachter}%
 \providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\ordinalmalerefereename}{%
+  \germanordinalmalerefereename}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\ordinalfemalerefereename}{%
+  \germanordinalfemalerefereename}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\femalerefereename}{Gutachterin}%
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\oralexaminationdatename}{Datum der m\"undlichen
@@ -1734,7 +1808,75 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   swissgerman,nswissgerman}{\examinationname}{Pr\"ufung}%
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\examinationdatename}{Tag der Pr\"ufung}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\indatename}{im}%
 %    \end{macrocode}
+% \begin{macro}{\englishordinalmalerefereename}
+% \changes{v0.7}{2021/08/18}{new}
+%    \begin{macrocode}
+\newcommand*{\englishordinalmalerefereename}[1]{%
+  \englishordinal{#1} \refereename%
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\englishordinalfemalerefereename}
+% \changes{v0.7}{2021/08/18}{new}
+%    \begin{macrocode}
+\newcommand*{\englishordinalfemalerefereename}[1]{%
+  \englishordinalmalereferename{#1}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\germanordinalmalerefereename}
+% \changes{v0.7}{2021/08/18}{new}
+%    \begin{macrocode}
+\newcommand*{\germanordinalmalerefereename}[1]{%
+  \ifnum #1<\@ne
+    \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
+      This package does only define German ordinal names for referees from 1}%
+  \else
+    \ifcase #1\or Erstgutachter\or Zweitgutachter\or Drittgutachter%
+    \or Viertgutachter\else
+      \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
+        This package does only define German ordinal names for referees up
+        to 4}%
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\germanordinalfemalerefereename}
+% \changes{v0.7}{2021/08/18}{new}
+%    \begin{macrocode}
+\newcommand*{\germanordinalfemalerefereename}[1]{%
+  \germanordinalfemalerefereename{#1}in%
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\germanordinalmalecorrectorname}
+% \changes{v0.7}{2021/08/18}{new}
+%    \begin{macrocode}
+\newcommand*{\germanordinalmalecorrectorname}[1]{%
+  \ifnum #1<\@ne
+    \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
+      This package does only define German ordinal names for correctors from 1}%
+  \else
+    \ifcase #1\or Erstkorrektor\or Zweitkorrektor\or Drittkorrektor%
+    \or Viertkorrektor\else
+      \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
+        This package does only define German ordinal names for correctors up
+        to 6}%
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\germanordinalfemalecorrectorname}
+% \changes{v0.7}{2021/08/18}{new}
+%    \begin{macrocode}
+\newcommand*{\germanordinalfemalecorrectorname}[1]{%
+  \germanordinalmalecorrectorname{#1}in%
+}
+%    \end{macrocode}
+% \end{macro}
 % \begin{macro}{\englishordinal}
 %    \begin{macrocode}
 \newcommand*{\englishordinal}[1]{%
@@ -1743,12 +1885,12 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \else
     \ifnum #1<\@ne
       \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
-        This package does only define english ordinals from 1}%
+        This package does only define English ordinals from 1}%
     \else
       \ifcase #1\or 1st\or 2nd\or 3rd\or 4th\or 5th\or 6th\or 7th\or 8th\or
         9th\or 10th\else
         \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
-          This package does only define english ordinals from 1 to
+          This package does only define English ordinals from 1 to
           10.\MessageBreak
           You may load package `engord' to improve support of english
           ordinals}%
@@ -1791,6 +1933,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \fi
 }
 %    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -1860,6 +2005,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<JT-Geschichte>      title-JT-Geschichte.def%
 %<JT-Typography>      title-JT-Typography.def%
 %<WWUM>      title-WWUM.def%
+%<UKoLA>      title-UKoLa.def%
     }%
   \fi
 \endgroup
@@ -1882,18 +2028,19 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<JT-Geschichte>  JT-Geschichte%
 %<JT-Typography>  JT-Typography%
 %<WWUM>  WWUM%
+%<UKoLa>  UKoLa%
 ]{title}
 %    \end{macrocode}
 %
-% Nevertheless some style has their own switches:
+% Nevertheless some styles have their own switches:
 % \begin{option}{blackborder}
-%   \emph{Trauerrand} at style \File{TU-DD}:
+% \emph{Trauerrand} at style \File{TU-DD}:
 %    \begin{macrocode}
 %<TU-DD>\FamilyBoolKey[TU-DD]{title}{blackborder}{blackborder}
 %    \end{macrocode}
 % \end{option}
 % \begin{option}{final}
-%   Style \File{TU-HH} distinguishes between drafts and final thesis.
+% Style \File{TU-HH} distinguishes between drafts and final thesis.
 %    \begin{macrocode}
 %<TU-HH>\FamilyBoolKey[TU-HH]{title}{final}{final}
 %    \end{macrocode}
@@ -1902,7 +2049,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \begin{macro}{\title@rulewidth}
 % \begin{option}{rulesep}
 % \begin{macro}{\title@rulesep}
-%   Some styles have some variable rules at the title:
+% Some styles have some variable rules at the title:
 %    \begin{macrocode}
 %<*Spacer|JT-Aufsaetze|JT-Geschichte|Markus&2>
 \providecommand*{\title@rulewidth}{%
@@ -1939,23 +2086,44 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \end{option}
 %
 % An some has their own terms:
+% \begin{macro}{\presentationinformationUKoLA}
+% \changes{v0.7}{2021/08/18}{new}
 % \begin{macro}{\presentationinformationWWUM}
-%   \changes{v0.5}{2016/06/21}{new style WWUM}
+% \changes{v0.5}{2016/06/21}{new style WWUM}
 % \begin{macro}{\presentationinformationTUHH}
-%   \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
-%     more}^^A
-%   \changes{v0.5}{2016/06/21}{provide sevaral English and German
-%     languages}^^A
+% \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
+%   more}
+% \changes{v0.5}{2016/06/21}{provide sevaral English and German
+%   languages}
 % \begin{macro}{\presentationinformationDHBW}
 % \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
-%   more}^^A
-% \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}^^A
+%   more}
+% \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}
 % \changes{0.5e}{2019/11/20}{\cs{if} replaced by \cs{ifx}}
 % \begin{macro}{\presentationinformationKIT}
 % \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
-%   more}^^A
-% \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}^^A
+%   more}
+% \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}
 %    \begin{macrocode}
+%<*UKoLa>
+\providecommand*{\presentationinformationUKoLa}{%
+  to optain the degree\\
+  \@academicgrade\\
+  of  \@discipline\\
+}
+\providecaptionname{american,australian,british,canadian,%
+  english,newzealand,UKenglish,USenglish}{\presentationinformationUKoLa}{%
+  to optain the degree\\
+  \@academicgrade\\
+  of  \@discipline\\
+}%
+\providecaptionname{german,ngerman,austrian,naustrian,%
+  swissgerman,nswissgerman}{\presentationinformationUKoLa}{%
+  zur Erlangung des Grades eines\\
+  \@academicgrade\\
+  im Studiengang \@discipline\\
+}%
+%</UKoLa>
 %<*DHBW>
 \providecommand*{\presentationinformationDHBW}{%
   for the \examinationname{} of\\[.5\baselineskip]
@@ -2048,6 +2216,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \end{macro}
 % \end{macro}
 % \end{macro}
+% \end{macro}
 % \begin{macro}{\KITlongname}
 %   \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
 %     more}^^A
@@ -2115,38 +2284,68 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \end{macro}
 % \end{macro}
 % \end{macro}
+% 
 % \begin{macro}{\presentedbyname}
-% \changes{v0.5}{2016/06/21}{changed value for `WWUM'}%^^A
+% \changes{v0.5}{2016/06/21}{changed value for \texttt{WWUM}}
 % \changes{v0.5a}{2016/06/22}{fixed \texttt{swissgerman} instead of
-%   \texttt{swiss}}%^^A
-% \changes{v0.5b}{2018/08/31}{changes have to be delayed}%^^A
+%   \texttt{swiss}}
+% \changes{v0.5b}{2018/08/31}{changes have to be delayed}
+% \changes{v0.7}{2021/08/18}{changed value also for \texttt{UKoLa}}
+% \begin{macro}{\ordinalmalerefereename}
+% \changes{v0.7}{2021/08/18}{changed value for \texttt{UKoLa}}
+% \begin{macro}{\ordinalfemalerefereename}
+% \changes{v0.7}{2021/08/18}{changed value for \texttt{UKoLa}}
 %    \begin{macrocode}
-%<*WWUM>
+%<*WWUM|UKoLa>
 \NowButAfterBeginDocument
 {%  
   \providecaptionname{german,ngerman,austrian,naustrian,
     swissgerman,nswissgerman}{\presentedbyname}{vorgelegt von}%
   \scr@ifundefinedorrelax{captionsgerman}{}{%
     \renewcaptionname{german}{\presentedbyname}{vorgelegt von}%
+    \renewcaptionname{german}{\ordinalfemalerefereename}{%
+      \ordinalfemalecorrectorname}%
   }%
   \scr@ifundefinedorrelax{captionsngerman}{}{%
     \renewcaptionname{ngerman}{\presentedbyname}{vorgelegt von}%
+    \renewcaptionname{ngerman}{\ordinalmalerefereename}{%
+      \germanordinalmalecorrectorname}%
+    \renewcaptionname{ngerman}{\ordinalfemalerefereename}{%
+      \germanordinalfemalecorrectorname}%
   }%
   \scr@ifundefinedorrelax{captionsaustrian}{}{%
     \renewcaptionname{austrian}{\presentedbyname}{vorgelegt von}%
+    \renewcaptionname{austrian}{\ordinalmalerefereeename}{%
+      \germanordinalmalecorrectorname}%
+    \renewcaptionname{austrian}{\ordinalfemalerefereeename}{%
+      \germanordinalfemalecorrectorname}%
   }%
   \scr@ifundefinedorrelax{captionsnaustrian}{}{%
     \renewcaptionname{naustrian}{\presentedbyname}{vorgelegt von}%
+    \renewcaptionname{naustrian}{\ordinalmalerefereename}{%
+      \germanordinalmalecorrectorname}%
+    \renewcaptionname{naustrian}{\ordinalfemalerefereename}{%
+      \germanordinalfemalecorrectorname}%
   }%
   \scr@ifundefinedorrelax{captionsswissgerman}{}{%
     \renewcaptionname{swissgerman}{\presentedbyname}{vorgelegt von}%
+    \renewcaptionname{swissgerman}{\ordinalmalerefereename}{%
+      \germanordinalmalecorrectorname}%
+    \renewcaptionname{swissgerman}{\ordinalfemalerefereename}{%
+      \germanordinalfemalecorrectorname}%
   }%
   \scr@ifundefinedorrelax{captionsnswissgerman}{}{%
     \renewcaptionname{nswissgerman}{\presentedbyname}{vorgelegt von}%
+    \renewcaptionname{nswissgerman}{\ordinalmalerefereename}{%
+      \germanordinalmalecorrectorname}%
+    \renewcaptionname{nswissgerman}{\ordinalfemalerefereename}{%
+      \germanordinalfemalecorrectorname}%
   }%
 }
-%</WWUM>
+%</WWUM|UKoLa>
 %    \end{macrocode}
+% \end{macro}
+% \end{macro}
 % \end{macro}
 %
 % While style initialization, something may change:
@@ -2164,8 +2363,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
 %</KOMAScript>
 %    \end{macrocode}
-% styles \File{DHBW}, \File{TU-DD}, \File{TU-HH}, and \File{KIT} sets some
-% variable if not already done
+% styles \File{DHBW}, \File{TU-DD}, \File{TU-HH}, \File{KIT}, and \File{UKoLa}
+% set some variable if not already done
 %    \begin{macrocode}
 %<*DHBW|TU-DD|TU-HH|KIT|WWUM>
   \ifx\@university\@empty
@@ -2178,6 +2377,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<WWUM>      Westf\"alischen Wilhelms-Universit\"at M\"unster%
     }%
   \fi
+%</DHBW|TU-DD|TU-HH|KIT|WWUM>
+%<*DHBW|TU-DD|TU-HH|KIT|WWUM|UKoLa>
   \ifx\@place\@empty
     \place{%
 %<DHBW>      Baden-W\"urttemberg%
@@ -2189,29 +2390,44 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
         Style `WWUM' needs the birth place of\MessageBreak
         the student}%
 %</WWUM>
+%<UKoLa>      Koblenz%
     }
   \fi
-%<*DHBW>
+%<*DHBW|UKoLa>
   \ifx\@mainlogo\@empty
-    \IfFileExists{DHBW_d_MOS_195x95_rgb_300.jpg}{%
+%<DHBW>    \IfFileExists{DHBW_d_MOS_195x95_rgb_300.jpg}{%
+%<UKoLa>    \IfFileExists{uni-koblenz-landau.png}{%
       \scr@ifundefinedorrelax{includegraphics}{%
         \if@atdocument\else\RequirePackage{graphicx}\fi
       }{}%
       \scr@ifundefinedorrelax{includegraphics}{}{%
         \mainlogo{%
-          \includegraphics[width=57mm,height=27mm]%
+%<*DHBW>
+          \includegraphics[width=57mm,height=27mm]
                           {DHBW_d_MOS_195x95_rgb_300.jpg}%
+%</DHBW>
+%<*UKoLa>
+          \includegraphics[width=63mm,height=10mm]
+                          {uni-koblenz-landau.png}
+%</UKoLa>
         }%
       }%
     }{}%
   \fi
+%</DHBW|UKoLa>
+%<*DHBW>
   \ifx\@titlehead\@empty
     \titlehead{\hspace*{\fill}\@mainlogo}%
   \fi
-  \ifx\@titlepagefont\@empty
-    \renewcommand*{\@titlepagefont}{\normalfont\sffamily}%
-  \fi
 %</DHBW>
+%<*DHBW|UKoLa>
+  \ifx\@titlepagefont\@empty
+    \renewcommand*{\@titlepagefont}{%
+%<DHBW>      \normalfont\sffamily
+%<UKoLa>      \normalfont
+    }%
+  \fi
+%</DHBW|UKoLa>
 %<*KIT>
   \ifx\@homepage\@empty
     \homepage{\KITurl}%
@@ -2255,7 +2471,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
     \renewcommand*{\@titlepagefont}{\normalfont\large}%
   \fi
 %</WWUM>
-%</DHBW|TU-DD|TU-HH|KIT|WWUM>
+%</DHBW|TU-DD|TU-HH|KIT|WWUM|UKoLa>
 %    \end{macrocode}
 % style \File{Markus-2} uses it's own pagestyle at the first title page
 %    \begin{macrocode}
@@ -2315,9 +2531,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \renewcommand*{\makemaintitle}{%
   \begin{%
 %<DHBW|TU-DD|TU-HH|KIT>    fullsizetitle}
-%<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM>
+%<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM|UKoLa>
     titlepage}
-%</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM>
+%</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM|UKoLa>
     \setlength{\parskip}{\z@}%
     \setlength{\parindent}{\z@}%
     \setlength{\parfillskip}{\z@\@plus 1fil}%
@@ -2609,11 +2825,43 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
       \MakeUppercase{\@publisher}%
     \fi}
 %</JT-Typography>
+%<*UKoLa>
+    \begin{tabular}[t]{@{}c@{}}
+      \raisebox{\dimexpr\ht\strutbox-\height}{\@mainlogo}\\
+      \@chair\\
+    \end{tabular}\hfill
+    \begin{tabular}[r]{@{}c@{}}
+      \raisebox{\dimexpr\ht\strutbox-\height}{\@secondlogo}\\
+    \end{tabular}\par
+    \vspace{5\baselineskip}
+    \centering
+    {\LARGE\bfseries\titlefont{\@title\par}}%
+    \vspace{5\baselineskip}
+    {\Large\subject@font{\@subject\par}}%
+    \vspace{\baselineskip}
+    \presentationinformationUKoLa\par
+    \vspace{5\baselineskip}
+    \presentedbyname\\[\baselineskip]
+    {\Large\csname @authorfont\endcsname{\@author\par}}%
+    \vfill
+    \raggedright
+    \@hangfrom{\advisorname: }{\@advisor\par}%
+    \newcommand*{\test@male@female}[1][m]{%
+      \global\advance\@tempcnta by\@ne
+      \Ifstr{##1}{f}{\def\fe@male{female}}{\def\fe@male{male}}%
+      \@hangfrom{\csname ordinal\fe@male refereename\endcsname{\@tempcnta}: }%
+      \def\and{\par\test@male@female}%
+    }%
+    \@tempcnta \z@
+    \expandafter\test@male@female\@referee\par
+    \vspace{3\baselineskip}
+    \@place, \Ifstr{\indatename}{}{}{\indatename\ }\@date\par
+%</UKoLa>
   \end{%
 %<DHBW|TU-DD|TU-HH|KIT>    fullsizetitle}
-%<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM>
+%<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM|UKoLa>
     titlepage}
-%</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM>
+%</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM|UKoLa>
 }
 %    \end{macrocode}
 % \end{macro}
@@ -2854,16 +3102,16 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<*doc|README>
 %<*example>
 % \fi^^A meta-comment
+% \changes{v0.7}{2021/08/18}{don't use \Package{inputenc} any longer}
 %    \begin{macrocode}
 \documentclass[a4paper,pagesize]{scrbook}
-\usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 %<JT-Geschichte>\usepackage{microtype}
 %<TU-HH|TU-DD>\usepackage{mathpazo}
 %<TU-HH|TU-DD>\usepackage[scaled]{helvet}
-%<DHBW|Spacer|KIT>\usepackage[demo]{graphicx}% remove option demo if you have the logo
+%<DHBW|Spacer|KIT|UKoLa>\usepackage[demo]{graphicx}% remove option demo if you have the logo
 \usepackage{xcolor}
 %<JT-Geschichte|JT-Typography>\colorlet{RED}{red}% because of \MakeUppercase{\textcolor{red}{…}}
 \usepackage{uni-titlepage}
@@ -3090,6 +3338,44 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   professor={\textcolor{red}{Klaus Naseschwarz}}
 ]
 %</WWUM>
+%<*UKoLa>
+\TitlePageStyle{UKoLa}
+\maketitle[%
+  titlefont=\sffamily,
+  mainlogo=\textcolor{red}{{%
+    \includegraphics[height=10mm,width=63mm]%
+    {uni-koblenz-landau}%
+  }},
+  chair=\textcolor{red}{Nummer des Instituts: 
+  Name des Instituts},
+  secondlogo=\textcolor{red}{Optionales weiteres Logo},
+  title=\textcolor{red}{Titel der Studien-, Bachelor-, Master- oder Diplomarbeit},
+  subject=\textcolor{red}{Diplomarbeit},
+  academicgrade=\textcolor{red}{Diplom-Informatikers},
+  discipline=\textcolor{red}{Name des Studiengangs},
+  place={\textcolor{red}{Koblenz}},
+  author=\textcolor{red}{Vorname und Nachname des Absolventen / der
+  Absolventin},
+  advisor=\textcolor{red}{Title{}
+    Vorname{}
+    Name,
+    Institut, Fachbereich innerhalb der Universität /
+    Institution außerhalb der Universität},
+  referee={\textcolor{red}{Title{}
+    Vorname{}
+    Name,
+    Institut, Fachbereich innerhalb der Universität /
+    Institution außerhalb der Universität}%
+  \and[f]\textcolor{red}{Title{}
+    Vorname{}
+    Name,
+    Institut, Fachbereich innerhalb der Universität /
+    Institution außerhalb der Universität}%
+  },%
+  date=\textcolor{red}{Abgabemonat},
+]
+
+%</UKoLa>
 \end{document}
 %    \end{macrocode}
 %
