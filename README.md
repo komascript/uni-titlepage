@@ -7,7 +7,6 @@ Release: 2021/11/01 v0.7a
 License: LPPL 1.3c
 
 KOMA presents the title page project
-
 ----------------------------------------------------------------------------
 
 This work may be distributed and/or modified under the conditions of
