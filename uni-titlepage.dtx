@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ============================================================================
 % uni-titlepage.dtx
-% Copyright (c) Markus Kohm, 2009-2021
+% Copyright (c) Markus Kohm, 2009-2022
 %
 % This file is part of the LaTeX package `uni-titlepage'
 %
@@ -81,10 +81,10 @@
 }[%
 %</!README>
 %<README>
-%<README>Release: 2021/11/01 v0.7a
+%<README>Release: 2022/01/24 v0.7b
 %<README>
 %<README>License: LPPL 1.3c   
-%<!README>2021/11/01 v0.7a
+%<!README>2022/01/24 v0.7b
 %<README>
 KOMA presents the title page project
 %<*!README>
@@ -1829,6 +1829,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \end{macro}
 % \begin{macro}{\germanordinalmalerefereename}
 % \changes{v0.7}{2021/08/18}{new}
+% \changes{v0.7b}{2022/01/24}{missing \cs{fi} added}
 %    \begin{macrocode}
 \newcommand*{\germanordinalmalerefereename}[1]{%
   \ifnum #1<\@ne
@@ -1840,7 +1841,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
       \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
         This package does only define German ordinal names for referees up
         to 4}%
-  \fi
+
+    \fi
+  \fi  
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1854,6 +1857,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \end{macro}
 % \begin{macro}{\germanordinalmalecorrectorname}
 % \changes{v0.7}{2021/08/18}{new}
+% \changes{v0.7b}{2022/01/24}{missing \cs{fi} added}
 %    \begin{macrocode}
 \newcommand*{\germanordinalmalecorrectorname}[1]{%
   \ifnum #1<\@ne
@@ -1865,6 +1869,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
       \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
         This package does only define German ordinal names for correctors up
         to 6}%
+    \fi
   \fi
 }
 %    \end{macrocode}

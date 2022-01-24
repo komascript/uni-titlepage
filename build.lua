@@ -14,7 +14,7 @@
     https://www.latex-project.org/lppl.txt
 ]]
 
-release_info = "2021/11/01 v0.7a"
+release_info = "2022/01/24 v0.7b"
 
 -- Bundle and modules
 
