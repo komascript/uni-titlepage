@@ -1830,6 +1830,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \begin{macro}{\germanordinalmalerefereename}
 % \changes{v0.7}{2021/08/18}{new}
 % \changes{v0.7b}{2022/01/24}{missing \cs{fi} added}
+% \changes{v0.7c}{2022/01/24}{orphan empty line removed}
 %    \begin{macrocode}
 \newcommand*{\germanordinalmalerefereename}[1]{%
   \ifnum #1<\@ne
@@ -1841,7 +1842,6 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
       \PackageError{uni-titlepage}{Ordinal of `#1' not defined}{%
         This package does only define German ordinal names for referees up
         to 4}%
-
     \fi
   \fi  
 }
