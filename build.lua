@@ -26,9 +26,7 @@ unpackfiles      = sourcefiles
 
 installfiles     = { "uni-titlepage.sty", "title-*.def" }
 
-typesetdemofiles = { "titlepage-*.tex" }
-
-typesetfiles     = { "uni-titlepage.drv" }
+typesetfiles     = { "titlepage-*.tex", "uni-titlepage.drv" }
 
 docfiles         = { "README.md" }
 
