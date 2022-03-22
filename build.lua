@@ -2,7 +2,7 @@
 
 --[[
   Build script for the uni-titlepage project
-  Copyright (C) 2021 Markus Kohm
+  Copyright (C) 2021–2022 Markus Kohm
 
   This file is part of the build system of uni-titlepage.
 
@@ -14,7 +14,7 @@
     https://www.latex-project.org/lppl.txt
 ]]
 
-release_info = "2022/01/24 v0.7b"
+release_info = "2022/03/22 v1.0"
 
 -- Bundle and modules
 
@@ -30,9 +30,15 @@ typesetfiles     = { "titlepage-*.tex", "uni-titlepage.drv" }
 
 docfiles         = { "README.md" }
 
+-- Documentation Generation
+-- (currently we are using pdflatex-dev because of doc v3)
+
+typesetexe       = "pdflatex-dev"
+typesetopts      = "--interaction=batchmode"
+
 -- Package
 
-packtdszip = false
+packtdszip       = false
 
 -- CTAN information
 

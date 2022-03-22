@@ -17,27 +17,6 @@
 % The Current Maintainer and author of this work is Markus Kohm.
 %
 % This work consists of the file `uni-titlepage.dtx'.
-%
-% ==========================================================================
-% \fi^^A meta-comment
-%
-% \CharacterTable
-%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%   Digits        \0\1\2\3\4\5\6\7\8\9
-%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%   Dollar        \$     Percent       \%     Ampersand     \&
-%   Acute accent  \'     Left paren    \(     Right paren   \)
-%   Asterisk      \*     Plus          \+     Comma         \,
-%   Minus         \-     Point         \.     Solidus       \/
-%   Colon         \:     Semicolon     \;     Less than     \<
-%   Equals        \=     Greater than  \>     Question mark \?
-%   Commercial at \@     Left bracket  \[     Backslash     \\
-%   Right bracket \]     Circumflex    \^     Underscore    \_
-%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%   Right brace   \}     Tilde         \~}
-%
-% \iffalse meta-comment
 % ==========================================================================
 %<*dtx|ins>
 \expandafter\ifx\csname ProvidesFile\endcsname\relax
@@ -81,10 +60,10 @@
 }[%
 %</!README>
 %<README>
-%<README>Release: 2022/01/24 v0.7b
+%<README>Release: 2022/03/22 v1.0
 %<README>
 %<README>License: LPPL 1.3c   
-%<!README>2022/01/24 v0.7b
+%<!README>2022/03/22 v1.0
 %<README>
 KOMA presents the title page project
 %<*!README>
@@ -94,8 +73,8 @@ KOMA presents the title page project
 % \fi^^A meta-comment
 %
 % \changes{v0.5f}{2021/07/29}{usage of \texttt{l3build}}
-% \changes{v0.6}{2021/07/29}{package renamed from \Package{titlepage} into
-%   \Package{uni-titlepage}}
+% \changes{v0.6}{2021/07/29}{package renamed from \pkg*{titlepage} into
+%   \pkg*{uni-titlepage}}
 %
 % \tableofcontents
 %
@@ -103,12 +82,12 @@ KOMA presents the title page project
 % \label{sec:Loading-the-Package}
 %
 % You may load this package like all the other package, simply using:
-% \begin{verbatim}
+%\begin{verbatim}
 % \usepackage{uni-titlepage}
-% \end{verbatim}\vskip-\baselineskip
+%\end{verbatim}
 %
 % This package declares several options for title page manipulation. We will
-% declare all those options in the following. Most of the options are package
+% describe all those options in the following. Most of the options are package
 % options as well, but some are style options only. You may use every package
 % option already as optional argument of \cs{usepackage} and even of
 % \cs{documentclass}. But in most cases it would be better to use them as
@@ -119,7 +98,7 @@ KOMA presents the title page project
 % \section{The Title Page Styles and their Options}
 % \label{sec:The-Title-Page-Style-and-their-Options}
 %
-% \DescribeMacro{TitlePageStyle}
+% \DescribeInterfaceMacro{TitlePageStyle}
 % Several title page styles are supported. You may select a title page style
 % using:
 % \begin{quote}
@@ -130,7 +109,7 @@ KOMA presents the title page project
 % The available styles are shown at the following sub-sections. Options may be
 % every package option and every style option. 
 %
-% \DescribeMacro{maketitle}
+% \DescribeInterfaceMacro{maketitle}
 % After loading a style you may generate title pages using:
 % \begin{quote}
 %   \cs{maketitle}^^A
@@ -140,8 +119,8 @@ KOMA presents the title page project
 % Again, you may use every package option and every style option as optional
 % argument.
 %
-% \DescribeMacro{TitleOption}
-% \DescribeMacro{TitleOptions}
+% \DescribeInterfaceMacro{TitleOption}
+% \DescribeInterfaceMacro{TitleOptions}
 % Another way to set an option is to use either
 % \begin{quote}
 %   \cs{TitleOption}\marg{option}\marg{value}
@@ -154,7 +133,7 @@ KOMA presents the title page project
 % You can set every package option an every option of already loaded title
 % page styles.
 %
-% For every option, that expects a string argument exists a corresponding
+% For every main option, that expects a string argument exists a corresponding
 % command with the same name. So you may set, e.g., the title either using
 % \cs{TitleOptions}\linebreak[2]\texttt{\{title=\{This is the Title\}\}} or
 % \cs{TitleOption}\linebreak[2]\texttt{\{title\}\linebreak[2]\{This is the
@@ -162,10 +141,13 @@ KOMA presents the title page project
 % Title\}]} or \cs{TitlePageStyle}\linebreak[2]\texttt{[title=\{This is the
 % Title\}]\{\dots\}} or \cs{title}\linebreak[2]\texttt{\{This is the
 % Title\}}. The most robust way is to use the command \cs{title} instead of
-% the option at one of the other commands!  If you use the option you may need
-% to add \cs{protect} in front of commands inside the option value!
+% the option at one of the other commands. If you use the option you may need
+% to add \cs{protect} in front of some commands inside the option value. But
+% note: This is not valid for alias options like \texttt{student}, because
+% alias options do not have a corresponding command!
 %
-% \begin{xltabular}{\linewidth}{>{\ttfamily}l>{\ttfamily\raggedright}p{.25\linewidth}>{\RaggedRight}X}
+% \begin{xltabular}{\linewidth}
+% {>{\ttfamily}l>{\ttfamily\raggedright}p{.25\linewidth}>{\RaggedRight}X}
 % \toprule
 % \normalfont\emph{String Option}
 % & \normalfont\emph{Styles} 
@@ -265,7 +247,7 @@ KOMA presents the title page project
 %                                   e.\,g., ``Naturwissenschaften''
 % \tabularnewline
 % student    & \normalfont\emph{see \texttt{author}}
-%                                 & same like \texttt{author}
+%                                 & alias option to \texttt{author}
 % \tabularnewline
 % subject    & \normalfont\emph{every style}
 %                                 & the kind of work, there are special
@@ -294,13 +276,27 @@ KOMA presents the title page project
 % \tabularnewline
 % \end{xltabular}
 %
+% \begin{description}
+% \item[Note:] Depending on the used style some elements are mandatory. You will get
+% an error message like
+%\begin{verbatim}
+% Package uni-titlepage Error: empty title element `author'.
+%\end{verbatim}
+% if such a mandatory element has not been set. In this case use either the
+% option or the corresponding command to setup at least a dummy value, e.g.
+%\begin{verbatim}
+% \author{DON'T FORGET TO CHANGE THE AUTHOR}
+%\end{verbatim}
+% before the corresponding \cs{maketitle}.
+% \end{description}
+%
 % Let's have a look at the already defined title page styles. You should find
 % an example \LaTeX{} file for each of them at the documentation folder. If
 % not, ask you distributor or administrator for those! But you may find the
-% code of all examples in \File{docstrip} syntax even at
+% code of all examples in \pkg{docstrip} syntax even at
 % \autoref{sec:The-Examples-and-the-Manual} starting at
 % \autopageref{sec:The-Examples-and-the-Manual}. At the shown examples most
-% variable contents was made red.
+% variable contents have been made red.
 %
 %
 % \clearpage
@@ -712,7 +708,7 @@ KOMA presents the title page project
 % Koblenz-Landau. At that time, I've made a package for the title they asked
 % for. The package has been published at
 % \url{https://komascript.de/unikoblenzlandau} only. In 2021, after I've
-% published \Package{uni-titlepage}, it was time to implement this title also
+% published \pkg{uni-titlepage}, it was time to implement this title also
 % as a title style definition. Note, this is not an official style of the
 % University Koblenz-Landau. Several referees can be separated by
 % \cs{and}. Female referees should be prefixed by \textsf{[f]}.
@@ -737,7 +733,7 @@ KOMA presents the title page project
 % \section{Additonal Commands}
 % \label{sec:Additional-Commands}
 %
-% \DescribeMacro{\NowButAfterBeginDocument}
+% \DescribeInterfaceMacro{\NowButAfterBeginDocument}
 % Command
 % \begin{quote}
 %   \cs{NowButAfterBeginDocument}\marg{code}
@@ -773,13 +769,13 @@ KOMA presents the title page project
 % \end{quote}
 % is almost the same like above. But \texttt{fullsizetitle} removes the
 % margins from the generated title page. Nevertheless if binding correction
-% (aka binding offset) of package \File{typearea} or \File{geometry} could be
+% (aka binding offset) of package \pkg{typearea} or \pkg{geometry} could be
 % recognized, it will not be removed. Some of the title page styles use this
 % environment instead of \texttt{titlepage} inside \cs{maketitle}. With this
 % the margins of the title page do not depend on the type area of the
 % document.
 % 
-% \DescribeMacro{\usetitleelement}
+% \DescribeInterfaceMacro{\usetitleelement}
 % Command
 % \begin{quote}
 %   \cs{usetitleelement}\marg{element}
@@ -796,7 +792,16 @@ KOMA presents the title page project
 % \texttt{student} isn't a main \meta{element}, because it's only an alias for
 % \texttt{author}.
 %
-% \StopEventually{\PrintIndex\PrintChanges}
+% \DescribeInterfaceMacro{\usenonemptytitleelement}\NewIn{v1.0}
+% Command
+% \begin{quote}
+%   \cs{usenonemptytitleelement}\marg{element}
+% \end{quote}
+% is a variant of \cs{usetitleelement} that not only reports an error for a
+% not existing \meta{element} but also for an empty \meta{element}. It should
+% be used to print mandatory elements.
+%
+% \MaybeStop{\PrintIndex\PrintChanges}
 %
 % \section{Implementation}
 % \label{sec:Implementation}
@@ -805,22 +810,22 @@ KOMA presents the title page project
 %
 % Note: To generate all files, developers and beta testers should simply use
 % the source from \url{https://github.com/komascript/uni-titlepage} and call
-% \begin{verbatim}
+%\begin{verbatim}
 % l3build unpack
 % l3build doc
-% \end{verbatim}
+%\end{verbatim}
 % The resulting documentation will be placed in the main folder. The unpacked
 % style file are in \texttt{build/unpacked}, You can use
-% \begin{verbatim}
+%\begin{verbatim}
 % l3build install
-% \end{verbatim}
-% to install them in \texttt{TEXMFHOME}. See the manual of \Package{l3build}
+%\end{verbatim}
+% to install them in \texttt{TEXMFHOME}. See the manual of \pkg{l3build}
 % for more information.
 %
 % As an alternative you can use the source distribution from CTAN and run:
-% \begin{verbatim}
+%\begin{verbatim}
 % tex uni-titlepage.dtx
-% \end{verbatim}
+%\end{verbatim}
 % The documentation is usually part of the source distribution at CTAN. Note,
 % that all the generated \texttt{tex} files are example files. Do not copy
 % them to the run-time files but the documentation folder!
@@ -831,7 +836,7 @@ KOMA presents the title page project
 %<*dtx|ins>
 % \fi ^^A meta-comment
 % First of all we produce \File{uni-titlepage.ins}, the installation driver. It
-% starts very common with loading \File{docstrip}, preamble declaration and
+% starts very common with loading \pkg{docstrip}, preamble declaration and
 % start of generation.
 %    \begin{macrocode}
 \def\batchfile{uni-titlepage.dtx}
@@ -848,7 +853,7 @@ KOMA presents the title page project
 }
 
 \preamble
-Copyright (c) 2009-2021 by Markus Kohm <komascript(at)gmx.info>
+Copyright (c) 2009-2022 by Markus Kohm <komascript(at)gmx.info>
 
 This file was generated from file(s) of uni-titlepage distribution.
 
@@ -925,16 +930,16 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %</dtx|ins>
 % \fi^^A meta-comment
 %
-% \subsection{The Package `\File{scrbase.sty}'}
+% \subsection{The Package \pkg{scrbase}}
 % \label{sec:The-Package-scrbase.sty}
 % \iffalse meta-comment
 %<*package>
 % \fi^^A meta-comment
 %
-% \begin{macro}{\TitleOptions}
-% \begin{macro}{\TitleOption}
+% \begin{imacro}{\TitleOptions}
+% \begin{imacro}{\TitleOption}
 % We use the extended option handling of \KOMAScript, so we load package
-% \File{scrbase} and declare a family, a member and a something like
+% \pkg{scrbase} and declare a family, a member and a something like
 % \verb|\KOMAoptions| and \verb|\KOMAoption| but for this package.
 %    \begin{macrocode}
 \RequirePackage{scrbase}[2014/12/03]
@@ -943,8 +948,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \newcommand*{\TitleOptions}{\FamilyOptions{title}}
 \newcommand*{\TitleOption}{\FamilyOption{title}}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
+% \end{imacro}
+% \end{imacro}
 %
 % \begin{option}{pagenumber}
 %    \begin{macrocode}
@@ -955,7 +960,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 %
-% \begin{macro}{\titlepagestyle}
+% \begin{imacro}{\titlepagestyle}
 % \begin{option}{pagestyle}
 %    \begin{macrocode}
 \providecommand*{\titlepagestyle}{}
@@ -965,7 +970,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 }
 %    \end{macrocode}
 % \end{option}
-% \end{macro}
+% \end{imacro}
 %
 % \begin{macro}{\if@resonecol}
 %    \begin{macrocode}
@@ -986,14 +991,14 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{environment}
 %
-% \begin{macro}{\inittitle}
-% \begin{macro}{\makepretitle}
-% \begin{macro}{\makepretitleback}
-% \begin{macro}{\makemaintitle}
-% \begin{macro}{\makemaintitleback}
-% \begin{macro}{\makeposttitle}
-% \begin{macro}{\makeposttitleback}
-% \begin{macro}{\exittitle}
+% \begin{imacro}{\inittitle}
+% \begin{imacro}{\makepretitle}
+% \begin{imacro}{\makepretitleback}
+% \begin{imacro}{\makemaintitle}
+% \begin{imacro}{\makemaintitleback}
+% \begin{imacro}{\makeposttitle}
+% \begin{imacro}{\makeposttitleback}
+% \begin{imacro}{\exittitle}
 % \begin{macro}{\tp@undefinedtitle}
 % Set of commands, that define a title style:
 %    \begin{macrocode}
@@ -1010,16 +1015,16 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \newcommand*{\exittitle}{}
 %    \end{macrocode}
 % \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
 %
-% \begin{macro}{\inittitlestyle}
+% \begin{imacro}{\inittitlestyle}
 % Will be called before loading a title style:
 %    \begin{macrocode}
 \newcommand*{\inittitlestyle}{%
@@ -1085,10 +1090,10 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 }
 \inittitlestyle
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 %
 % \begin{macro}{\titlebox}
-% \begin{macro}{fullsizetitle}
+% \begin{imacro}{\fullsizetitle}
 % New environment for full page titles (with respect to BCOR or
 % Gm@bindingoffset if defined)
 %    \begin{macrocode}
@@ -1149,11 +1154,11 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \end{titlepage}
 }
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 % \end{macro}
 %
-% \begin{macro}{\DefineSimpleTitleKey}
-% \begin{macro}{\DefineReplaceTitleKey}
+% \begin{imacro}{\DefineSimpleTitleKey}
+% \begin{imacro}{\DefineReplaceTitleKey}
 % \begin{macro}{\tp@replacewarning}
 % \begin{macro}{\tp@dokeys}
 % Define title page ``variables'':
@@ -1184,10 +1189,10 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
-% \end{macro}
-% \end{macro}
+% \end{imacro}
+% \end{imacro}
 %
-% \begin{macro}{\titlehead}
+% \begin{imacro}{\titlehead}
 % \begin{macro}{\@titlehead}
 % \begin{option}{titlehead}
 %    \begin{macrocode}
@@ -1197,13 +1202,13 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\homepage}
-%   \changes{v0.3}{2012/07/05}{new command}
+% \end{imacro}
+% \begin{imacro}{\homepage}
+% \changes{v0.3}{2012/07/05}{added}
 % \begin{macro}{\@homepage}
-%   \changes{v0.3}{2012/07/05}{new internal}
+% \changes{v0.3}{2012/07/05}{added}
 % \begin{option}{homepage}
-%   \changes{v0.3}{2012/07/05}{new option}
+% \changes{v0.3}{2012/07/05}{added}
 %    \begin{macrocode}
 \providecommand*{\@homepage}{}
 \providecommand{\homepage}[1]{\gdef\@homepage{#1}}
@@ -1211,8 +1216,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\title}
+% \end{imacro}
+% \begin{imacro}{\title}
 % \begin{macro}{\@title}
 % \begin{option}{title}
 %    \begin{macrocode}
@@ -1220,8 +1225,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\author}
+% \end{imacro}
+% \begin{imacro}{\author}
 % \begin{macro}{\@author}
 % \begin{option}{author}
 %    \begin{macrocode}
@@ -1229,8 +1234,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\date}
+% \end{imacro}
+% \begin{imacro}{\date}
 % \begin{macro}{\@date}
 % \begin{option}{date}
 %    \begin{macrocode}
@@ -1238,8 +1243,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\duration}
+% \end{imacro}
+% \begin{imacro}{\duration}
 % \begin{macro}{\@duration}
 % \begin{option}{duration}
 %    \begin{macrocode}
@@ -1247,8 +1252,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\course}
+% \end{imacro}
+% \begin{imacro}{\course}
 % \begin{macro}{\@course}
 % \begin{option}{course}
 %    \begin{macrocode}
@@ -1256,8 +1261,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\company}
+% \end{imacro}
+% \begin{imacro}{\company}
 % \begin{macro}{\@company}
 % \begin{option}{company}
 %    \begin{macrocode}
@@ -1265,8 +1270,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\subtitle}
+% \end{imacro}
+% \begin{imacro}{\subtitle}
 % \begin{macro}{\@subtitle}
 % \begin{option}{subtitle}
 %    \begin{macrocode}
@@ -1274,8 +1279,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\university}
+% \end{imacro}
+% \begin{imacro}{\university}
 % \begin{macro}{\@university}
 % \begin{option}{university}
 %    \begin{macrocode}
@@ -1283,8 +1288,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\faculty}
+% \end{imacro}
+% \begin{imacro}{\faculty}
 % \begin{macro}{\@faculty}
 % \begin{option}{faculty}
 %    \begin{macrocode}
@@ -1292,8 +1297,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\chair}
+% \end{imacro}
+% \begin{imacro}{\chair}
 % \begin{macro}{\@chair}
 % \begin{option}{chair}
 %    \begin{macrocode}
@@ -1301,8 +1306,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\professor}
+% \end{imacro}
+% \begin{imacro}{\professor}
 % \begin{macro}{\@professor}
 % \begin{option}{professor}
 %    \begin{macrocode}
@@ -1310,8 +1315,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\subject}
+% \end{imacro}
+% \begin{imacro}{\subject}
 % \begin{macro}{\@subject}
 % \begin{option}{subject}
 % \changes{v0.4c}{2012/12/18}{typing error fixed (mrpiggi)}
@@ -1342,32 +1347,32 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\Ifstr}
+% \end{imacro}
+% \begin{imacro}{\Ifstr}
 % For compatibility with old versions of \textsf{scrbase} the macro is
 % provided based on \cs{ifstr} if it has not been defined by \textsf{scrbase}.
 %    \begin{macrocode}
 \providecommand*{\Ifstr}{\ifstr}
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 % \begin{option}{student}
 %    \begin{macrocode}
 \DefineReplaceTitleKey{student}{author}
 %    \end{macrocode}
 % \end{option}
-% \begin{macro}{\sience}
-%   \changes{v0.5}{2016/06/21}{new}
+% \begin{imacro}{\sience}
+% \changes{v0.5}{2016/06/21}{added}
 % \begin{macro}{\@sience}
-%   \changes{v0.5}{2016/06/21}{new}
+% \changes{v0.5}{2016/06/21}{added}
 % \begin{option}{sience}
-%   \changes{v0.5}{2016/06/21}{new}
+% \changes{v0.5}{2016/06/21}{added}
 %    \begin{macrocode}
 \DefineSimpleTitleKey{sience}
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\discipline}
+% \end{imacro}
+% \begin{imacro}{\discipline}
 % \begin{macro}{\@discipline}
 % \begin{option}{discipline}
 %    \begin{macrocode}
@@ -1375,8 +1380,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\academicgrade}
+% \end{imacro}
+% \begin{imacro}{\academicgrade}
 % \changes{v0.6}{2021/07/29}{renamed ``degree'' to ``academic grade'' to avoid
 %   name clash with the degree symbol}
 % \begin{macro}{\@academicgrade}
@@ -1390,8 +1395,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\matriculationnumber}
+% \end{imacro}
+% \begin{imacro}{\matriculationnumber}
 % \begin{macro}{\@matriculationnumber}
 % \begin{option}{matriculationnumber}
 %    \begin{macrocode}
@@ -1399,8 +1404,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\advisor}
+% \end{imacro}
+% \begin{imacro}{\advisor}
 % \begin{macro}{\@advisor}
 % \begin{option}{advisor}
 %    \begin{macrocode}
@@ -1408,8 +1413,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\referee}
+% \end{imacro}
+% \begin{imacro}{\referee}
 % \begin{macro}{\@referee}
 % \begin{option}{referee}
 %    \begin{macrocode}
@@ -1417,8 +1422,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\place}
+% \end{imacro}
+% \begin{imacro}{\place}
 % \begin{macro}{\@place}
 % \begin{option}{place}
 %    \begin{macrocode}
@@ -1426,8 +1431,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\publisher}
+% \end{imacro}
+% \begin{imacro}{\publisher}
 % \begin{macro}{\@publisher}
 % \begin{option}{publisher}
 %    \begin{macrocode}
@@ -1436,32 +1441,32 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\mainlogo}
-%   \changes{v0.4}{2012/07/24}{new}
+% \end{imacro}
+% \begin{imacro}{\mainlogo}
+% \changes{v0.4}{2012/07/24}{added}
 % \begin{macro}{\@mainlogo}
-%   \changes{v0.4}{2012/07/24}{new (internal)}
+% \changes{v0.4}{2012/07/24}{added}
 % \begin{option}{mainlogo}
-%   \changes{v0.4}{2012/07/24}{new}
+% \changes{v0.4}{2012/07/24}{added}
 %    \begin{macrocode}
 \DefineSimpleTitleKey{mainlogo}
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\secondlogo}
-% \changes{v0.7}{2021/08/18}{new}
+% \end{imacro}
+% \begin{imacro}{\secondlogo}
+% \changes{v0.7}{2021/08/18}{added}
 % \begin{macro}{\@secondlogo}
-% \changes{v0.7}{2021/08/18}{new (internal)}
+% \changes{v0.7}{2021/08/18}{added}
 % \begin{option}{secondlogo}
-% \changes{v0.7}{2021/08/18}{new}
+% \changes{v0.7}{2021/08/18}{added}
 %    \begin{macrocode}
 \DefineSimpleTitleKey{secondlogo}
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\oralexaminationdate}
+% \end{imacro}
+% \begin{imacro}{\oralexaminationdate}
 % \begin{macro}{\@oralexaminationdate}
 % \begin{option}{oralexaminationdate}
 %    \begin{macrocode}
@@ -1469,8 +1474,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
-% \begin{macro}{\dedication}
+% \end{imacro}
+% \begin{imacro}{\dedication}
 % \begin{macro}{\@dedication}
 % \begin{option}{dedication}
 %    \begin{macrocode}
@@ -1480,12 +1485,12 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
-% \end{macro}
+% \end{imacro}
 %
-% \begin{macro}{\usetitleelement}
-%   \changes{v0.4}{2012/04/24}{new}
+% \begin{imacro}{\usetitleelement}
+% \changes{v0.4}{2012/04/24}{added}
 % \begin{macro}{\@usetitleelement@error}
-%   \changes{v0.4}{2012/04/24}{new (internal)}
+% \changes{v0.4}{2012/04/24}{added}
 % Users cannot simply use, e.g., \cs{@title}, \cs{@mainlogo} etc. So we need a
 % command to get them:
 %    \begin{macrocode}
@@ -1508,7 +1513,29 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 }
 %    \end{macrocode}
 % \end{macro}
-% \end{macro}
+% \end{imacro}
+%
+% \begin{imacro}{\usenonemptytitleelement}
+% \changes{v1.0}{2022/03/22}{added}
+% Sometimes we want to use a title element that must not be empty.
+%    \begin{macrocode}
+\newcommand*{\usenonemptytitleelement}[1]{%
+  \expandafter\ifx\csname @#1\endcsname\@empty
+    \PackageError{uni-titlepage}{empty title element `#1'}{%
+      Title element `#1' is empty but mandatory for the used title page
+      style.\MessageBreak
+      So it must not be empty.\MessageBreak
+      Please see the manual for more information about assigning
+      values to\MessageBreak
+      main title elements via options or commands.\MessageBreak
+      If you'll continue, a \string\strut\space will be used.}%
+    \strut
+  \else
+    \usetitleelement{#1}%
+  \fi
+}
+%    \end{macrocode}
+% \end{imacro}
 %
 % Some variables use their own configurable font:
 % \begin{option}{titlepagefont}
@@ -1563,7 +1590,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \end{macro}
 % \end{option}
 %
-% \begin{macro}{\TitlePageStyle}
+% \begin{imacro}{\TitlePageStyle}
 % Load a title page style from file
 %    \begin{macrocode}
 \newcommand*{\TitlePageStyle}[2][]{%
@@ -1586,9 +1613,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   }
 }
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 %
-% \begin{macro}{\NowButAfterBeginDocument}
+% \begin{imacro}{\NowButAfterBeginDocument}
 % Nice shortcut:
 %    \begin{macrocode}
 \newcommand*{\NowButAfterBeginDocument}{%
@@ -1599,65 +1626,65 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \fi
 }
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 %
 %    \begin{macrocode}
 \DeclareOption*{\expandafter\TitlePageStyle\expandafter{\CurrentOption}}
 \FamilyProcessOptions*\relax
 %    \end{macrocode}
 %
-% \begin{macro}{\chairmanname}
-% \changes{v0.5}{2016/06/21}{new}
+% \begin{imacro}{\chairmanname}
+% \changes{v0.5}{2016/06/21}{added}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\projectpapername}
+% \begin{imacro}{\projectpapername}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\seminarpapername}
+% \begin{imacro}{\seminarpapername}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\studentreserchname}
+% \begin{imacro}{\studentreserchname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\diplomathesisname}
+% \begin{imacro}{\diplomathesisname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\degreethesisname}
+% \begin{imacro}{\degreethesisname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\masterthesisname}
+% \begin{imacro}{\masterthesisname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\bachelorthesisname}
+% \begin{imacro}{\bachelorthesisname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\presentedbyname}
+% \begin{imacro}{\presentedbyname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\advisorname}
+% \begin{imacro}{\advisorname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\thename}
+% \begin{imacro}{\thename}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\ofthename}
+% \begin{imacro}{\ofthename}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\fromname}
+% \begin{imacro}{\fromname}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\fromplacename}
+% \begin{imacro}{\fromplacename}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\malerefereename}
-% \changes{v0.5}{2016/06/21}{new}
+% \begin{imacro}{\malerefereename}
+% \changes{v0.5}{2016/06/21}{added}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\femalerefereename}
-% \changes{v0.5}{2016/06/21}{new}
+% \begin{imacro}{\femalerefereename}
+% \changes{v0.5}{2016/06/21}{added}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\ordinalmalerefereename}
-% \changes{v0.7}{2021/08/18}{new}
-% \begin{macro}{\ordinalfemalerefereename}
-% \changes{v0.7}{2021/08/18}{new}
-% \begin{macro}{\refereename}
+% \begin{imacro}{\ordinalmalerefereename}
+% \changes{v0.7}{2021/08/18}{added}
+% \begin{imacro}{\ordinalfemalerefereename}
+% \changes{v0.7}{2021/08/18}{added}
+% \begin{imacro}{\refereename}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\oralexaminationdatename}
+% \begin{imacro}{\oralexaminationdatename}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\ordinal}
+% \begin{imacro}{\ordinal}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\maleordinal}
-% \changes{v0.5}{2016/06/21}{new}
-% \begin{macro}{\femaleordinal}
-% \changes{v0.5}{2016/06/21}{new}
+% \begin{imacro}{\maleordinal}
+% \changes{v0.5}{2016/06/21}{added}
+% \begin{imacro}{\femaleordinal}
+% \changes{v0.5}{2016/06/21}{added}
 % \changes{v0.5c}{2019/05/27}{not needed \cs{AtBeginDocument} removed}
-% \begin{macro}{\indatename}
-% \changes{v0.7}{2021/08/18}{new}
+% \begin{imacro}{\indatename}
+% \changes{v0.7}{2021/08/18}{added}
 % Language dependent terms:
 %    \begin{macrocode}
 \providecommand*{\chairmanname}{Chairman}
@@ -1811,24 +1838,24 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\indatename}{im}%
 %    \end{macrocode}
-% \begin{macro}{\englishordinalmalerefereename}
-% \changes{v0.7}{2021/08/18}{new}
+% \begin{imacro}{\englishordinalmalerefereename}
+% \changes{v0.7}{2021/08/18}{added}
 %    \begin{macrocode}
 \newcommand*{\englishordinalmalerefereename}[1]{%
   \englishordinal{#1} \refereename%
 }
 %    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\englishordinalfemalerefereename}
-% \changes{v0.7}{2021/08/18}{new}
+% \end{imacro}
+% \begin{imacro}{\englishordinalfemalerefereename}
+% \changes{v0.7}{2021/08/18}{added}
 %    \begin{macrocode}
 \newcommand*{\englishordinalfemalerefereename}[1]{%
   \englishordinalmalereferename{#1}%
 }
 %    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\germanordinalmalerefereename}
-% \changes{v0.7}{2021/08/18}{new}
+% \end{imacro}
+% \begin{imacro}{\germanordinalmalerefereename}
+% \changes{v0.7}{2021/08/18}{added}
 % \changes{v0.7b}{2022/01/24}{missing \cs{fi} added}
 % \changes{v0.7c}{2022/01/24}{orphan empty line removed}
 %    \begin{macrocode}
@@ -1846,17 +1873,17 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \fi  
 }
 %    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\germanordinalfemalerefereename}
-% \changes{v0.7}{2021/08/18}{new}
+% \end{imacro}
+% \begin{imacro}{\germanordinalfemalerefereename}
+% \changes{v0.7}{2021/08/18}{added}
 %    \begin{macrocode}
 \newcommand*{\germanordinalfemalerefereename}[1]{%
   \germanordinalfemalerefereename{#1}in%
 }
 %    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\germanordinalmalecorrectorname}
-% \changes{v0.7}{2021/08/18}{new}
+% \end{imacro}
+% \begin{imacro}{\germanordinalmalecorrectorname}
+% \changes{v0.7}{2021/08/18}{added}
 % \changes{v0.7b}{2022/01/24}{missing \cs{fi} added}
 %    \begin{macrocode}
 \newcommand*{\germanordinalmalecorrectorname}[1]{%
@@ -1873,16 +1900,16 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \fi
 }
 %    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\germanordinalfemalecorrectorname}
-% \changes{v0.7}{2021/08/18}{new}
+% \end{imacro}
+% \begin{imacro}{\germanordinalfemalecorrectorname}
+% \changes{v0.7}{2021/08/18}{added}
 %    \begin{macrocode}
 \newcommand*{\germanordinalfemalecorrectorname}[1]{%
   \germanordinalmalecorrectorname{#1}in%
 }
 %    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\englishordinal}
+% \end{imacro}
+% \begin{imacro}{\englishordinal}
 %    \begin{macrocode}
 \newcommand*{\englishordinal}[1]{%
   \ifcsname engordnumber\endcsname
@@ -1904,10 +1931,10 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \fi
 }
 %    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\germanordinal}
-% \begin{macro}{\germanmaleordinal}
-% \begin{macro}{\germanfemaleordinal}
+% \end{imacro}
+% \begin{imacro}{\germanordinal}
+% \begin{imacro}{\germanmaleordinal}
+% \begin{imacro}{\germanfemaleordinal}
 %    \begin{macrocode}
 \newcommand*{\germanordinal}[1]{%
   \ifnum #1<\@ne
@@ -1938,33 +1965,33 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \fi
 }
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
 % 
 % \iffalse meta-comment
 %</package>
@@ -2091,153 +2118,153 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \end{option}
 %
 % An some has their own terms:
-% \begin{macro}{\presentationinformationUKoLA}
-% \changes{v0.7}{2021/08/18}{new}
-% \begin{macro}{\presentationinformationWWUM}
+% \begin{imacro}{\presentationinformationUKoLA}
+% \changes{v0.7}{2021/08/18}{added}
+% \changes{v1.0}{2022/03/22}{using \cs{usenonemptytitleelement}}
+% \begin{imacro}{\presentationinformationWWUM}
 % \changes{v0.5}{2016/06/21}{new style WWUM}
-% \begin{macro}{\presentationinformationTUHH}
+% \changes{v1.0}{2022/03/22}{using \cs{usenonemptytitleelement}}
+% \begin{imacro}{\presentationinformationTUHH}
 % \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
 %   more}
 % \changes{v0.5}{2016/06/21}{provide sevaral English and German
 %   languages}
-% \begin{macro}{\presentationinformationDHBW}
+% \changes{v1.0}{2022/03/22}{using \cs{usenonemptytitleelement}}
+% \begin{imacro}{\presentationinformationDHBW}
 % \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
 %   more}
 % \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}
 % \changes{0.5e}{2019/11/20}{\cs{if} replaced by \cs{ifx}}
-% \begin{macro}{\presentationinformationKIT}
+% \changes{v1.0}{2022/03/22}{using \cs{usenonemptytitleelement}}
+% \begin{imacro}{\presentationinformationKIT}
 % \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
 %   more}
 % \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}
 %    \begin{macrocode}
+% \changes{v1.0}{2022/03/22}{using \cs{usenonemptytitleelement}}
 %<*UKoLa>
 \providecommand*{\presentationinformationUKoLa}{%
   to optain the degree\\
-  \@academicgrade\\
-  of  \@discipline\\
+  \usenonemptytitleelement{academicgrade}\\
+  of  \usenonemptytitleelement{discipline}\\
 }
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\presentationinformationUKoLa}{%
   to optain the degree\\
-  \@academicgrade\\
-  of  \@discipline\\
+  \usenonemptytitleelement{academicgrade}\\
+  of  \usenonemptytitleelement{discipline}\\
 }%
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\presentationinformationUKoLa}{%
   zur Erlangung des Grades eines\\
-  \@academicgrade\\
-  im Studiengang \@discipline\\
+  \usenonemptytitleelement{academicgrade}\\
+  im Studiengang \usenonemptytitleelement{discipline}\\
 }%
 %</UKoLa>
 %<*DHBW>
 \providecommand*{\presentationinformationDHBW}{%
   for the \examinationname{} of\\[.5\baselineskip]
-  \@academicgrade\\[0pt plus 1fill]
-  of  \@discipline\\[.5\baselineskip]
-  at the \@university{} \@place\\
+  \usenonemptytitleelement{academicgrade}\\[0pt plus 1fill]
+  of  \usenonemptytitleelement{discipline}\\[.5\baselineskip]
+  at the \usenonemptytitleelement{university}\ifx\@place\@empty\else\space\@place\fi
 }
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\presentationinformationDHBW}{%
   for the \examinationname\\[.5\baselineskip]
-  \@academicgrade\\[0pt plus 1fill]
-  of degree course \@discipline\\[.5\baselineskip]
-  at the \@university\ifx\@place\@empty\else\space\@place\fi
+  \usenonemptytitleelement{academicgrade}\\[0pt plus 1fill]
+  of degree course \usenonemptytitleelement{discipline}\\[.5\baselineskip]
+  at the \usenonemptytitleelement{university}\ifx\@place\@empty\else\space\@place\fi
 }%
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\presentationinformationDHBW}{%
   f\"ur die \examinationname{} zum\\[.5\baselineskip]
-  \@academicgrade\\[0pt plus 1fill]
-  des Studienganges \@discipline\\[.5\baselineskip]
-  an der \@university{}\ifx\@place\@empty\else\space\@place\fi
+  \usenonemptytitleelement{academicgrade}\\[0pt plus 1fill]
+  des Studienganges \usenonemptytitleelement{discipline}\\[.5\baselineskip]
+  an der \usenonemptytitleelement{university}\ifx\@place\@empty\else\space\@place\fi
 }%
 %</DHBW>
 %<*TU-HH>
 \providecommand*{\presentationinformationTUHH}{%
   \iffinal Of the \else The \fi Graduation Committee of the\\
-  \@university\\[.5ex]
+  \usenonemptytitleelement{university}\\[.5ex]
   to the Acquisition of the Academic Degree\\[.5ex]
-  \@academicgrade\\[.5ex]
+  \usenonemptytitleelement{academicgrade}\\[.5ex]
   \iffinal approved \else submitted \fi\@subject}
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\presentationinformationTUHH}{%
   \iffinal Of the \else The \fi Graduation Committee of the\\
-  \@university\\[.5ex]
+  \usenonemptytitleelement{university}\\[.5ex]
   to the Acquisition of the Academic Degree\\[.5ex]
-  \@academicgrade\\[.5ex]
+  \usenonemptytitleelement{academicgrade}\\[.5ex]
   \iffinal approved \else submitted \fi\@subject}
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\presentationinformationTUHH}{%
   \iffinal Vom \else Dem \fi Promotionsausschuss der\\
-  \@university\\[.5ex]
+  \usenonemptytitleelement{university}\\[.5ex]
   zur Erlangung des akademischen Grades\\[.5ex]
-  \@academicgrade\\[.5ex]
+  \usenonemptytitleelement{academicgrade}\\[.5ex]
   \iffinal genehmigte \else vorgelegte \fi\@subject}%
 %</TU-HH>
 %<*KIT>
 \providecommand*{\presentationinformationKIT}{%
-  At the \@faculty\\
+  At the \usenonemptytitleelement{faculty}\\
   \strut\ignorespaces\@chair\\
 }
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\presentationinformationKIT}{%
-  At the \@faculty\\
+  At the \usenonemptytitleelement{faculty}\\
   \strut\ignorespaces\@chair\\
 }%
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\presentationinformationKIT}{%
-  An der \@faculty\\
+  An der \usenonemptytitleelement{faculty}\\
   \strut\ignorespaces\@chair\\
 }%
 %</KIT>
 %<*WWUM>
 \providecommand*{\presentationinformationWWUM}{%
-  \@subject\\
+  \usenonemptytitleelement{subject}\\
   to the Aquisition of the Academic Degree\\
-  \@academicgrade\\
-  of the \@sience{} of \@discipline\\
-  of the \@faculty{} faculty\\
-  of the \@university
+  \usenonemptytitleelement{academicgrade}\\
+  of the \usenonemptytitleelement{sience} of \usenonemptytitleelement{discipline}\\
+  of the \usenonemptytitleelement{faculty} faculty\\
+  of the \usenonemptytitleelement{university}%
 }
 \providecaptionname{american,australian,british,canadian,%
   english,newzealand,UKenglish,USenglish}{\presentationinformationWWUM}{%
-  \@subject\\
+  \usenonemptytitleelement{subject}\\
   to the Aquisition of the Academic Degree\\
-  \@academicgrade\\
-  of the \@sience{} of \@discipline\\
-  of the \@faculty{} faculty\\
-  of the \@university
+  \usenonemptytitleelement{academicgrade}\\
+  of the \usenonemptytitleelement{sience} of \usenonemptytitleelement{discipline}\\
+  of the \usenonemptytitleelement{faculty} faculty\\
+  of the \usenonemptytitleelement{university}%
 }
 \providecaptionname{german,ngerman,austrian,naustrian,%
   swissgerman,nswissgerman}{\presentationinformationWWUM}{%
-  \@subject\\
-  zur Erlangung des \@academicgrade\\
-  der \@sience{} im Fachbereich \@discipline\\
-  der \@faculty{} Fakult\"at\\
-  der \@university
+  \usenonemptytitleelement{subject}\\
+  zur Erlangung des \usenonemptytitleelement{academicgrade}\\
+  der \usenonemptytitleelement{sience} im Fachbereich
+  \usenonemptytitleelement{discipline}\\
+  der \usenonemptytitleelement{faculty} Fakult\"at\\
+  der \usenonemptytitleelement{university}%
 }
 %</WWUM>
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \begin{macro}{\KITlongname}
-%   \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
-%     more}^^A
-%   \changes{v0.5}{2016/06/21}{provide sevaral English and German
-%     languages}^^A
-% \begin{macro}{\fromname}
-%   \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
-%     more}^^A
-%   \changes{v0.5}{2016/06/21}{provide sevaral English and German
-%     languages}^^A
-% \begin{macro}{\refereename}
-%   \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any
-%     more}^^A
-%   \changes{v0.5}{2016/06/21}{provide sevaral English and German
-%     languages}^^A
-% \begin{macro}{\KITurl}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \begin{imacro}{\KITlongname}
+% \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any more}
+% \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}
+% \begin{imacro}{\fromname}
+% \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any more}
+% \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}
+% \begin{imacro}{\refereename}
+% \changes{v0.5}{2016/06/21}{\cs{NowButAfterBeginDocument} not needed any more}
+% \changes{v0.5}{2016/06/21}{provide sevaral English and German languages}
+% \begin{imacro}{\KITurl}
 %    \begin{macrocode}
 %<*KIT>
 \providecaptionname{american,australian,british,canadian,%
@@ -2285,21 +2312,21 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \newcommand*{\KITurl}{www.kit.edu}
 %</KIT>
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
 % 
-% \begin{macro}{\presentedbyname}
+% \begin{imacro}{\presentedbyname}
 % \changes{v0.5}{2016/06/21}{changed value for \texttt{WWUM}}
 % \changes{v0.5a}{2016/06/22}{fixed \texttt{swissgerman} instead of
 %   \texttt{swiss}}
 % \changes{v0.5b}{2018/08/31}{changes have to be delayed}
 % \changes{v0.7}{2021/08/18}{changed value also for \texttt{UKoLa}}
-% \begin{macro}{\ordinalmalerefereename}
+% \begin{imacro}{\ordinalmalerefereename}
 % \changes{v0.7}{2021/08/18}{changed value for \texttt{UKoLa}}
 % \changes{v0.7a}{2021/10/26}{typofix for \texttt{austrian}}
-% \begin{macro}{\ordinalfemalerefereename}
+% \begin{imacro}{\ordinalfemalerefereename}
 % \changes{v0.7}{2021/08/18}{changed value for \texttt{UKoLa}}
 % \changes{v0.7a}{2021/10/26}{typofix for \texttt{austrian}}
 %    \begin{macrocode}
@@ -2351,9 +2378,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 }
 %</WWUM|UKoLa>
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
+% \end{imacro}
+% \end{imacro}
+% \end{imacro}
 %
 % While style initialization, something may change:
 %    \begin{macrocode}
@@ -2393,9 +2420,10 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<TU-HH>      Hamburg%
 %<KIT>      Karlsruhe%
 %<*WWUM>
-      \PackageWarning{uni-titlepage}{Birth place missing.\MessageBreak
-        Style `WWUM' needs the birth place of\MessageBreak
-        the student}%
+      \PackageError{uni-titlepage}{Birth `place' missing}{%
+        Style `WWUM' needs the birth place of the student, so option `place=...'
+        resp.\MessageBreak
+        command `\string\place{...}' is mandatory}%
 %</WWUM>
 %<UKoLa>      Koblenz%
     }
@@ -2522,17 +2550,18 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 }
 %    \end{macrocode}
 %
-% \begin{macro}{\publishers}
+% \begin{imacro}{\publishers}
 %    \KOMAScript{} defines this macro. But we use \verb|\publisher| instead.
 %    \begin{macrocode}
 %<KOMAScript>\providecommand*{\publishers}{\publisher}
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 %
-% \begin{macro}{\makemaintitle}
-%   \changes{v0.2a}{2012/03/20}{\texttt{Markus-2}: \cs{leavevmode} added
-%     before \cs{subject@font} to avoid line break after \cs{subject@font}
-%     using package \textsf{color} or \textsf{xcolor}}
+% \begin{imacro}{\makemaintitle}
+% \changes{v0.2a}{2012/03/20}{\texttt{Markus-2}: \cs{leavevmode} added
+%   before \cs{subject@font} to avoid line break after \cs{subject@font}
+%   using package \textsf{color} or \textsf{xcolor}}
+% \changes{v1.0}{2022/03/22}{\texttt{JT-Aufsaetze} allows empty author}
 % This differs from style to style:
 %    \begin{macrocode}
 \renewcommand*{\makemaintitle}{%
@@ -2554,24 +2583,24 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
       \centering
       \Large
       \vfill
-      {\titlefont{\Large\@title}}\par
+      {\titlefont{\Large\usenonemptytitleelement{title}}}\par
       \vfill
-      {\subject@font{\Large\@subject\par}}%
+      {\subject@font{\Large\usenonemptytitleelement{subject}\par}}%
       \vfill
       \presentationinformationDHBW\par
       \vfill
       \fromname\\[.5\baselineskip]
-      \@author\par
+      \usenonemptytitleelement{author}\par
       \vfill
       \@date\par
       \vfill
       \begin{tabular}{*2{p{.5\dimexpr\linewidth-3\tabcolsep\relax}}@{}}
         \durationname                            & \@duration \\[.5ex]
-        \matriculationnumbername, \coursename    & \@matriculationnumber,
-                                                   \@course\\[.5ex]
-        \companyname                             & \@company \\[.5ex]
-        \advisorname{} \ofthename{} \companyname & \@advisor \\[.5ex]
-        \refereename{} \ofthename{} \@university & \@referee
+        \matriculationnumbername, \coursename    & \usenonemptytitleelement{matriculationnumber},
+                                                   \usenonemptytitleelement{course}\\[.5ex]
+        \companyname                             & \usenonemptytitleelement{company} \\[.5ex]
+        \advisorname{} \ofthename{} \companyname & \usenonemptytitleelement{advisor} \\[.5ex]
+        \refereename{} \ofthename{} \@university & \usenonemptytitleelement{referee}
       \end{tabular}
     \end{minipage}
 %</DHBW>
@@ -2588,7 +2617,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
         {\subject@font{\@subject \par}}%
         \vskip 3em
       \fi
-      {\titlefont{\huge \@title\par}}%
+      {\titlefont{\huge \usenonemptytitleelement{title}\par}}%
       \vskip 1em
       {\ifx\@subtitle\@empty\else\@subtitlefont{\@subtitle}\par\fi}%
       \vskip 2em
@@ -2646,7 +2675,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
           \strut\ignorespaces\advisorname\unskip:\strut\\
           \hspace*{.25\linewidth}\quad
           \begin{tabular}{@{}l@{}}
-            \strut\ignorespaces\@advisor\unskip\strut\\
+            \strut\ignorespaces\usenonemptytitleelement{advisor}\unskip\strut\\
           \end{tabular}
           \vskip2\baselineskip
           \hspace*{.25\linewidth}%
@@ -2666,23 +2695,23 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
     {\Large\presentationinformationTUHH\\}
     \vspace{2.5cm}
     {\Large\strut\ignorespaces\fromname\\
-      \strut\ignorespaces\@author\\}
+      \strut\ignorespaces\usenonemptytitleelement{author}\\}
     \vspace{2.5cm}
     {\Large\strut\ignorespaces\fromplacename\\
-      \strut\ignorespaces\@place\\}
+      \strut\ignorespaces\usenonemptytitleelement{place}\\}
     \vspace{2.5cm}
     {\Large\@date}
 %</TU-HH>
 %<*WWUM>
     \centering
-    \@chair\\
+    \usenonemptytitleelement{chair}\\
     \vspace{2cm}
-    \@title\\
+    \usenonemptytitleelement{title}\\
     \vfill
     \presentationinformationWWUM\\
     \vfill
     \presentedbyname\\
-    \@author\\
+    \usenonemptytitleelement{author}\\
     \ifx\@place\@empty\else\fromplacename{} \@place\\\fi
     --\,\the\year\,--
 %</WWUM>
@@ -2709,7 +2738,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<*Spacer>
       \ifx\@titlehead\@empty\else
 %    \end{macrocode}
-%   \changes{v0.4a}{2012/09/05}{fix influence of height of titlehead to
+% \changes{v0.4a}{2012/09/05}{fix influence of height of titlehead to
 %     vertical alignment of rule}
 %    \begin{macrocode}
         \raisebox{\dimexpr\ht\strutbox-\totalheight\relax}{%
@@ -2757,9 +2786,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
       \vskip 25mm
       {\@titlepagefont\@title\par}%
       \vskip 20mm
-      {\Large\@subject\\\fromname\par}
+      {\Large\@subject\par\fromname\par}
       \vskip 1cm
-      {\huge\@author\par}
+      {\huge\usenonemptytitleelement{author}\par}
       \vskip 1cm
       {\Large\presentationinformationKIT\par}
       \vskip 2cm
@@ -2787,16 +2816,17 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %</KIT>
 %<*JT-Aufsaetze>
     \centering
-    \@author\\
-    \begin{picture}(\title@rulewidth\@gobble,
-      \dimexpr .3ex+1pt+\title@rulesep\relax\@gobble)
-      \put(0,\dimexpr .15ex+.5pt+\title@rulesep\relax\@gobble){%
-        \linethickness{.3ex}\line(1,0){\title@rulewidth\@gobble}%
-      }%
-      \put(0,0){%
-        \linethickness{1pt}\line(1,0){\title@rulewidth\@gobble}%
-      }%
-    \end{picture}\\[\baselineskip]
+    \ifx\@author\@empty\else\@author\\
+      \begin{picture}(\title@rulewidth\@gobble,
+        \dimexpr .3ex+1pt+\title@rulesep\relax\@gobble)
+        \put(0,\dimexpr .15ex+.5pt+\title@rulesep\relax\@gobble){%
+          \linethickness{.3ex}\line(1,0){\title@rulewidth\@gobble}%
+        }%
+        \put(0,0){%
+          \linethickness{1pt}\line(1,0){\title@rulewidth\@gobble}%
+        }%
+      \end{picture}\\[\baselineskip]
+    \fi
     {\titlefont{\@title\par}}%
     \vfill
     \@publisher
@@ -2822,12 +2852,12 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %</JT-Geschichte>
 %<*JT-Typography>
   \raggedright
-  {\Large\MakeUppercase{\@author}\\[\baselineskip]}
+  {\Large\MakeUppercase{\@author}\unskip\strut\\[\baselineskip]}
   {\titlefont{\Huge\MakeUppercase{\@title}\unskip\strut\\}}
-  {\@subtitlefont{\normalsize\MakeUppercase{\@subtitle}\\}}
+  {\@subtitlefont{\normalsize\MakeUppercase{\@subtitle}\unskip\strut\\}}
   \vfill
   {\normalsize\MakeUppercase{\@place}\ifx\@place\@empty\else\enskip\fi
-    {\LARGE\MakeUppercase{\@date}}
+    {\LARGE\MakeUppercase{\@date}}%
     \ifx\@publisher\@empty\else\unskip\strut\\[1.5\baselineskip]
       \MakeUppercase{\@publisher}%
     \fi}
@@ -2849,7 +2879,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
     \presentationinformationUKoLa\par
     \vspace{5\baselineskip}
     \presentedbyname\\[\baselineskip]
-    {\Large\csname @authorfont\endcsname{\@author\par}}%
+    {\Large\csname @authorfont\endcsname{\usenonemptytitleelement{author}\par}}%
     \vfill
     \raggedright
     \@hangfrom{\advisorname: }{\@advisor\par}%
@@ -2871,16 +2901,16 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography|WWUM|UKoLa>
 }
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 %
 % Some of the styles need additional string options for the back of the main
 % title. These are more structural than logical, so we do not define those
 % globally!
 % \begin{option}{uppertitleback}
-% \begin{macro}{\uppertitleback}
+% \begin{imacro}{\uppertitleback}
 % \begin{macro}{\@uppertitlebacke}
 % \begin{option}{lowertitleback}
-% \begin{macro}{\lowertitleback}
+% \begin{imacro}{\lowertitleback}
 % \begin{macro}{\@lowertitleback}
 %    \begin{macrocode}
 %<*KOMAScript|Markus|Spacer>
@@ -2909,13 +2939,13 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %</KOMAScript|Markus|Spacer>
 %    \end{macrocode}
 % \end{macro}
-% \end{macro}
+% \end{imacro}
 % \end{option}
 % \end{macro}
-% \end{macro}
+% \end{imacro}
 % \end{option}
 %
-% \begin{macro}{\makemaintitleback}
+% \begin{imacro}{\makemaintitleback}
 % \changes{v0.5e}{2019/11/20}{\cs{ifstr} in \textsf{scrbase} renamed to
 %   \cs{Ifstr}}
 % Only some of the styles define this:
@@ -2981,12 +3011,12 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 }
 %</WWUM>
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 %
 % Some of the styles need additional string options for the pre title. These
 % are more structural than logical, so we do not define those globally!
 % \begin{option}{extratitle}
-% \begin{macro}{\extratitle}
+% \begin{imacro}{\extratitle}
 % \begin{macro}{\@extratitle}
 %    \begin{macrocode}
 %<*KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
@@ -3003,15 +3033,15 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %</KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
 %    \end{macrocode}
 % \end{macro}
-% \end{macro}
+% \end{imacro}
 % \end{option}
 %
-% \begin{macro}{\makepretitle}
-%   \changes{v0.2a}{2012/03/20}{\texttt{Markus-1}: Usage of
-%     \cs{@titlepagefont} fixed}
-%   \changes{v0.4b}{2012/09/18}{\texttt{Markus-1}: publisher page may be
-%     omitted}
-% \begin{macro}{\makepretitleback}
+% \begin{imacro}{\makepretitle}
+% \changes{v0.2a}{2012/03/20}{\texttt{Markus-1}: Usage of
+%   \cs{@titlepagefont} fixed}
+% \changes{v0.4b}{2012/09/18}{\texttt{Markus-1}: publisher page may be
+%   omitted}
+% \begin{imacro}{\makepretitleback}
 % Only some styles have pre titles:
 %    \begin{macrocode}
 %<*KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
@@ -3041,14 +3071,14 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
     \vspace*{.33\vsize}%
 
     \centering
-    \@author\\[1ex]
-    \@title\\[1ex]
+    \usenonemptytitleelement{author}\\[1ex]
+    \usenonemptytitleelement{title}\\[1ex]
     \the\year
   \end{fullsizetitle}
 }
 %</WWUM>
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 %    \begin{macrocode}
 %<*KOMAScript|Markus&2|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
 \renewcommand*{\makepretitleback}{%
@@ -3075,10 +3105,10 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 }
 %</WWUM>
 %    \end{macrocode}
-% \end{macro}
+% \end{imacro}
 %
-% \begin{macro}{\makeposttitle}
-% \begin{macro}{\makeposttitleback}
+% \begin{imacro}{\makeposttitle}
+% \begin{imacro}{\makeposttitleback}
 % And only some styles provides one more title page with dedication.
 %    \begin{macrocode}
 %<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
@@ -3096,8 +3126,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 }
 %</KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
+% \end{imacro}
+% \end{imacro}
 %
 % \iffalse meta-comment
 %</driver>
@@ -3109,15 +3139,25 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<*doc|README>
 %<*example>
 % \fi^^A meta-comment
-% \changes{v0.7}{2021/08/18}{don't use \Package{inputenc} any longer}
+% \changes{v0.7}{2021/08/18}{don't use \pkg{inputenc} any longer}
+% \changes{v1.0}{2022/03/22}{prepared for engines using \texttt{tu} encoding}
 %    \begin{macrocode}
 \documentclass[a4paper,pagesize]{scrbook}
 \usepackage[ngerman]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-%<JT-Geschichte>\usepackage{microtype}
+\usepackage{iftex}
+\iftutex
+%<*TU-HH|TU-DD>
+  \usepackage{fontspec}
+  \setmainfont{TeX Gyre Termes}
+  \setsansfont{TeX Gyre Heros}
+%</TU-HH|TU-DD>
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
 %<TU-HH|TU-DD>\usepackage{mathpazo}
 %<TU-HH|TU-DD>\usepackage[scaled]{helvet}
+\fi
+%<JT-Geschichte>\usepackage{microtype}
 %<DHBW|Spacer|KIT|UKoLa>\usepackage[demo]{graphicx}% remove option demo if you have the logo
 \usepackage{xcolor}
 %<JT-Geschichte|JT-Typography>\colorlet{RED}{red}% because of \MakeUppercase{\textcolor{red}{…}}
@@ -3199,6 +3239,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   title=\textcolor{red}{Titel im Stil \texttt{TU-HH}},
   university=\textcolor{red}{Technischen Universität Hamburg-Harburg},
   subject=degree,
+  author=\textcolor{red}{Vorname und Name},
   academicgrade=\textcolor{red}{Doktor der Naturwissenschaften (Dr.\,rer.\,nat\,)},
   place=\textcolor{red}{(Geburtsort)},
   date=\textcolor{red}{(aktuelles Jahr)},
@@ -3391,30 +3432,50 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<*manual|README>
 % \fi^^A meta-comment
 %
+% \changes{v1.0}{2022/03/22}{using class \pkg{ltxdoc} instead of \File{scrdoc}}
 %    \begin{macrocode}
 %<*!README>
-\documentclass{scrdoc}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
+\documentclass{ltxdoc}
+\IfPackageAtLeastTF{doc}{2022/01/01}{}{%
+  \errhelp{To avoid this error message, use doc.sty v3 instead of v2}%
+  \errmessage{Package `doc' is to old!}%
+}
 \usepackage[english]{babel}
 \usepackage{xltabular}
 \usepackage{ragged2e}
 \usepackage{booktabs}
 \usepackage{graphicx}
-\usepackage{hypdoc}
+\usepackage{hvlogos}
+\newcommand*\NewIn[1]{\leavevmode\marginpar{\footnotesize\hfill added in #1}}
+\newcommand*\ChangedIn[1]{\leavevmode\marginpar{\footnotesize\hfill changed in
+    #1}}
+\NewDocElement[macrolike = true,
+               toplevel  = false,
+               idxtype   = ,
+               idxgroup  = User commands,
+               printtype =
+               ]{InterfaceMacro}{imacro}
+\NewDocElement[macrolike = false,
+               toplevel  = false,
+               idxtype   = opt.,
+               idxgroup  = Title options,
+               printtype = \textit{opt.}
+              ]{Option}{option}
+\NewDocumentCommand{\pkg}{sO{https://www.ctan.org/pkg/#3}m}{%
+  \IfBooleanTF{#1}{\@gobble}{%
+    \csname tl_if_blank:nTF\endcsname{#2}{\@gobble}{\href}%
+  }%
+  {#2}{\textsf{#3}}%
+}
+\newcommand*{\File}{\texttt}
 \CodelineIndex
 \RecordChanges
 \EnableCrossrefs
 \GetFileInfo{uni-titlepage.drv}
 \begin{document}
-\title{More Titlepage Styles with Package \File{uni-titlepage}\footnote{This is file
-    version \fileversion{} of file \File{\filename}.}}
-\author{Markus Kohm\footnote{Markus Kohm \textless komascript\textcircled{\tiny
-      at}gmx.info\textgreater}}
-\date{\fileversion{}\footnote{\textbf{Note:} All version below 0.9 are ALPHA
-    versions. Everything may change. Everything may break. Everything may
-    happen.} \filedate}
+\title{More Titlepage Styles with Package \pkg{uni-titlepage}}
+\author{\href{mailto:komascript@gmx.info}{Markus Kohm}}
+\date{\fileversion{} \filedate}
 \maketitle
 \begin{abstract}
 %</!README>
