@@ -60,10 +60,10 @@
 }[%
 %</!README>
 %<README>
-%<README>Release: 2022/03/22 v1.0
+%<README>Release: 2022/08/05 v1.1
 %<README>
 %<README>License: LPPL 1.3c   
-%<!README>2022/03/22 v1.0
+%<!README>2022/08/05 v1.1
 %<README>
 KOMA presents the title page project
 %<*!README>
@@ -423,10 +423,13 @@ KOMA presents the title page project
 %   \item empty and only in twoside mode with \texttt{extratitle} used.
 %   \item main title page with \texttt{titlehead} placed at the page head (if
 %     this is to high, it might be put outside the page; if it is to deep, it
-%     might overwrite parte of the title), \texttt{rulewidth} and
-%     \texttt{rulesep} for the vertical rule (these aren't package options but
-%     style options), \texttt{subject}, \texttt{title}, \texttt{subtitle},
-%     \texttt{author}, \texttt{date}, and \texttt{plublisher}.
+%     might overwrite parte of the title), \texttt{rulewidth},
+%     \texttt{rulesep} and \texttt{rulecolor} for the vertical rule (these
+%     aren't package options but style options), \texttt{subject},
+%     \texttt{title}, \texttt{subtitle}, \texttt{author}, \texttt{date}, and
+%     \texttt{plublisher}. Note: If you want to use option \texttt{rulecolor}
+%     you have to load a package, that defines \cs{color}, e.g., \pkg{color}
+%     or \pkg{xcolor}. Otherwise the color will be ignored.
 %   \end{enumerate}
 % }\hspace{.025\textwidth}\nobreak
 % \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-Markus-2}}
@@ -468,10 +471,12 @@ KOMA presents the title page project
 %   \item defined by \texttt{extratitle}.
 %   \item empty and only in twoside mode with \texttt{extratitle} used.
 %   \item main title page with \texttt{titlehead} placed at the page head,
-%     \texttt{rulewidth} and \texttt{rulesep} for the vertical rule (these
-%     aren't package options but style options), \texttt{subject},
-%     \texttt{title}, \texttt{subtitle}, \texttt{author}, \texttt{date}, and
-%     \texttt{plublisher}.
+%     \texttt{rulewidth}, \texttt{rulesep} and \texttt{rulecolor} for the
+%     vertical rule (these aren't package options but style options),
+%     \texttt{subject}, \texttt{title}, \texttt{subtitle}, \texttt{author},
+%     \texttt{date}, and \texttt{plublisher}. Note: If you want to use option
+%     \texttt{rulecolor} you have to load a package, that defines \cs{color},
+%     e.g., \pkg{color} or \pkg{xcolor}. Otherwise the color will be ignored.
 %   \end{enumerate}
 % }\hspace{.025\textwidth}\nobreak
 % \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-Spacer}}
@@ -614,9 +619,12 @@ KOMA presents the title page project
 %   page (in example \File{titlepage-JT-Aufsaetze.tex}) is:
 %   \begin{enumerate}
 %   \item main title page with \texttt{author}, \texttt{title},
-%     \texttt{publisher}, \texttt{rulewidth} and \texttt{rulesep} for width
-%     of the horizontal rules and the distance between them (these aren't
-%     package options but style options).
+%     \texttt{publisher}, \texttt{rulewidth}, \texttt{rulesep} for width of
+%     the horizontal rules and the distance between them and
+%     \texttt{rulecolor} for the color of the rules (these aren't package
+%     options but style options).  Note: If you want to use option
+%     \texttt{rulecolor} you have to load a package, that defines \cs{color},
+%     e.g., \pkg{color} or \pkg{xcolor}. Otherwise the color will be ignored.
 %   \end{enumerate}
 % }\hspace{.025\textwidth}\nobreak
 % \frame{\includegraphics[page=1,width=.5\textwidth]{titlepage-JT-Aufsaetze}}
@@ -638,7 +646,10 @@ KOMA presents the title page project
 %   \item main title page with \texttt{author}, \texttt{title},
 %     \texttt{publisher}, \texttt{place}, \texttt{rulewidth} and
 %     \texttt{rulesep} for width of the horizontal rules and the distance
-%     between them (these aren't package options but style options).
+%     between them and \texttt{rulecolor} for the color of them (these aren't
+%     package options but style options). Note: If you want to use option
+%     \texttt{rulecolor} you have to load a package, that defines \cs{color},
+%     e.g., \pkg{color} or \pkg{xcolor}. Otherwise the color will be ignored.
 %   \end{enumerate}
 %   Note, that the default for \texttt{titlepagefont} prints everything but the
 %   \texttt{title} with ad-hoc letterspacing in upper-case letters if
@@ -2081,6 +2092,10 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \begin{macro}{\title@rulewidth}
 % \begin{option}{rulesep}
 % \begin{macro}{\title@rulesep}
+% \begin{option}{rulecolor}
+% \changes{v1.1}{2022/08/05}{new}
+% \begin{macro}{\title@rulecolor}
+% \changes{v1.1}{2022/08/05}{new}
 % Some styles have some variable rules at the title:
 %    \begin{macrocode}
 %<*Spacer|JT-Aufsaetze|JT-Geschichte|Markus&2>
@@ -2092,6 +2107,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<Spacer|Markus&2>  \ifdim \title@rulewidth>\z@ 10pt\else \z@\fi
 %<JT-Aufsaetze|JT-Geschichte>  1.5pt%
 }
+\providecommand*{\title@rulecolor}{}
 \DefineFamilyKey[%
 %<Markus&2>  Markus-2%
 %<JT-Aufsaetze>  JT-Aufsaetze%
@@ -2110,8 +2126,16 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \gdef\title@rulesep{\dimexpr #1\relax}%
   \FamilyKeyStateProcessed
 }
+\FamilyStringKey[%
+%<Markus&2>  Markus-2%
+%<JT-Aufsaetze>  JT-Aufsaetze%
+%<JT-Geschichte>  JT-Geschichte%
+%<Spacer>  Spacer%
+]{title}{rulecolor}{\title@rulecolor}
 %</Spacer|JT-Aufsaetze|JT-Geschichte|Markus&2>
 %    \end{macrocode}
+% \end{macro}
+% \end{option}
 % \end{macro}
 % \end{option}
 % \end{macro}
@@ -2729,9 +2753,13 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
     \raggedright
 %<Markus&2>    \thispagestyle{maintitle}%
     \raisebox{0pt}[\ht\strutbox][\dimexpr\textheight-\ht\strutbox\relax]{%
+      \ifx\title@rulecolor\@empty\else
+        \@ifundefined{color}{}{\color{\title@rulecolor}}%
+      \fi
       \rule[\dimexpr-.667\headsep-\textheight\relax]
            {\title@rulewidth}
-           {\dimexpr\textheight+2\headsep\relax}\kern\title@rulesep}%
+           {\dimexpr\textheight+2\headsep\relax}\kern\title@rulesep
+    }%
     \parbox[t][\textheight][t]
            {\dimexpr \textwidth-\title@rulewidth-\title@rulesep\relax}{%
       \raggedright
@@ -2819,6 +2847,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
     \ifx\@author\@empty\else\@author\\
       \begin{picture}(\title@rulewidth\@gobble,
         \dimexpr .3ex+1pt+\title@rulesep\relax\@gobble)
+        \ifx\title@rulecolor\@empty\else
+          \@ifundefined{color}{}{\color{\title@rulecolor}}%
+        \fi
         \put(0,\dimexpr .15ex+.5pt+\title@rulesep\relax\@gobble){%
           \linethickness{.3ex}\line(1,0){\title@rulewidth\@gobble}%
         }%
@@ -2838,6 +2869,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
     \vfill
     \begin{picture}(\title@rulewidth\@gobble,
       \dimexpr 4pt+1pt+\title@rulesep\relax\@gobble)
+      \ifx\title@rulecolor\@empty\else
+        \@ifundefined{color}{}{\color{\title@rulecolor}}%
+      \fi
       \put(0,\dimexpr 2pt+.5pt+\title@rulesep\relax\@gobble){%
         \linethickness{1pt}\line(1,0){\title@rulewidth\@gobble}%
       }%
