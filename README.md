@@ -65,10 +65,10 @@ a TDS tree. All files `titlepage-*.tex` and `titlepage-*.pdf` as well as
 # Unpacking and Installation for Users
 
 Users can use the installation described at
-[Unpacking and Installation for Developers and Distributors]. However, if
-your TeX distributor already distributes a ready for installation package, you
-do not need and should not create files and copy them yourself. Just use the
-package manager of your TeX distribution to install the package.
+[Unpacking and Installation for Developers and Distributors](#unpacking-and-installation-for-developers-and-distributors).
+However, if your TeX distributor already distributes a ready for installation
+package, you do not need and should not create files and copy them yourself. Just
+use the package manager of your TeX distribution to install the package.
 
 # How to Contribute
 
