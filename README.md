@@ -2,7 +2,7 @@
 
 Copyright (c) Markus Kohm <komascript at gmx.info>
 
-Release: 2022/08/05 v1.1
+Release: 2022/09/06 v1.1a
 
 License: LPPL 1.3c
 
@@ -64,11 +64,13 @@ a TDS tree. All files `titlepage-*.tex` and `titlepage-*.pdf` as well as
 
 # Unpacking and Installation for Users
 
-Users can use the installation described at
-[Unpacking and Installation for Developers and Distributors](#unpacking-and-installation-for-developers-and-distributors).
+Users can use the installation described at [Unpacking and Installation for
+Developers and
+Distributors](#unpacking-and-installation-for-developers-and-distributors).
 However, if your TeX distributor already distributes a ready for installation
-package, you do not need and should not create files and copy them yourself. Just
-use the package manager of your TeX distribution to install the package.
+package, you do not need and should not create files and copy them
+yourself. Just use the package manager of your TeX distribution to install the
+package.
 
 # How to Contribute
 

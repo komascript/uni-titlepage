@@ -60,10 +60,10 @@
 }[%
 %</!README>
 %<README>
-%<README>Release: 2022/08/05 v1.1
+%<README>Release: 2022/09/06 v1.1a
 %<README>
 %<README>License: LPPL 1.3c   
-%<!README>2022/08/05 v1.1
+%<!README>2022/09/06 v1.1a
 %<README>
 KOMA presents the title page project
 %<*!README>
@@ -2982,11 +2982,15 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \begin{imacro}{\makemaintitleback}
 % \changes{v0.5e}{2019/11/20}{\cs{ifstr} in \textsf{scrbase} renamed to
 %   \cs{Ifstr}}
+% \changes{v1.1a}{2022/09/06}{resetting paragraph skip, indent and fillskip}
 % Only some of the styles define this:
 %    \begin{macrocode}
 %<*KOMAScript|Markus|Spacer|JT-Aufsaetze|JT-Geschichte|JT-Typography>
 \renewcommand*{\makemaintitleback}{%
   \begin{titlepage}
+    \setlength{\parskip}{\z@}%
+    \setlength{\parindent}{\z@}%
+    \setlength{\parfillskip}{\z@\@plus 1fil}%
     \begin{minipage}[t]{\textwidth}
       \@titlepagefont{\@uppertitleback}%
     \end{minipage}\par
@@ -3000,6 +3004,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<*TU-HH>
 \renewcommand*{\makemaintitleback}{%
   \begin{titlepage}
+    \setlength{\parskip}{\z@}%
+    \setlength{\parindent}{\z@}%
+    \setlength{\parfillskip}{\z@\@plus 1fil}%
     \vspace*{\fill}
     \iffinal
       \@tempcnta\z@
@@ -3020,6 +3027,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %<*WWUM>
 \renewcommand*{\makemaintitleback}{%
   \begin{titlepage}
+    \setlength{\parfillskip}{\z@\@plus 1fil}%
     \vspace*{\fill}
     \noindent
     \@tempcnta\z@
