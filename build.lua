@@ -64,11 +64,14 @@ tagfiles = {"*.dtx","README.md","build.lua"}
 
 function update_tag (file,content,tagname,tagdate)
    tagname = string.gsub (tagname, "v(%d+%.%d+%a?)", "%1")
+   tagyear = string.sub (tagdate,1,4)
    
    if string.match (file, "%.dtx$") then
-      return string.gsub (content,
-                          "%d%d%d%d%/%d%d%/%d%d v%d+%.%d+%a?",
-                          tagdate .. " v" .. tagname )
+      return string.gsub ( string.gsub (content,
+					"%d%d%d%d%/%d%d%/%d%d v%d+%.%d+%a?",
+					tagdate .. " v" .. tagname ),
+			   "Copyright %([cC]%) Markus Kohm, 2009[-–]%d%d%d%d",
+			   "Copyright (c) Markus Kohm, 2009–" .. tagyear )
    elseif string.match (file, "%.md$") then
       return string.gsub (content,
                           "%d%d%d%d%/%d%d%/%d%d v%d+%.%d+%a?",
