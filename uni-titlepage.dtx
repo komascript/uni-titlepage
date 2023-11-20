@@ -60,10 +60,10 @@
 }[%
 %</!README>
 %<README>
-%<README>Release: 2022/09/06 v1.1a
+%<README>Release: 2023-11-20 v1.2
 %<README>
 %<README>License: LPPL 1.3c   
-%<!README>2022/09/06 v1.1a
+%<!README>2023-11-20 v1.2
 %<README>
 KOMA presents the title page project
 %<*!README>
@@ -243,7 +243,7 @@ KOMA presents the title page project
 %                                   \texttt{UKoLa}) multiple
 %                                   referees may be seperated with \cs{and}
 % \tabularnewline
-% sience     & WWUM               & kind of sience,
+% science\footnotemark    & WWUM               & kind of science,
 %                                   e.\,g., ``Naturwissenschaften''
 % \tabularnewline
 % student    & \normalfont\emph{see \texttt{author}}
@@ -275,6 +275,10 @@ KOMA presents the title page project
 %                                   presented your work
 % \tabularnewline
 % \end{xltabular}
+% \footnotetext{Due to a typing error, this option was named `sience' until
+%   version 1.1a. If the obsolete option or the corresponding command is used,
+%   a warning is issued from version 1.2 onwards. The correct spelling
+%   documented here should be used instead.\label{ftn:sience}}
 %
 % \begin{description}
 % \item[Note:] Depending on the used style some elements are mandatory. You will get
@@ -700,8 +704,9 @@ KOMA presents the title page project
 %     \item cover page with \texttt{author}, \texttt{title}, \cs{the}\cs{year}
 %     \item the backside of the cover page is empty if it exists
 %     \item main title page with \texttt{chair}, \texttt{title},
-%       \texttt{subject}, \texttt{academicgrade}, \texttt{sience}, \texttt{discipline},
-%       \texttt{faculty}
+%       \texttt{subject}, \texttt{academicgrade},
+%       \texttt{science}\footref{ftn:sience},
+%       \texttt{discipline}, \texttt{faculty}
 %     \item main title back side with \texttt{professor}, \texttt{referee},
 %       \texttt{oralexaminationdate} (normaly empty)
 %     \end{enumerate}
@@ -1371,14 +1376,59 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \DefineReplaceTitleKey{student}{author}
 %    \end{macrocode}
 % \end{option}
+% \begin{imacro}{\science}
+% \changes{v0.5}{2016/06/21}{added}
+% \changes{v1.2}{2023/11/20}{\cs{sience} renamed}
+% \begin{macro}{\@science}
+% \changes{v0.5}{2016/06/21}{added}
+% \changes{v1.2}{2023/11/20}{\cs{@sience} renamed}
+% \begin{option}{science}
+% \changes{v0.5}{2016/06/21}{added}
+% \changes{v1.2}{2023/11/20}{\texttt{sience} renamed}
+%    \begin{macrocode}
+\DefineSimpleTitleKey{science}
+%    \end{macrocode}
+% \end{option}
+% \end{macro}
+% \end{imacro}
 % \begin{imacro}{\sience}
 % \changes{v0.5}{2016/06/21}{added}
+% \changes{v1.2}{2023/11/20}{deprecated}
 % \begin{macro}{\@sience}
 % \changes{v0.5}{2016/06/21}{added}
+% \changes{v1.2}{2023/11/20}{deprecated}
 % \begin{option}{sience}
 % \changes{v0.5}{2016/06/21}{added}
+% \changes{v1.2}{2023/11/20}{deprecated}
 %    \begin{macrocode}
-\DefineSimpleTitleKey{sience}
+\providecommand*{\sience}{%
+  \PackageWarning{uni-titlepage}{%
+    \string\sience\space internally replaced by \string\science.\MessageBreak
+    Please note, that \string\sience\space was a typing mistake\MessageBreak
+    and should not be used any longer.\MessageBreak
+    You should replace it by \string\science
+  }%
+  \science
+}
+\providecommand*{\@sience}{%
+  \PackageWarning{uni-titlepage}{%
+    internal \string\@sience\space replaced by \string\@science.\MessageBreak
+    Please note, that \string\@sience was a typing mistake\MessageBreak
+    and should not be used any longer.\MessageBreak
+    You should replace it by \srting\@science%
+  }%
+  \@science
+}  
+\DefineFamilyKey{title}{sience}{%
+  \PackageWarning{uni-titlepage}{%
+    deprecated option `sience' used.\MessageBreak
+    Please note, that `sience' was a typing mistake\MessageBreak
+    and should not be used any longer.\MessageBreak
+    You should replace it by `science'%
+  }%
+  \science{#1}%
+  \FamilyKeyStateProcessed
+}
 %    \end{macrocode}
 % \end{option}
 % \end{macro}
@@ -2245,12 +2295,15 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \strut\ignorespaces\@chair\\
 }%
 %</KIT>
-%<*WWUM>
+%    \end{macrocode}
+% \changes{v1.2}{2023/11/20}{\texttt{science} fixed}
+%    \begin{macrocode}
+%<*WWUM> 
 \providecommand*{\presentationinformationWWUM}{%
   \usenonemptytitleelement{subject}\\
   to the Aquisition of the Academic Degree\\
   \usenonemptytitleelement{academicgrade}\\
-  of the \usenonemptytitleelement{sience} of \usenonemptytitleelement{discipline}\\
+  of the \usenonemptytitleelement{science} of \usenonemptytitleelement{discipline}\\
   of the \usenonemptytitleelement{faculty} faculty\\
   of the \usenonemptytitleelement{university}%
 }
@@ -2259,7 +2312,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \usenonemptytitleelement{subject}\\
   to the Aquisition of the Academic Degree\\
   \usenonemptytitleelement{academicgrade}\\
-  of the \usenonemptytitleelement{sience} of \usenonemptytitleelement{discipline}\\
+  of the \usenonemptytitleelement{science} of \usenonemptytitleelement{discipline}\\
   of the \usenonemptytitleelement{faculty} faculty\\
   of the \usenonemptytitleelement{university}%
 }
@@ -2267,7 +2320,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   swissgerman,nswissgerman}{\presentationinformationWWUM}{%
   \usenonemptytitleelement{subject}\\
   zur Erlangung des \usenonemptytitleelement{academicgrade}\\
-  der \usenonemptytitleelement{sience} im Fachbereich
+  der \usenonemptytitleelement{science} im Fachbereich
   \usenonemptytitleelement{discipline}\\
   der \usenonemptytitleelement{faculty} Fakult\"at\\
   der \usenonemptytitleelement{university}%
@@ -3407,6 +3460,9 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   % See Markus-2 for more information about those.
 ]
 %</JT-Typography>
+%    \end{macrocode}
+% \changes{v1.2}{2023/11/20}{\texttt{science} fixed}
+%    \begin{macrocode}
 %<*WWUM>
 \TitlePageStyle{WWUM}
 \renewcaptionname{ngerman}{\examinationdatename}{Tag der Promotion}
@@ -3418,7 +3474,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   subject={\textcolor{red}{Inaugural-Dissertation}},
   academicgrade={\textcolor{red}{Doktorgrades}},
   discipline={\textcolor{red}{Physik}},
-  sience={\textcolor{red}{Naturwissenschaften}},
+  science={\textcolor{red}{Naturwissenschaften}},
   chair={\textcolor{red}{Experimentelle Physik}},
   faculty={\textcolor{red}{Mathematisch-Naturwissenschaftlichen}},
   author={\textcolor{red}{Mein Name}},
@@ -3634,7 +3690,8 @@ translating them). The coding style and quality is also a criterion.
 \endinput
 
 %% Local Variables:
+%% mode: doctex
+%% eval: (flyspell-mode 1)
+%% ispell-local-dictionary: "en_GB"
 %% TeX-master: t
-%% TeX-PDF-mode: t
-%% flyspell-mode: t
 %% End:
