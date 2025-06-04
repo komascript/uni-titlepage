@@ -2,7 +2,7 @@
 
 --[[
   Build script for the uni-titlepage project
-  Copyright (C) 2021–2022 Markus Kohm
+  Copyright (c) Markus Kohm, 2021–2025
 
   This file is part of the build system of uni-titlepage.
 
@@ -77,9 +77,11 @@ function update_tag (file,content,tagname,tagdate)
                           "%d%d%d%d[–—/-]%d%d[–—/-]%d%d v%d+%.%d+%a?",
                           tagdate .. " v" .. tagname )
    elseif string.match (file, "%.lua$") then
-      return string.gsub (content,
-                          '\nrelease_info *= *"%d%d%d%d[/—–-]%d%d[/—–-]%d%d v%d+[%.%d]+%d"\n',
-                          '\nrelease_info = "' .. tagdate .. " v" .. tagname .. '"\n')
+      return string.gsub ( string.gsub (content,
+                            '\nrelease_info *= *"%d%d%d%d[/—–-]%d%d[/—–-]%d%d v%d+[%.%d]+%d"\n',
+                            '\nrelease_info = "' .. tagdate .. " v" .. tagname .. '"\n'),
+			    '\n  Copyright %([cC]%) Markus Kohm, 2021[^\n]*',
+			    '\n  Copyright (c) Markus Kohm, 2021–' .. tagyear )
    end
    return content
 end
