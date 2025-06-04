@@ -1,0 +1,36 @@
+% Testfile
+% Testcase: Correct working of \germanordinalfemalerefereename
+%                              \ordinalfeemalecorrectorname
+\input regression-test.tex
+\documentclass[a4paper]{scrbook}
+\usepackage[ngerman]{babel}
+\usepackage{uni-titlepage}
+\begin{document}
+\TitlePageStyle{UKoLa}
+
+\START
+\TEST{\ordinal(fe)malecorrectorname}
+  {%
+    \maketitle[%
+      academicgrade=\emph{grade},
+      discipline=\emph{discipline},
+      author=\emph{author},
+      referee={\emph{Mann}\and[f]\emph{Frau}}
+    ]
+  }
+
+\renewcaptionname{ngerman}{\ordinalfemalerefereename}{%
+  \germanordinalfemalerefereename}%
+
+\TEST{\ordinal(fe)malerefereename}
+  {%
+    \maketitle[%
+      academicgrade=\emph{grade},
+      discipline=\emph{discipline},
+      author=\emph{author},
+      referee={\emph{Mann}\and[f]\emph{Frau}}
+    ]
+  }
+\END
+
+\end{document}

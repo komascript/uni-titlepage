@@ -60,10 +60,10 @@
 }[%
 %</!README>
 %<README>
-%<README>Release: 2023-11-20 v1.2
+%<README>Release:
+2025-06-04 v1.3
 %<README>
 %<README>License: LPPL 1.3c   
-%<!README>2023-11-20 v1.2
 %<README>
 KOMA presents the title page project
 %<*!README>
@@ -1936,10 +1936,11 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{imacro}
 % \begin{imacro}{\germanordinalfemalerefereename}
-% \changes{v0.7}{2021/08/18}{added}
+%   \changes{v0.7}{2021/08/18}{added}
+%   \changes{v1.3}{2025/06/04}{correction of endless recursion}
 %    \begin{macrocode}
 \newcommand*{\germanordinalfemalerefereename}[1]{%
-  \germanordinalfemalerefereename{#1}in%
+  \germanordinalmalerefereename{#1}in%
 }
 %    \end{macrocode}
 % \end{imacro}
