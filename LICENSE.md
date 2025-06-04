@@ -13,7 +13,7 @@ Dieses Werk darf nach den Bedingungen der LaTeX Project Public Lizenz
 in der Version 1.3c, verteilt und/oder verändert werden. Die aktuelle 
 Version dieser Lizenz ist http://www.latex-project.org/lppl.txt und 
 Version 1.3c oder später ist Teil aller Verteilungen von LaTeX 2005/12/01 
-oder später. Dieses Werk hat den LPPL-Verwaltungs-Status „maintained” 
+oder später. Dieses Werk hat den LPPL-Verwaltungs-Status „maintained”. 
 Der aktuelle Verwalter und Autor dieses Werks ist Markus Kohm.
 
 ----------------------------------------------------------------------------

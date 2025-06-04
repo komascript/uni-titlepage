@@ -14,7 +14,7 @@
     https://www.latex-project.org/lppl.txt
 ]]
 
-release_info = "2023-11-20 v1.2"
+release_info = "2025-06-04 v1.3"
 
 -- Bundle and modules
 
@@ -68,17 +68,17 @@ function update_tag (file,content,tagname,tagdate)
    
    if string.match (file, "%.dtx$") then
       return string.gsub ( string.gsub (content,
-					"%d%d%d%d%/%d%d%/%d%d v%d+%.%d+%a?",
+					"%d%d%d%d[–—/-]%d%d[–—/-]%d%d v%d+%.%d+%a?",
 					tagdate .. " v" .. tagname ),
-			   "Copyright %([cC]%) Markus Kohm, 2009[-–]%d%d%d%d",
+			   "Copyright %([cC]%) Markus Kohm, 2009[–—-]%d%d%d%d",
 			   "Copyright (c) Markus Kohm, 2009–" .. tagyear )
    elseif string.match (file, "%.md$") then
       return string.gsub (content,
-                          "%d%d%d%d%/%d%d%/%d%d v%d+%.%d+%a?",
+                          "%d%d%d%d[–—/-]%d%d[–—/-]%d%d v%d+%.%d+%a?",
                           tagdate .. " v" .. tagname )
    elseif string.match (file, "%.lua$") then
       return string.gsub (content,
-                          '\nrelease_info = "%d%d%d%d%/%d%d%/%d%d v%d+%.%d+%a?"\n',
+                          '\nrelease_info *= *"%d%d%d%d[/—–-]%d%d[/—–-]%d%d v%d+[%.%d]+%d"\n',
                           '\nrelease_info = "' .. tagdate .. " v" .. tagname .. '"\n')
    end
    return content

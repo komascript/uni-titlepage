@@ -2,7 +2,7 @@
 
 Copyright (c) Markus Kohm <komascript at gmx.info>
 
-Release: 2023-11-20 v1.2
+Release: 2025-06-04 v1.3
 
 License: LPPL 1.3c
 
