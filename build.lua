@@ -14,7 +14,7 @@
     https://www.latex-project.org/lppl.txt
 ]]
 
-release_info = "2025-06-04 v1.3"
+release_info = "2025-08-12 v1.4"
 
 -- Bundle and modules
 
