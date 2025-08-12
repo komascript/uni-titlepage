@@ -1,5 +1,6 @@
 ## l3build generated files
 *-ctan.zip
+*.curlopt
 build/
 
 ## Core latex/pdflatex auxiliary files:
