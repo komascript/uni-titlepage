@@ -225,6 +225,17 @@ KOMA presents the title page project
 %                                   is not the main date but has to be shown
 %                                   too
 % \tabularnewline
+% pagenumber & \normalfont\emph{every style}
+%                                 & page number of the first title page
+% \tabularnewline
+% pagestyle  & \normalfont\emph{every style}
+%                                 & page style to be used inside
+%                                   \texttt{titlepage} environments unless
+%                                   a style dependent one is defined like page
+%                                   style \texttt{maintitle} in
+%                                   \texttt{Markus-2}; internally this
+%                                   redefines \cs{titlepagestyle}
+% \tabularnewline
 % place      & DHBW, TU-HH, JT-Geschichte, JT-Typography, WUMM, UKoLa
 %                                 & the place, in general the city, where
 %                                   you've made the work or where the Duale
@@ -775,6 +786,13 @@ KOMA presents the title page project
 % and sets the counter \texttt{pagenumber} to this value.  If the option is
 % not used, the value of counter \texttt{pagenumber} will be increased by one
 % and the result is used for the logical page number.
+%
+% \DescribeInterfaceMacro{\titlepagestyle}
+% This macro defines the page style to be used inside the \texttt{titlepage}
+% environment and therefore usually by all title page styles. The page style
+% changes are done using \cs{thispagestyle} but only if \cs{titlepagestyle} is
+% not empty. See also option \texttt{pagestyle} in
+% \autoref{sec:The-Title-Page-Style-and-their-Options}.
 %
 % \DescribeEnv{fullsizetitle}
 % Using
