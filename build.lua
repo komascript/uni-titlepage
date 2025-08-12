@@ -70,8 +70,8 @@ function update_tag (file,content,tagname,tagdate)
       return string.gsub ( string.gsub (content,
 					"%d%d%d%d[–—/-]%d%d[–—/-]%d%d v%d+%.%d+%a?",
 					tagdate .. " v" .. tagname ),
-			   "\n%% Copyright %([cC]%) Markus Kohm, 2009[^\n]*",
-			   "\n%% Copyright (c) Markus Kohm, 2009–" .. tagyear )
+			   "Copyright %([cC]%) Markus Kohm, 2009[^\n]*",
+			   "Copyright (c) Markus Kohm, 2009–" .. tagyear )
    elseif string.match (file, "%.md$") then
       return string.gsub (content,
                           "%d%d%d%d[–—/-]%d%d[–—/-]%d%d v%d+%.%d+%a?",
