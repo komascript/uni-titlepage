@@ -61,7 +61,7 @@
 %</!README>
 %<README>
 %<README>Release:
-2025-06-04 v1.3
+2025-08-12 v1.4
 %<README>
 %<README>License: LPPL 1.3c   
 %<README>
@@ -1689,9 +1689,10 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %    \end{macrocode}
 % \end{imacro}
 %
+% \changes{v1.4}{2025/08/12}{option processing fixed}
 %    \begin{macrocode}
 \DeclareOption*{\expandafter\TitlePageStyle\expandafter{\CurrentOption}}
-\FamilyProcessOptions*\relax
+\FamilyProcessOptions{title}
 %    \end{macrocode}
 %
 % \begin{imacro}{\chairmanname}
