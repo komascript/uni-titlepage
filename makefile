@@ -1,6 +1,6 @@
 #
 # makefile for project uni-titlepage
-# Copyright (c) Markus Kohm, 2011-2021
+# Copyright (c) Markus Kohm, 2011-2026
 #
 # Developers only!
 # --------------------------------------------------------------------
@@ -24,14 +24,12 @@ DOCSRC = $(EXAMPLESRC) \
 
 DOC = $(addsuffix .pdf,$(basename $(DOCSRC)))
 
-DISTDOC = README \
-	  uni-titlepage.pdf
+DISTDOC = uni-titlepage.pdf
 
 all: unpack doc
 
 unpack: $(SRC)
 	l3build unpack
-	cp build/unpacked/README.md .
 
 doc: $(SRC)
 	l3build doc

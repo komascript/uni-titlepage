@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ============================================================================
 % uni-titlepage.dtx
-% Copyright (c) Markus Kohm, 2009–2025
+% Copyright (c) Markus Kohm, 2009–2026
 %
 % This file is part of the LaTeX package `uni-titlepage'
 %
@@ -52,24 +52,12 @@
 %<driver> .def%
 %</dtx|ins|doc|driver>
 %<package>\ProvidesPackage{uni-titlepage%
-%<*dtx|ins|doc|driver|package|README>
-%<README># `uni-titlepage`
-%<README>
-%<README>Copyright (c) Markus Kohm <komascript at gmx.info>   
-%<*!README>
+%<*dtx|ins|doc|driver|package>
 }[%
-%</!README>
-%<README>
-%<README>Release:
-2025-08-12 v1.4
-%<README>
-%<README>License: LPPL 1.3c   
-%<README>
+2026-02-05 v1.5
 KOMA presents the title page project
-%<*!README>
 ]
-%</!README>
-%</dtx|ins|doc|driver|package|README>
+%</dtx|ins|doc|driver|package>
 % \fi^^A meta-comment
 %
 % \changes{v0.5f}{2021/07/29}{usage of \texttt{l3build}}
@@ -887,7 +875,7 @@ KOMA presents the title page project
 }
 
 \preamble
-Copyright (c) Markus Kohm, 2009–2025
+Copyright (c) Markus Kohm, 2009–2026
 
 This file was generated from file(s) of uni-titlepage distribution.
 
@@ -945,7 +933,6 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
   \file{titlepage-WWUM.tex}{\from{uni-titlepage.dtx}{doc,example,WWUM}}%
   \file{titlepage-UKoLa.tex}{\from{uni-titlepage.dtx}{doc,example,UKoLa}}%
   \nopreamble\nopostamble
-  \file{README.md}{\from{uni-titlepage.dtx}{README}}%
 }%
 
 \ifToplevel{%
@@ -1669,6 +1656,18 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \end{macro}
 % \end{option}
 %
+% \begin{option}{overwritefontsize}
+% \begin{macro}{\if@overwritefontsize}
+%     Some styles overwrite font sizes defined in the above font definitions,
+%     but optionally provide to deactivate this.
+%    \begin{macrocode}
+\FamilyBoolKey{title}{overwritefontsize}{@overwritefontsize}
+\@overwritefontsizetrue
+%    \end{macrocode}
+% \end{macro}
+% \end{option}
+%
+
 % \begin{imacro}{\TitlePageStyle}
 % Load a title page style from file
 %    \begin{macrocode}
@@ -2714,7 +2713,8 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
         {\subject@font{\@subject \par}}%
         \vskip 3em
       \fi
-      {\titlefont{\huge \usenonemptytitleelement{title}\par}}%
+      {\if@overwritefontsize\else\huge\fi\titlefont
+        {\if@overwritefontsize\huge\fi \usenonemptytitleelement{title}\par}}%
       \vskip 1em
       {\ifx\@subtitle\@empty\else\@subtitlefont{\@subtitle}\par\fi}%
       \vskip 2em
@@ -3251,7 +3251,7 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 % \subsection{The Examples and the Manual}
 % \label{sec:The-Examples-and-the-Manual}
 % \iffalse meta-comment
-%<*doc|README>
+%<*doc>
 %<*example>
 % \fi^^A meta-comment
 % \changes{v0.7}{2021/08/18}{don't use \pkg{inputenc} any longer}
@@ -3547,12 +3547,11 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 %
 % \iffalse meta-comment
 %</example>
-%<*manual|README>
+%<*manual>
 % \fi^^A meta-comment
 %
 % \changes{v1.0}{2022/03/22}{using class \pkg{ltxdoc} instead of \File{scrdoc}}
 %    \begin{macrocode}
-%<*!README>
 \documentclass{ltxdoc}
 \IfPackageAtLeastTF{doc}{2022/01/01}{}{%
   \errhelp{To avoid this error message, use doc.sty v3 instead of v2}%
@@ -3596,113 +3595,25 @@ You may however distribute the file `uni-titlepage.dtx' without this file.
 \date{\fileversion{} \filedate}
 \maketitle
 \begin{abstract}
-%</!README>
-%<*README>
-----------------------------------------------------------------------------
-
-This work may be distributed and/or modified under the conditions of
-the LaTeX Project Public License, version 1.3c of the license.
-The latest version of this license is in
-    http://www.latex-project.org/lppl.txt
-and version 1.3c or later is part of all distributions of LaTeX 
-version 2005/12/01 or later.
-
-This work has the LPPL maintenance status "maintained".
-
-The Current Maintainer and author of this work is Markus Kohm.
-
-----------------------------------------------------------------------------
-
-# ABSTRACT
-
-%</README>
 Creation of title pages is something most authors should not have to do. 
 But reality is not perfect, so a lot of authors have to do it.  In 2009
-%<!README>KOMA started the title page project at \url{https://komascript.de/titlepage}
-%<README>KOMA started the title page project at <https://komascript.de/titlepage>
+KOMA started the title page project at \url{https://komascript.de/titlepage}
 to collect real title pages and implement them with a well defined interface.
-%<!README>In 2021 the project has been moved to \url{https://github.com/komascript/uni-titlepage}
-%<README>In 2021 the project has been moved to <https://github.com/komascript/uni-titlepage>
+In 2021 the project has been moved to \url{https://github.com/komascript/uni-titlepage}
 and renamed.
 
 Now, changing from one title page style to another would be very
 simple.  Nevertheless implementation of a new title page style may be still
 difficult.  But maybe the guys of the title page project would help you.  Just
 ask!
-%<*README>
-
-# Unpacking and Installation for Developers and Distributors
-
-To unpack and install all files, you can download the source from github
-and then run:
-
-    l3build install
-
-Afterwards you can build the manual and the PDFs of the examples using:
-
-    l3build doc
-
-As an alternative you can use the CTAN source distribution. This already
-contains the user manual and the PDFs of the example files. So you only have
-to run
-
-    tex uni-titlepage.dtx
-
-to generate the package file `uni-titlepage.sty`, the title definition files
-`title-*.def` and the example titlepages `titlepage-*.tex`.
-    
-Please note, the `title-*.def` files are run-time files. Together with
-`uni-titlepage.sty` they have to be placed in `tex/latex/uni-titlepage` inside
-a TDS tree. All files `titlepage-*.tex` and `titlepage-*.pdf` as well as
-`uni-titlepage.pdf` are part of the documentation and should be placed in
-`doc/latex/uni-titlepage/` of the TDS tree.
-    
-# Unpacking and Installation for Users
-    
-Users can use the installation described at [Unpacking and Installation for
-Developers and
-Distributors](#unpacking-and-installation-for-developers-and-distributors).
-However, if your TeX distributor already distributes a ready for installation
-package, you do not need and should not create files and copy them
-yourself. Just use the package manager of your TeX distribution to install the
-package.
-
-# How to Contribute
-
-If you have made a title definition that is not specific for a single project
-but could be of interest for other users, you can either
-
-* make your own `uni-titlepage-FOO` package with its own manual and [upload it
-to ctan](https://www.ctan.org/upload),
-* contribute in adding it to `uni-titlepage`.
-
-The first option has the advantage, that you are free. There won't be any code
-reviews by the `uni-titlepage` developers. You don't need to use the same
-coding style. There is not need to accept the license of `uni-titlepage`
-etc. But in this case you have to take care to keep it compatible with future
-releases of `uni-titlepage` and it will not be presented in the
-`uni-titlepage` manual.
-
-The second option has the advantage, that after accepting your code, the
-`uni-titlepage` developers will try to keep it working even if they change
-`uni-titlepage`. But there are several restrictions to your code, before it
-will be accepted. For example, you should always try to use general options,
-if possible. *Static text* (not handled by options) should be configurable via
-`\newcaptionname`, `\providecaptionname` and `\renewcaptionname` and should be
-available at least in English and German (but if we can, we help in
-translating them). The coding style and quality is also a criterion.
-
-%</README>
-%<*!README>
 \end{abstract}
 \DocInput{uni-titlepage.dtx}
 \end{document}
-%</!README>
 %    \end{macrocode}
 %
 % \iffalse meta-comment
-%</manual|README>
-%</doc|README>
+%</manual>
+%</doc>
 % \fi^^A meta-comment
 %
 % \Finale
